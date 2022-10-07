@@ -1,4 +1,4 @@
-package com.furi.test;
+package com.furni.test;
 
 public class Test {
 
