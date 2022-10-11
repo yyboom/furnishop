@@ -40,8 +40,10 @@ public class DetailorderService implements MyService<Integer,DetailorderDTO>{
 
 	@Override
 	public List<DetailorderDTO> get() throws Exception {
-		return mapper.selectall();
+		return null;
 	}
+	public List<DetailorderDTO> detailall(String custid) throws Exception{
+		return mapper.detailall(custid);
 	
-	
+	}
 }
