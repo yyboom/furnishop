@@ -3,11 +3,13 @@ package com.furni.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.furni.dto.ItemDTO;
 import com.furni.frame.MyService;
 import com.furni.mapper.ItemMapper;
 
+@Service
 public class ItemService implements MyService<Integer, ItemDTO>{
 
 	@Autowired

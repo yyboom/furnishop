@@ -3,12 +3,14 @@ package com.furni.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.furni.dto.CateDTO;
 import com.furni.dto.ItemDTO;
 import com.furni.frame.MyService;
 import com.furni.mapper.CateMapper;
 
+@Service
 public class CateService implements MyService<Integer, CateDTO>{
 
 	@Autowired
