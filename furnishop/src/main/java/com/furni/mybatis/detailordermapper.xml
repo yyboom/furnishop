@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		DELETE FROM detailorder WHERE detailno=#{detailno}
 	</delete>
 	<select id="detailall" parameterType="String" resultType="DetailorderDTO">
-		SELECT c.custid, i.itemname AS item_name,i.itemcolor AS item_color, o.itemcnt AS item_cnt, d.detailno, d.orderno, d.itemno FROM detailorder d
+		SELECT c.custid AS cust_id, i.itemname AS item_name,i.itemcolor AS item_color, o.itemcnt AS item_cnt, d.detailno, d.orderno, d.itemno FROM detailorder d
 		INNER JOIN item i ON i.itemno=d.itemno
 		INNER JOIN orderpage o ON o.orderno=d.orderno
 		INNER JOIN cust c ON c.custid=o.custid
