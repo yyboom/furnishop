@@ -1,5 +1,45 @@
 package com.furni.service;
 
-public class CustService {
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.furni.dto.CustDTO;
+import com.furni.frame.MyService;
+import com.furni.mapper.CustMapper;
+
+public class CustService implements MyService<String, CustDTO>{
+	
+	@Autowired
+	CustMapper mapper;
+
+	@Override
+	public void register(CustDTO v) throws Exception {
+		mapper.insert(v);
+		
+	}
+
+	@Override
+	public void remove(String k) throws Exception {
+		mapper.delete(k);
+		
+	}
+
+	@Override
+	public void modify(CustDTO v) throws Exception {
+		mapper.update(v);
+		
+	}
+
+	@Override
+	public CustDTO get(String k) throws Exception {
+		return mapper.select(k);
+	}
+
+	@Override
+	public List<CustDTO> get() throws Exception {
+		return mapper.selectall();
+	}
+
 
 }
