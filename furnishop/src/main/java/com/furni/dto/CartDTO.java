@@ -1,6 +1,5 @@
 package com.furni.dto;
 
-import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,5 +17,5 @@ public class CartDTO {
 	private String custid;
 	private int itemno;
 	private int cartcnt;
-
+	
 }

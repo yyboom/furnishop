@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.furni.mapper.ReviewMapper">
+	
+	<select id="reviewall" parameterType="String" resultType="ReviewDTO">
+	SELECT re.reviewno, it.itemname as itemname, re.reviewcon, 
+	re.reviewimg as reviewimg, re.reviewdate, it.itemcolor as itemcolor, it.itemsize as itemsize
+	FROM review re
+	INNER JOIN item it ON re.itemno= it.itemno
+	WHERE re.custid = #{custid}	
+	</select>
+ 	<select id="select" parameterType="String" resultType="ReviewDTO">
+		SELECT * FROM review WHERE custid = #{custid}	
+	</select>	
+		<select id="selectall" parameterType="String" resultType="ReviewDTO">
+		SELECT * FROM review WHERE custid = #{custid}	
+	</select>
+	
+	
+	<insert id="insert" parameterType="ReviewDTO">
+		INSERT INTO review VALUES (NULL, #{custid}, #{itemno}, #{rating}, #{reviewcon}, #{reviewdate}, #{reviewimg})
+	</insert>
+	<update id="update" parameterType="ReviewDTO">
+		UPDATE review SET custid=#{custid}, itemno=#{itemno}, rating=#{rating}, reviewcon=#{reviewcon}, reviewdate=#{reviewdate}, reviewimg=#{reviewimg} WHERE reviewno = #{reviewno}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM review WHERE custid = #{custid}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+

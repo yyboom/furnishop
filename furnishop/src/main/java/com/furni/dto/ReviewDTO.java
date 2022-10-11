@@ -1,6 +1,6 @@
 package com.furni.dto;
 
-import java.util.Date;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +22,4 @@ public class ReviewDTO {
 	private String reviewdate;
 	private String reviewimg;
 	
-	private String item_name;
-	private String item_color;
-	private String item_standard;
 }
