@@ -21,7 +21,7 @@ class GetAllShip {
 	void contextLoads() {
 		List<ShipDTO> list = null;
 		try {
-			list = service.get();
+			list = service.shipall("id09");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -2,6 +2,7 @@ package com.furni.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.furni.dto.ShipDTO;
@@ -11,6 +12,7 @@ import com.furni.mapper.ShipMapper;
 @Service
 public class ShipService implements MyService<Integer, ShipDTO>{
 	
+	@Autowired
 	ShipMapper mapper;
 
 	@Override
@@ -21,7 +23,7 @@ public class ShipService implements MyService<Integer, ShipDTO>{
 
 	@Override
 	public void remove(Integer k) throws Exception {
-		mapper.delete(null);
+		mapper.delete(k);
 		
 	}
 
@@ -39,6 +41,14 @@ public class ShipService implements MyService<Integer, ShipDTO>{
 	@Override
 	public List<ShipDTO> get() throws Exception {
 		return mapper.selectall();
+	}
+	
+	public List<ShipDTO> shipall(String cust_id) throws Exception{
+		return mapper.shipall(cust_id);
+	}
+	
+	public ShipDTO selectone(int detailno) throws Exception{
+		return mapper.selectone(detailno);
 	}
 
 }

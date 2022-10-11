@@ -5,21 +5,29 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <!-- 어디를 통해서 들어오는지! -->
 <mapper namespace="com.furni.mapper.ShipMapper">
 	<!-- select를 부르면 argument로 String형태로 들어올 것이고 sql의 결과를 custDTO로 보내겠다. -->
-	<select id="select" parameterType="String" resultType="CustDTO">
-		SELECT * FROM cust WHERE id=#{id}
+	<select id="selectone" parameterType="Integer" resultType="ShipDTO">
+		SELECT c.custid AS cust_id, d.orderno AS order_no, o.orderdate AS
+		order_date, i.itemname AS item_name, o.itemcnt AS item_cnt,
+		i.itemprice*o.itemcnt AS total_cnt, i.itemimg AS item_img,
+		sh.shipstatus FROM detailorder d
+		INNER JOIN item i ON i.itemno=d.itemno
+		INNER JOIN ship sh ON d.detailno=sh.detailno
+		INNER JOIN orderpage o ON o.orderno=d.orderno
+		INNER JOIN cust c ON c.custid=o.custid
+		WHERE sh.detailno=#{detailno};
 	</select>
-	<select id="selectall" resultType="CustDTO">
-		SELECT * FROM cust
+
+	<select id="shipall" parameterType="String" resultType="ShipDTO">
+		SELECT c.custid AS cust_id, d.orderno AS order_no, o.orderdate AS
+		order_date, i.itemname AS item_name, o.itemcnt AS item_cnt,
+		i.itemprice*o.itemcnt AS total_cnt, i.itemimg AS item_img,
+		sh.shipstatus FROM detailorder d
+		INNER JOIN item i ON i.itemno=d.itemno
+		INNER JOIN ship sh ON d.detailno=sh.detailno
+		INNER JOIN orderpage o ON o.orderno=d.orderno
+		INNER JOIN cust c ON c.custid=o.custid
+		WHERE c.custid=#{cust_id};
 	</select>
-	<!-- id,pwd를 끄집어낼 때는 get,set으로 입력받고 나오게 될것 -->
-	<insert id="insert" parameterType="CustDTO">
-		INSERT INTO cust VALUES (#{id},#{pwd},#{name})
-	</insert>
-	<update id="update" parameterType="CustDTO">
-		UPDATE cust SET pwd=#{pwd},name=#{name} WHERE id=#{id}
-	</update>
-	<delete id="delete" parameterType="String">
-		DELETE FROM cust WHERE id=#{id}
-	</delete>
-	
+
+
 </mapper>

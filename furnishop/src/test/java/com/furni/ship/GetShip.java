@@ -17,7 +17,7 @@ class GetShip {
 	void contextLoads() {
 		ShipDTO ship = null;
 		try {
-			ship = service.get(202);
+			ship = service.selectone(406);
 			System.out.println(ship);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
