@@ -3,11 +3,11 @@ package com.furni.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import com.furni.dto.ItemDTO;
+import com.furni.dto.CateDTO;
 import com.furni.frame.MyMapper;
 
 @Repository
 @Mapper
-public interface ItemMapper extends MyMapper<Integer, ItemDTO>{
+public interface CateMapper extends MyMapper<Integer, CateDTO>{
 
 }

@@ -4,17 +4,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.furni.dto.CateDTO;
 import com.furni.dto.ItemDTO;
 import com.furni.frame.MyService;
-import com.furni.mapper.ItemMapper;
+import com.furni.mapper.CateMapper;
 
-public class ItemService implements MyService<Integer, ItemDTO>{
+public class CateService implements MyService<Integer, CateDTO>{
 
 	@Autowired
-	ItemMapper mapper;
+	CateMapper mapper;
 	
 	@Override
-	public void register(ItemDTO v) throws Exception {
+	public void register(CateDTO v) throws Exception {
 		mapper.insert(v);
 	}
 
@@ -24,17 +25,17 @@ public class ItemService implements MyService<Integer, ItemDTO>{
 	}
 
 	@Override
-	public void modify(ItemDTO v) throws Exception {
+	public void modify(CateDTO v) throws Exception {
 		mapper.update(v);
 	}
 
 	@Override
-	public ItemDTO get(Integer k) throws Exception {
+	public CateDTO get(Integer k) throws Exception {
 		return mapper.select(k);
 	}
 
 	@Override
-	public List<ItemDTO> get() throws Exception {
+	public List<CateDTO> get() throws Exception {
 		return mapper.selectall();
 	}
 
