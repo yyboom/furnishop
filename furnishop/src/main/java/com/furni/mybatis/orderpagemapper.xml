@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 어디를 통해서 들어오는지! -->
+<mapper namespace="com.furni.mapper.OrderpageMapper">
+	<select id="select" parameterType="Integer" resultType="OrderpageDTO">
+		SELECT o.orderno, o.custid,o.orderdate,o.orderpay,o.itemcnt,o.elevator,o.shipname,o.shipaddr,o.reciever,o.recievertel,i.itemname AS item_name, i.itemprice*o.itemcnt AS totalprice FROM detailorder d
+		INNER JOIN item i ON i.itemno=d.itemno
+		INNER JOIN orderpage o ON o.orderno = d.orderno
+		WHERE o.orderno=#{orderno}
+	</select>
+	<select id="selectall" resultType="OrderpageDTO">
+		SELECT o.orderno, o.custid,o.orderdate,o.orderpay,o.itemcnt,o.elevator,o.shipname,o.shipaddr,o.reciever,o.recievertel,i.itemname AS item_name, i.itemprice*o.itemcnt AS totalprice FROM detailorder d
+		INNER JOIN item i ON i.itemno=d.itemno
+		INNER JOIN orderpage o ON o.orderno = d.orderno
+	</select>
+	<!-- id,pwd를 끄집어낼 때는 get,set으로 입력받고 나오게 될것 -->
+	<insert id="insert" parameterType="OrderpageDTO">
+		INSERT INTO orderpage VALUES (#{orderno},#{custid},#{orderdate},#{orderpay},#{itemcnt},#{elevator},#{shipname},#{shipaddr},#{reciever},#{recievertel})
+	</insert>
+	<update id="update" parameterType="OrderpageDTO">
+		
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM orderpage WHERE orderno=#{orderno}
+	</delete>
+
+</mapper>

@@ -20,4 +20,5 @@ public class DetailorderDTO {
 	private String item_name;
 	private String item_color;
 	private int item_cnt;
+	private String item_img;
 }
