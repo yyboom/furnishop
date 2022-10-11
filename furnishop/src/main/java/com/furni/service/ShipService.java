@@ -2,10 +2,13 @@ package com.furni.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.furni.dto.ShipDTO;
 import com.furni.frame.MyService;
 import com.furni.mapper.ShipMapper;
 
+@Service
 public class ShipService implements MyService<Integer, ShipDTO>{
 	
 	ShipMapper mapper;

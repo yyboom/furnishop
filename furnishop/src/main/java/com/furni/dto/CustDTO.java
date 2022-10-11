@@ -19,7 +19,7 @@ public class CustDTO {
 	private String custname;
 	private String custaddr;
 	private String custtel;
-	private String custmail;
+	private String custemail;
 	private Date custdate;
 	private String withdraw;
 	private int custbirth;
