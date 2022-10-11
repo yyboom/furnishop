@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.furni.mapper.WishlistMapper">
+	
+	<select id="select" parameterType="Integer" resultType="wishlistDTO">
+		SELECT * FROM wishlist WHERE wishno=#{wishno}
+	</select>
+	<select id="selectall" resultType="wishlistDTO">
+		SELECT * FROM wishlist
+	</select>
+	
+	<insert id="insert" parameterType="wishlistDTO">
+		
+	</insert>
+	
+	<update id="update" parameterType="wishlistDTO">
+		
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		
+	</delete>
+	
+</mapper>
