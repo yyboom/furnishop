@@ -20,8 +20,6 @@ public class CustDTO {
 	private String custaddr;
 	
 	
-	private String error;
-	
 	
 	private String custtel;
 	private String custmail;
