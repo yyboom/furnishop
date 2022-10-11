@@ -10,4 +10,5 @@ public interface MyMapper<K,V> {
 	public V select(K k) throws Exception;
 	//mybatis에서는 위와 같은 함수로 인식하기에 다른 말로 바꿔줘야함.select->selectall
 	public List<V> selectall() throws Exception;
+	
 }
