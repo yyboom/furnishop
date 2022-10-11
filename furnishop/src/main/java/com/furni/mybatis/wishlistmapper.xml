@@ -7,12 +7,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="select" parameterType="Integer" resultType="wishlistDTO">
 		SELECT * FROM wishlist WHERE wishno=#{wishno}
 	</select>
-	<select id="selectall" resultType="wishlistDTO">
-		SELECT * FROM wishlist
+	<select id="wishall" resultType="wishlistDTO">
+		SELECT w.custid, i.itemname AS item_name, i.itemcolor AS item_color, i.itemsize AS item_ FROM wishlist AS w
+		INNER JOIN item AS i ON i.itemno = w.itemno
+		WHERE w.custid=#{custid}
 	</select>
 	
 	<insert id="insert" parameterType="wishlistDTO">
-		
+		INSERT INTO wishlist VALUES(NULL, #{custid}, #{itemno})
 	</insert>
 	
 	<update id="update" parameterType="wishlistDTO">
@@ -20,7 +22,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</update>
 	
 	<delete id="delete" parameterType="Integer">
-		
+		DELETE FROM wishlist WHERE wishno = #{wishno}
 	</delete>
 	
 </mapper>
