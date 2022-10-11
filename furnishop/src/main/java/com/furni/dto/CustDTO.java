@@ -20,7 +20,6 @@ public class CustDTO {
 	private String custaddr;
 	
 	
-	
 	private String custtel;
 	private String custmail;
 	private Date custdate;
