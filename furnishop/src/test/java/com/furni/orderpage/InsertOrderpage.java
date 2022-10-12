@@ -27,6 +27,7 @@ class InsertOrderpage {
 	           service.register(order);
 	           int r = order.getOrderno();
 	           System.out.println("Register OK"+r);
+	           //for문으로 돌려주기
 	           DetailorderDTO detail = new DetailorderDTO(0,r, 100, "침대", "베이지", 2, "bed.jpg", "id02");
 	           DetailorderDTO detail1 = new DetailorderDTO(0,r, 101, "옷장", "그레이", 2, "closet.jpg", "id02");
 	           service1.register(detail);
