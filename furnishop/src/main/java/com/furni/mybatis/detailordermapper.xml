@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	<!-- id,pwd를 끄집어낼 때는 get,set으로 입력받고 나오게 될것 -->
 	<insert id="insert" parameterType="DetailorderDTO">
-		
+		INSERT INTO detailorder VALUES (NULL,#{orderno},#{itemno})
 	</insert>
 	<update id="update" parameterType="DetailorderDTO">
 		

@@ -41,5 +41,7 @@ public class OrderpageService implements MyService<Integer,OrderpageDTO>{
 	public List<OrderpageDTO> get() throws Exception {
 		return null;
 	}
-	
+	public int register1(OrderpageDTO order)throws Exception{
+		return mapper.register1(order);
+	}
 }

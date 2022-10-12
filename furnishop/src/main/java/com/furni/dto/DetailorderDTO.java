@@ -13,6 +13,7 @@ import lombok.ToString;
 @ToString
 public class DetailorderDTO {
 	private int detailno;
+	//orderpage에서 받아올 orderno
 	private int orderno;
 	private int itemno;
 
@@ -22,4 +23,5 @@ public class DetailorderDTO {
 	private int item_cnt;
 	private String item_img;
 	private String cust_id;
+	
 }

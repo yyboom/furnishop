@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.furni.dto.DetailorderDTO;
 import com.furni.dto.OrderpageDTO;
+import com.furni.service.DetailorderService;
 import com.furni.service.OrderpageService;
 
 @SpringBootTest
@@ -14,13 +16,17 @@ class InsertOrderpage {
 
 	@Autowired
 	OrderpageService service;
+	@Autowired
+	DetailorderService service1;
 	
 	@Test
 	void contextLoads() {
-		OrderpageDTO order = new OrderpageDTO(0,"id09",new Date("Thu, 17 Aug 2022 00:00:00 +900"),"네이버페이", 1,"Y", "할머니댁","서울특별시 영등포구","남지현","010-2345-8746", null, 0);
+		OrderpageDTO order = new OrderpageDTO(0,"id02",new Date("Thu, 17 Aug 2022 00:00:00 +900"),"네이버페이", 1,"Y", "할머니댁","서울특별시 영등포구","남지현","010-2345-8746", "침대", 0);
 		try {
-			service.register(order);
-		//	System.out.println("ok"); 테스트용
+	           int r = service.register1(order);
+	           System.out.println("Register OK"+order.getOrderno());
+	           DetailorderDTO detail = new DetailorderDTO(0,r, 100, "침대", "베이지", 2, "bed.jpg", "ida02");
+	           service1.register(detail);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
