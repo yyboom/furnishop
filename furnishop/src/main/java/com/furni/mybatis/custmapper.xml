@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT c.custid,c.custpwd,c.custname,c.custaddr,c.custtel,c.custemail,c.custdate,c.custbirth FROM cust c WHERE custid=#{custid}
 	</select>
 	<insert id="insert" parameterType="CustDTO">
-		INSERT INTO cust VALUES (#{custid},#{custpwd},#{custname},#{custaddr},#{custtel},#{custemail},#{custdate},#{withdraw},#{custbirth})
+		INSERT INTO cust VALUES (#{custid},#{custpwd},#{custname},#{custaddr},#{custtel},#{custemail},SYSDATE(),"x",#{custbirth})
 	</insert>
 	<update id="update" parameterType="CustDTO">
 		UPDATE cust SET custpwd=#{custpwd},custname=#{custname},custaddr=#{custaddr},custtel=#{custtel},custemail=#{custemail},withdraw=#{withdraw},custbirth=#{custbirth} WHERE custid=#{custid}

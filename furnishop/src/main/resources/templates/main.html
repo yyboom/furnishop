@@ -195,19 +195,22 @@ $(document).ready(function(){
       <a class="navbar-brand" href="/">3FRUNISHOP</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
+      <ul th:if="${session.logincust == null}"class="nav navbar-nav navbar-right">
         <li><a href="/login">LOGIN</a></li>
         <li><a href="/register">REGISTER</a></li>
-        <li><a href="/cart">CART</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
+     </ul>
+     <ul th:if="${session.logincust != null}"class="nav navbar-nav navbar-right">
+   		<li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="${session.logincust.custname}">
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Merchandise</a></li>
-            <li><a href="#">Extras</a></li>
-            <li><a href="#">Media</a></li> 
+            <li><a href="/custdetail">custdetail</a></li>
+            <li><a href="/ordershipdetail">ordershipdetail</a></li>
+            <li><a href="/wishlistdetail">wishlistdetail</a></li> 
           </ul>
         </li>
+        <li><a th:href="@{/cart(id=${session.logincust.custid})}">CART</a></li>
+        <li><a href="/logout">LOGOUT</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
       </ul>
     </div>
