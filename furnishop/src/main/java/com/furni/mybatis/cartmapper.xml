@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.furni.mapper.CartMapper">
 	
 	<select id="cartall" parameterType="String" resultType="CartDTO">
-	SELECT ca.cartno, ca.custid, it.itemname as itemname, it.itemprice as itemprice, 
-	it.itemimg as itemimg, ca.cartcnt
+	SELECT ca.cartno, ca.custid, it.itemname as item_name, it.itemprice as item_price, it.itemcolor as item_color 
+	it.itemimg as item_img, ca.cartcnt, it.itemsize as item_size
 	FROM cart ca
 	INNER JOIN item it ON ca.itemno= it.itemno
 	INNER JOIN cust cu ON ca.custid = cu.custid
@@ -14,13 +14,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
  	<select id="select" parameterType="String" resultType="CartDTO">
-		SELECT * FROM cart WHERE custid = #{custid}
-	
+		SELECT * FROM cart ca
+		INNER JOIN item it ON ca.itemno= it.itemno
+		WHERE custid = #{custid}
 	</select>	
+	
+	<select id="selectall" resultType="CartDTO">
+		SELECT * FROM cart
+	</select>
 	
 	<insert id="insert" parameterType="CartDTO">
 		INSERT INTO cart VALUES (NULL, #{custid}, #{itemno}, #{cartcnt})
 	</insert>
+	
 	<update id="update" parameterType="CartDTO">
 		UPDATE cart SET itemno =#{itemno},cartcnt=#{cartcnt} WHERE custid = #{custid}
 	</update>

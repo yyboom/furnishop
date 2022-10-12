@@ -1,26 +1,41 @@
 package com.furni.cart;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.furni.dto.CartDTO;
+import com.furni.dto.CustDTO;
 import com.furni.service.CartService;
 
+
+
 @SpringBootTest
-class InsertCart {
+class GetAllCart {
 
 	@Autowired
 	CartService service;
 	
 	@Test
 	void contextLoads() {
+		List<CartDTO> list = null;
 		try {
-			service.register(new CartDTO(0, "id02", 105, 1, null, 0, null, null, null));
+			list = service.get();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		for(CartDTO c:list) {
+			System.out.println(c);
+		}
+		
 	}
+
 }
+
+
+
 

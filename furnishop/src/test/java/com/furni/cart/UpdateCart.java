@@ -16,7 +16,7 @@ class UpdateCart {
 	
 	@Test
 	void contextLoads() {
-		CartDTO cart = new CartDTO(0, "id02", 103, 3);
+		CartDTO cart = new CartDTO(0, "id02", 103, 3, "책상", 55000, null, null, null);
 		try {
 			service.modify(cart);
 		} catch (Exception e) {

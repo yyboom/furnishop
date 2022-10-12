@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.furni.mapper.ReviewMapper">
 	
 	<select id="reviewall" parameterType="String" resultType="ReviewDTO">
-	SELECT re.reviewno, it.itemname as itemname, re.reviewcon, 
-	re.reviewimg as reviewimg, re.reviewdate, it.itemcolor as itemcolor, it.itemsize as itemsize
+	SELECT re.reviewno, it.itemname as item_name, re.reviewcon, 
+	re.reviewimg as reviewimg, re.reviewdate, it.itemcolor as item_color, it.itemsize as item_size
 	FROM review re
 	INNER JOIN item it ON re.itemno= it.itemno
 	WHERE re.custid = #{custid}	
