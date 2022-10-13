@@ -37,7 +37,7 @@ function rev(cust_id){
 		</thead>
 		<tbody>
 			<tr th:each="c:${list}">
-				<td><a href= "@{/order/review(id=${c.cust_id})}" th:text="${c.cust_id}"></a></td>
+				<td href= "@{/order/review(id=${c.cust_id})}" th:text="${c.cust_id}"></td>
 				<td th:text="${c.item_name}"></td>
 				<td><img id="r_img" th:src="'/img/'+${c.item_img}"></td>
 				<td th:text="${c.item_cnt}"></td>
