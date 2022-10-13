@@ -8,7 +8,7 @@ import com.furni.dto.CustDTO;
 import com.furni.service.CustService;
 
 @RestController
-public class CYYAController {
+public class CustMainAjaxController {
 	
 	@Autowired
 	CustService cust_service;

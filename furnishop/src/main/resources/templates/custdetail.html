@@ -1,0 +1,35 @@
+<meta charset="utf-8">
+<div class="container">
+  <h2>Cust Detail</h2>            
+  <table class="table">
+    <thead>
+      <tr>
+      	<th>ID</th>
+        <th>Password</th>
+        <th>Name</th>
+        <th>Addr</th>
+        <th>Tel</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Birth</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<!-- 우리가 itemlist에다가 item들을 넣어주었음! 다시 걔를 it로 지정함! -->
+      <tr th:each="c:${custdetail}">
+				<td th:text="${c.custid}"></td>
+				<td th:text="${c.custpwd}"></td>
+				<td th:text="${c.custname}"></td>
+				<td th:text="${c.custaddr}"></td>
+				<td th:text="${c.custtel}"></td>
+				<td th:text="${c.custemail}"></td>
+				<td th:text="${c.custdate}"></td>
+				<td th:text="${c.custbirth}"></td>
+				<td><a th:href="@{/custupdate(id=${c.custid})}">UPDATE</a></td>
+    			<td><a th:href="@{/custdelete(id=${c.custid})}">DELETE</a></td>
+			</tr>
+    </tbody>
+  </table>
+</div>
