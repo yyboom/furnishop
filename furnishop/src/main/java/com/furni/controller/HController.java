@@ -9,20 +9,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.furni.dto.CateDTO;
 import com.furni.dto.ItemDTO;
+import com.furni.dto.WishlistDTO;
 import com.furni.service.CateService;
 import com.furni.service.ItemService;
+import com.furni.service.WishlistService;
 
 @Controller
 @RequestMapping("/item")
 public class HController {
 	
 	String dir="item/";
+	String dir2="wishlist/";
 	
 	@Autowired
 	ItemService service;
 	
 	@Autowired
 	CateService service1;
+	
+	@Autowired
+	WishlistService service2;
 	
 	@RequestMapping("/bedroom")
 	public String bedroom(Model model) {
@@ -82,5 +88,29 @@ public class HController {
 		return "main";
 	}
 	
+	@RequestMapping("/wishlistdetail")
+	public String wishlistdetail(Model model, String custid) {
+		List<WishlistDTO> wish=null;
+		try {
+			wish=service2.wishall(custid);
+			model.addAttribute("wishlistdetail", wish);
+			model.addAttribute("center", dir2+"wishlistdetail");
+		} catch (Exception e) {
+			System.out.println("시스템 장애입니다.");
+			e.printStackTrace();  // 시스템 장애 등, 현업에서는 시스템 장애 화면 뿌려지게 함
+		}
+		System.out.println(wish);
+		return "main";
+	}
+	
+	@RequestMapping("/deletewish")
+	public String deletewish(Model model, int wishno, String custid) {
+		try {
+			service2.remove(wishno);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:wishlistdetail?id="+custid;
+	}
 	
 }

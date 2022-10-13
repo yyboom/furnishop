@@ -1,0 +1,38 @@
+<meta charset="utf-8">
+
+
+
+
+<div class="container">
+  
+  <p>This is your wishlist.</p>            
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Wishno</th>
+        <th>Cust ID</th>
+        <th>Itemno</th>
+        <th>Item Name</th>
+         <th>Item Color</th>
+         <th>Item Size</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="w:${wishlistdetail}">
+      <td th:text="${w.wishno}">Wishno</td>
+      <td th:text="${w.custid}">Cust ID</td>
+      <td th:text="${w.itemno}">Itemno</td>
+      <td th:text="${w.item_name}">Item Name</td>
+      <td th:text="${w.item_color}">Item Color</td>
+      <td th:text="${w.item_size}">Item Size</td>
+      <td>
+        	<button th:onclick="del([[${w.wishno}]]);" type="button" class="btn btn-default btn-sm">
+          	<span class="glyphicon glyphicon-trash"></span> Trash 
+        	</button>
+      </td>
+     
+      </tr>
+     </tbody>
+  </table>
+</div>
