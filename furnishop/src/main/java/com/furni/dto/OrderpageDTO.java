@@ -28,4 +28,5 @@ public class OrderpageDTO {
 	//조인
 	private String item_name;
 	private int total_price;
+
 }

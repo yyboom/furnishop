@@ -1,0 +1,86 @@
+<meta charset="utf-8">
+<style>
+.card-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 100px;
+}
+
+#insert_form {
+	width: 80%;
+}
+
+#check {
+	text-align: center;
+	font-size: 17px;
+	font-weight: 600;
+	margin-top: 20px;
+}
+#insertbt{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+</style>
+<script>
+	$(document).ready(function() {
+		$('#insert_btn').click(function() {
+			$('#register_form').attr({
+				'method' : 'post',
+				'action' : '/order/insertimpl'
+			});
+			$('#register_form').submit({});
+		});
+	});
+	
+	function movedetail(){
+		     location.href = "/order/detail";
+		}
+</script>
+
+
+
+
+<div class="card-body">
+<h3>배송정보</h3>
+	<form id="insert_form">
+
+		<div class="form-group">
+			<label for="shipname">배송지명:</label> <input type="text"
+				class="form-control" id="shipname" name="shipname">
+		</div>
+		<div class="form-group">
+			<label for="shipaddr">배송 주소:</label> <input type="text"
+				class="form-control" id="shipaddr" name="shipaddr">
+		</div>
+		<div class="form-group">
+			<label for="reciever">수령인:</label> <input type="text"
+				class="form-control" id="reciever" name="reciever">
+		</div>
+		<div class="form-group">
+			<label for="recievertel">수령인 tel:</label> <input type="tel"
+				class="form-control" id="recievertel" name="recievertel">
+		</div>
+		<label for="usr">엘레베이터 유무 : 
+		</label><br> 
+			<label class="radio-inline"><input type="radio" name="elevator" checked>Y</label> 
+			<label class="radio-inline"><input type="radio" name="elevator">N</label> <br>	
+			<label for="npay">결제수단:</label> <br> <label class="radio-inline"><input type="radio"
+			name="orderpay" checked value="네이버페이">네이버페이</label> 
+			<label class="radio-inline"><input type="radio" name="orderpay" value="카카오페이">카카오페이</label> 
+			<label class="radio-inline"><input type="radio" name="orderpay" value="신용카드">신용카드</label>
+		<br> <br>
+		<p id="check">주문 내용을 확인하였으며, 정보 제공 등에 동의합니다.</p>
+		<br>
+		<div id="insertbt">
+		<button onclick="movedetail();" id="insert_btn" type="button" class="btn btn-default">
+			<span class="glyphicon glyphicon-ok"></span> 결제하기
+		</button>
+		</div>
+		<br> <br>
+	</form>
+</div>
+
+</div>
