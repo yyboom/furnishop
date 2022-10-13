@@ -5,7 +5,7 @@ function del(wishno){
 	var custid='[[${session.logincust.custid}]]';      //특정 아이디를 삭제하고 특정아이디의 화면으로 가기위함
 	var c = confirm('삭제하시겠습니까?');
 	if(c==true){
-		location.href='wishlist/deletewish?wishno='+wishno+'&custid='+custid;
+		location.href='/wishlist/deletewish?wishno='+wishno+'&custid='+custid;
 	}
 }
 
