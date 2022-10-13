@@ -10,6 +10,6 @@ import com.furni.frame.MyMapper;
 
 @Repository
 @Mapper
-public interface CartMapper extends MyMapper<String, CartDTO>{
+public interface CartMapper extends MyMapper<Integer, CartDTO>{
 	public List<CartDTO> cartall(String custid) throws Exception;
 }

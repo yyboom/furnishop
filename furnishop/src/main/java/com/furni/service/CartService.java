@@ -10,7 +10,7 @@ import com.furni.frame.MyService;
 import com.furni.mapper.CartMapper;
 
 @Service
-public class CartService implements MyService<String, CartDTO>{
+public class CartService implements MyService<Integer, CartDTO>{
 
 	@Autowired
 	CartMapper mapper;
@@ -21,17 +21,18 @@ public class CartService implements MyService<String, CartDTO>{
 	}
 
 	@Override
-	public void remove(String k) throws Exception {
+	public void remove(Integer k) throws Exception {
 		mapper.delete(k);
 	}
 
+	
 	@Override
 	public void modify(CartDTO v) throws Exception {
 		mapper.update(v);
 	}
 
 	@Override
-	public CartDTO get(String k) throws Exception {
+	public CartDTO get(Integer k) throws Exception {
 		return mapper.select(k);
 	}
 

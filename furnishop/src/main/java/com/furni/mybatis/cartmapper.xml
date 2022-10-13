@@ -5,12 +5,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.furni.mapper.CartMapper">
 	
 	<select id="cartall" parameterType="String" resultType="CartDTO">
-	SELECT ca.cartno, ca.custid, it.itemname as item_name, it.itemprice as item_price, it.itemcolor as item_color 
+	SELECT ca.cartno, ca.itemno, ca.custid, it.itemname as item_name, it.itemprice as item_price, it.itemcolor as item_color, 
 	it.itemimg as item_img, ca.cartcnt, it.itemsize as item_size
 	FROM cart ca
 	INNER JOIN item it ON ca.itemno= it.itemno
 	INNER JOIN cust cu ON ca.custid = cu.custid
 	WHERE ca.custid = #{custid}	
+	
+	
+	
 	</select>
 	
  	<select id="select" parameterType="String" resultType="CartDTO">
@@ -30,8 +33,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<update id="update" parameterType="CartDTO">
 		UPDATE cart SET itemno =#{itemno},cartcnt=#{cartcnt} WHERE custid = #{custid}
 	</update>
-	<delete id="delete" parameterType="String">
-		DELETE FROM cart WHERE custid = #{custid}
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM cart WHERE cartno = #{cartno}
 	</delete>
 	
 </mapper>

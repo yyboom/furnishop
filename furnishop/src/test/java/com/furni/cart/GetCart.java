@@ -17,7 +17,7 @@ class GetCart {
 	void contextLoads() {
 		CartDTO cart = null;
 		try {
-			cart = service.get("id03");
+			cart = service.get(503);
 			System.out.println(cart);
 		} catch (Exception e) {
 			e.printStackTrace();

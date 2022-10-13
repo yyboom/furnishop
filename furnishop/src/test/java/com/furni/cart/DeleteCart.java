@@ -15,7 +15,7 @@ class DeleteCart {
 	@Test
 	void contextLoads() {
 		try {
-			service.remove("id02");
+			service.remove(502);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
