@@ -1,0 +1,64 @@
+<meta charset="utf-8">
+<style>
+#r_img{
+	width:150px;
+}
+</style>
+<script>
+function rev(cust_id){ 
+	var c = confirm('리뷰를 작성 하시겠습니까?');
+	if(c == true){
+		location.href='/order/review?id='+cust_id; 
+	}
+}
+
+</script>
+
+<!-- Container (The Band Section) -->
+<div id="band" class="container text-center">
+	<br> <br> <br>
+	<h3>주문/배송조회</h3>
+	<table id="otb" class="table table-bordered">
+		<thead>
+			<tr>
+				
+				<th>회원아이디</th>
+				<th>상품명</th>
+				<th>상품이미지</th> 
+				<th>상품수량</th>
+				<th>주문금액</th>
+				<th>배송상태</th>
+				<th>리뷰작성</th>
+				
+				
+				
+	
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="c:${list}">
+				<td><a href= "@{/order/review(id=${c.cust_id})}" th:text="${c.cust_id}"></a></td>
+				<td th:text="${c.item_name}"></td>
+				<td><img id="r_img" th:src="'/img/'+${c.item_img}"></td>
+				<td th:text="${c.item_cnt}"></td>
+				<td th:text="${c.total_cnt}"></td>
+				<td th:text="${c.shipstatus}"></td>
+				<td><button th:onclick="rev([[${c.cust_id}]]);" class="btn btn-default btn-sm"> <!-- button을 누를때마다 rev()함수 호출 -->
+          		<span class="glyphicon glyphicon-pencil"></span> review       			  
+          		</button></td>			
+
+				
+				
+			</tr>
+
+		</tbody>
+	</table>
+	<br>
+	
+</div>
+
+	
+</script>
+
+</body>
+</html>
