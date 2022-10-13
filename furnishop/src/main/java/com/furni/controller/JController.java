@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.furni.dto.DetailorderDTO;
 import com.furni.dto.OrderpageDTO;
-import com.furni.dto.ReviewDTO;
 import com.furni.dto.ShipDTO;
 import com.furni.service.DetailorderService;
 import com.furni.service.OrderpageService;
@@ -40,11 +39,18 @@ public class JController {
 	ReviewService service3;
 	
 	@RequestMapping("/insert")
-	public String insert(Model model) {
-		model.addAttribute("center", dir + "insert");
+	public String insert(Model model, String id) {
+		List<OrderpageDTO> list = null;
+		try {
+			list = service.orderall(id);
+			model.addAttribute("list",list);
+			model.addAttribute("center",dir+"insert");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(list);
 		return "main";
 	}
-
 	@RequestMapping("/insertimpl")
 	public String insert(Model model, OrderpageDTO order) throws Exception {
 		try {
