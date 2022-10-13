@@ -38,12 +38,12 @@ function movedetail(){
 
 }
 
-/* $(document).ready(function() {
+ $(document).ready(function() {
 	$('.btn').click(function() {
 		movedetail();
 	});
 });
-*/
+
 //"@{/item/detail(id=${bed.itemno})}"
 
 
@@ -155,7 +155,7 @@ function movedetail(){
         <div class="thumbnail" >
           <img th:src="'/img/'+${bed.itemimg}" alt="Paris" width="400" height="500">
           <span th:text="${bed.itemname}">Bed</span>
-          <button th:onclick="movedetail();" class="btn"  data-toggle="modal" data-target="#myModal">Buy It</button> 
+          <button th:onclick="movedetail([[${bed.itemno}]]);" class="btn"  data-toggle="modal" data-target="#myModal">Buy It</button> 
         </div>
       </div>
     </div>

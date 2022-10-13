@@ -74,10 +74,10 @@ public class HController {
 	}
 	
 	@RequestMapping("/detail")
-	public String detail(Model model, Integer id) {
+	public String detail(Model model, Integer itemno) {
 		ItemDTO item=null;
 		try {
-			item=service.get(id);
+			item=service.get(itemno);
 			model.addAttribute("detail", item);
 			model.addAttribute("center", dir+"detail");
 		} catch (Exception e) {
@@ -88,29 +88,6 @@ public class HController {
 		return "main";
 	}
 	
-	@RequestMapping("/wishlistdetail")
-	public String wishlistdetail(Model model, String custid) {
-		List<WishlistDTO> wish=null;
-		try {
-			wish=service2.wishall(custid);
-			model.addAttribute("wishlistdetail", wish);
-			model.addAttribute("center", dir2+"wishlistdetail");
-		} catch (Exception e) {
-			System.out.println("시스템 장애입니다.");
-			e.printStackTrace();  // 시스템 장애 등, 현업에서는 시스템 장애 화면 뿌려지게 함
-		}
-		System.out.println(wish);
-		return "main";
-	}
 	
-	@RequestMapping("/deletewish")
-	public String deletewish(Model model, int wishno, String custid) {
-		try {
-			service2.remove(wishno);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "redirect:wishlistdetail?id="+custid;
-	}
 	
 }

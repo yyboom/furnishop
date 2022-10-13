@@ -218,7 +218,7 @@ $(document).ready(function(){
           <ul class="dropdown-menu">
             <li><a th:href="@{/custdetail(id=${session.logincust.custid})}">custdetail</a></li>
             <li><a th:href="@{/order/ordershipdetail(id=${session.logincust.custid})}">ordershipdetail</a></li>
-            <li><a th:href="@{/item/wishlistdetail(id=${session.logincust.custid})}">wishlistdetail</a></li>
+            <li><a th:href="@{/wishlist/wishlistdetail(id=${session.logincust.custid})}">wishlistdetail</a></li>
         
             <!-- 페이지 확인 용도 -->
             <li><a th:href="@{/order/insert(id=${session.logincust.custid})}">order</a></li>
