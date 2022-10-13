@@ -23,106 +23,77 @@
 	justify-content: center;
 	align-items: center;
 }
+
+#order{
+	font-size: 25px;
+	font-weight: 400;
+	margin-bottom: 60px;
+}
+#del{
+	font-size: 25px;
+	font-weight: 400;
+	margin-bottom: 60px;
+}
+
 </style>
 <script>
 	$(document).ready(function() {
 		$('#insert_btn').click(function() {
-			$('#register_form').attr({
+			$('#insert_form').attr({
 				'method' : 'post',
 				'action' : '/order/insertimpl'
 			});
-			$('#register_form').submit({});
+			$('#insert_form').submit({});
 		});
 	});
 	
-	function movedetail(){
-		     location.href = "/order/detail";
-		}
 </script>
 <!-- 주문/결제 -->
-<div id="band" class="container text-center">
-	<br> <br> <br>
-	<h3>주문/결제</h3>
-	<table id="otb" class="table table-bordered">
-		<thead>
-			<tr>
-				
-				<th>회원아이디</th>
-				<th>상품명</th>
-				<!-- <th>상품이미지</th>-->
-				<th>상품색상</th>
-				<th>상품수량</th>
-				<th>상품가격</th>
-				
-				
-		
-			
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="c:${list}">
-				
-				<td th:text="${c.cust_id}"></td>
-				<td th:text="${c.item_name}"></td>
-				<!-- <td><img th:src="'/img/'+${c.img_name}"></td> -->
-				<td th:text="${c.item_color}"></td>
-				<td th:text="${c.item_cnt}"></td>
-				<td th:text="${c.total_price}"></td>
-				
-				
-			</tr>
-
-		</tbody>
-	</table>
-	<br>
-<!-- 배송정보 입력 -->
-</div>
-
-	
-</script>
-
-</body>
-
-
-
 <div class="card-body">
-<h3>배송정보</h3>
-	<form id="insert_form">
-
-		<div class="form-group">
-			<label for="shipname">배송지명:</label> <input type="text"
-				class="form-control" id="shipname" name="shipname">
-		</div>
-		<div class="form-group">
-			<label for="shipaddr">배송 주소:</label> <input type="text"
-				class="form-control" id="shipaddr" name="shipaddr">
-		</div>
-		<div class="form-group">
-			<label for="reciever">수령인:</label> <input type="text"
-				class="form-control" id="reciever" name="reciever">
-		</div>
-		<div class="form-group">
-			<label for="recievertel">수령인 tel:</label> <input type="tel"
-				class="form-control" id="recievertel" name="recievertel">
-		</div>
-		<label for="usr">엘레베이터 유무 : 
-		</label><br> 
-			<label class="radio-inline"><input type="radio" name="elevator" checked>Y</label> 
-			<label class="radio-inline"><input type="radio" name="elevator">N</label> <br>	
-			<label for="npay">결제수단:</label> <br> <label class="radio-inline"><input type="radio"
-			name="orderpay" checked value="네이버페이">네이버페이</label> 
-			<label class="radio-inline"><input type="radio" name="orderpay" value="카카오페이">카카오페이</label> 
-			<label class="radio-inline"><input type="radio" name="orderpay" value="신용카드">신용카드</label>
-		<br> <br>
+  <h3>주문&배송 정보</h3>
+  <form id="insert_form" th:each="o:${list}">
+      <div class="form-group">
+    
+      <div class="form-group">
+ 		 <label>고객아이디 : </label><input type="text" name="custid" th:value="${o.custid}" readonly="readonly"> 
+ 	  </div>
+ 	  <div class="form-group">
+ 		 <label>상품명 : </label><input type="text" name="item_name" th:value="${o.item_name}" readonly="readonly"> 
+ 	  </div>
+ 	   <div class="form-group">
+ 		 <label>상품가격 : </label><input type="text" name="total_price" th:value="${o.total_price}" readonly="readonly"> 
+ 	  </div>
+ 	 
+ 	  <div class="form-group">
+     	  <label>배송지명 : </label><input type="text" class="form-control"  id="shipname" placeholder="배송지명을 입력하세요" name="shipname">
+   	  </div>
+ 	  <div class="form-group">
+     	  <label>배송주소 : </label><input type="text" class="form-control"  id="shipaddr" placeholder="배송주소를 입력하세요" name="shipaddr">
+   	  </div>
+   	   <div class="form-group">
+     	  <label>수령인 : </label><input type="text" class="form-control"  id="reciever" placeholder="수령인을 입력하세요" name="reciever">
+   	  </div>
+   	  <div class="form-group">
+     	  <label>수령인tel : </label><input type="text" class="form-control"  id="recievertel" placeholder="전화번호를 입력하세요" name="recievertel">
+   	  </div>
+   	 </div>
+   	
+      <div class="form-group2">
+      	  <label>엘레베이터 유무 : </label>
+	      <label><input class = "radio-inline" type="radio" name="elevator"  value="Y" checked> Y</label>
+	      <label><input class = "radio-inline" type="radio" name="elevator"  value="N"> N</label>
+	 	<br>
+	      <label>결제수단 : </label>
+	      <label><input class = "radio-inline" type="radio" name="orderpay"  value="네이버페이" checked> 네이버페이</label>
+	      <label><input class = "radio-inline" type="radio" name="orderpay"  value="카카오페이"> 카카오페이</label>
+      </div>
+	<br> <br>
 		<p id="check">주문 내용을 확인하였으며, 정보 제공 등에 동의합니다.</p>
 		<br>
 		<div id="insertbt">
-		<button onclick="movedetail();" id="insert_btn" type="button" class="btn btn-default">
+		<button id="insert_btn" type="button" class="btn btn-default">
 			<span class="glyphicon glyphicon-ok"></span> 결제하기
 		</button>
-		</div>
-		<br> <br>
-	</form>
-</div>
-
-</div>
+  		 </div>
+ 	</form> 
+  </div>
