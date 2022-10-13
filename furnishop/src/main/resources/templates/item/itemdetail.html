@@ -1,15 +1,18 @@
 <meta charset="utf-8">
 
-<h3>Item Detail Page</h3>
+<h3>Furnishop Item</h3>
 
 
 <img id="itemimg" th:src=" '/img/'+${itemdetail.imgimg}" >
 <img id="itemimg1" th:src=" '/img/'+${itemdetail.imgimg1}" >
+
+<h4 th:text=" 'Cateno : '+${itemdetail.cateno}"></h4>
+<h4 th:text=" 'Itemno : '+${itemdetail.itemno}"></h4>
 <h4 th:text=" 'Item Name : '+${itemdetail.itemname}"></h4>
 <h4 th:text=" 'Item Price : '+${itemdetail.itemprice}"></h4>
-<h4 th:text=" 'Item Color : '+${itemdetail.price}"></h4>
-<h4 th:text=" 'Item Size : '+${itemdetail.price}"></h4>
-<h4 th:text=" 'Item Stock : '+${itemdetail.price}"></h4>
-<h4 th:text=" 'Item Sell : '+${itemdetail.price}"></h4>
+<h4 th:text=" 'Item Color : '+${itemdetail.itemcolor}"></h4>
+<h4 th:text=" 'Item Size : '+${itemdetail.itemsize}"></h4>
+<h4 th:text=" 'Item Stock : '+${itemdetail.itemstock}"></h4>
+<h4 th:text=" 'Item Sell : '+${itemdetail.itemsell}"></h4>
 
 

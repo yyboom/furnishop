@@ -35,10 +35,10 @@ public class HController {
 
 	@RequestMapping("/livingroom")
 	public String livingroom(Model model) {
-		List<ItemDTO> list = null;
+		List<ItemDTO> list2 = null;
 		try {
-			list = service.get();
-			model.addAttribute("list", list);
+			list2 = service.get();
+			model.addAttribute("list2", list2);
 			model.addAttribute("center", dir+"livingroomcenter");
 		} catch (Exception e) {
 			System.out.println("시스템 장애입니다.");
@@ -49,10 +49,10 @@ public class HController {
 	
 	@RequestMapping("/kitchen")
 	public String kitchen(Model model) {
-		List<ItemDTO> list = null;
+		List<ItemDTO> list3 = null;
 		try {
-			list = service.get();
-			model.addAttribute("list", list);
+			list3 = service.get();
+			model.addAttribute("list3", list3);
 			model.addAttribute("center", dir+"kitchencenter");
 		} catch (Exception e) {
 			System.out.println("시스템 장애입니다.");
@@ -61,4 +61,18 @@ public class HController {
 		return "main";
 	}
 	
+	@RequestMapping("/itemdetail")
+	public String itemdetail(Model model, int id) {
+		ItemDTO item=null;
+		try {
+			item=service.get(id);
+			model.addAttribute("itemdetail", item);
+			model.addAttribute("center", "itemdetail");
+			System.out.println("출력");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("여기");
+		return "main";
+	}
 }
