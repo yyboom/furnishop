@@ -39,7 +39,49 @@
 		     location.href = "/order/detail";
 		}
 </script>
+<!-- 주문/결제 -->
+<div id="band" class="container text-center">
+	<br> <br> <br>
+	<h3>주문/결제</h3>
+	<table id="otb" class="table table-bordered">
+		<thead>
+			<tr>
+				
+				<th>회원아이디</th>
+				<th>상품명</th>
+				<!-- <th>상품이미지</th>-->
+				<th>상품색상</th>
+				<th>상품수량</th>
+				<th>상품가격</th>
+				
+				
+		
+			
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="c:${list}">
+				
+				<td th:text="${c.cust_id}"></td>
+				<td th:text="${c.item_name}"></td>
+				<!-- <td><img th:src="'/img/'+${c.img_name}"></td> -->
+				<td th:text="${c.item_color}"></td>
+				<td th:text="${c.item_cnt}"></td>
+				<td th:text="${c.total_price}"></td>
+				
+				
+			</tr>
 
+		</tbody>
+	</table>
+	<br>
+<!-- 배송정보 입력 -->
+</div>
+
+	
+</script>
+
+</body>
 
 
 
