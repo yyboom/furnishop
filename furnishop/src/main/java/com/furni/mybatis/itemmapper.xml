@@ -21,6 +21,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE c.cateno=#{cateno}
 	</select>
 	
+	<select id="selectallcate" parameterType="Integer" resultType="itemDTO">
+		SELECT i.itemname,i.itemimg, i.itemno FROM item AS i
+	</select>
+	
 	<insert id="insert" parameterType="itemDTO">
 		
 	</insert>
