@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM wishlist WHERE wishno=#{wishno}
 	</select>
 	<select id="wishall" parameterType="String" resultType="wishlistDTO">
-		SELECT w.custid, i.itemname AS item_name, i.itemcolor AS item_color, i.itemsize AS item_size FROM wishlist AS w
+		SELECT w.wishno, i.itemno, w.custid, i.itemname AS item_name, i.itemcolor AS item_color, i.itemsize AS item_size FROM wishlist AS w
 		INNER JOIN item AS i ON i.itemno = w.itemno
 		WHERE w.custid=#{custid}
 	</select>

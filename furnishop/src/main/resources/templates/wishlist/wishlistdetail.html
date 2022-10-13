@@ -1,6 +1,15 @@
 <meta charset="utf-8">
 
+<script>
+function del(wishno){
+	var custid='[[${session.logincust.custid}]]';      //특정 아이디를 삭제하고 특정아이디의 화면으로 가기위함
+	var c = confirm('삭제하시겠습니까?');
+	if(c==true){
+		location.href='wishlist/deletewish?wishno='+wishno+'&custid='+custid;
+	}
+}
 
+</script>
 
 
 <div class="container">
@@ -28,7 +37,7 @@
       <td th:text="${w.item_size}">Item Size</td>
       <td>
         	<button th:onclick="del([[${w.wishno}]]);" type="button" class="btn btn-default btn-sm">
-          	<span class="glyphicon glyphicon-trash"></span> Trash 
+          	<span class="glyphicon glyphicon-trash"></span>
         	</button>
       </td>
      
