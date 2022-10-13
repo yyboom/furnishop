@@ -1,5 +1,5 @@
 <!-- ------------------------item bedroom center------------------------ -->
-
+<meta charset="utf-8">
 <style>
 .container {
     padding: 80px 80px;
@@ -26,14 +26,25 @@
 
 <script>
 
-$(document).ready(function(){
-	$('.bed_btn').click(function(){
-		$('.bed_btn').attr({
-			'action':'/itemdetail',
-			'method':'post'
-		});
+/*function movedetail(itemno){
+	     location.href ='/item/detail?itemno='+itemno;
+}
+
+
+});*/
+
+function movedetail(){
+	     location.href="/item/detail";
+
+}
+$(document).ready(function() {
+	$('.btn').click(function() {
+		movedetail();
 	});
 });
+
+//"@{/item/detail(id=${bed.itemno})}"
+
 
 
 </script>
@@ -134,42 +145,20 @@ $(document).ready(function(){
   </div>
 </div>
 
-<!-- Container (TOUR Section) ���� �ѷ����� �κ�------------------------------------------>
+<!-- Container (TOUR Section) 센터 뿌려지는 부분------------------------------------------>
 <div id="tour" class="bg-1">
   <div class="container">
     
-    <div class="row text-center">
-      <div class="col-sm-5">
-        <div class="thumbnail">
-          <img src="/img/bed.jpg" alt="Paris" width="400" height="500">
-          <p><strong>Bed</strong></p>
-         <button class="bed_btn" th:href="@{/itemdetail(id=${list.itemno})}" data-toggle="modal" data-target="#myModal">Buy It</button>
+    <div class="row text-center" >
+      <div class="col-sm-5" th:each="bed:${list}">
+        <div class="thumbnail" >
+          <img th:src="'/img/'+${bed.itemimg}" alt="Paris" width="400" height="500">
+          <span th:text="${bed.itemname}">Bed</span>
+           <button th:onclick="movedetail();" class="btn"  data-toggle="modal" data-target="#myModal">Buy It</button> 
         </div>
       </div>
-      <div class="col-sm-5">
-        <div class="thumbnail">
-          <img src="/img/closet.jpg" alt="New York" width="400" height="500">
-          <p><strong>Closet</strong></p>
-          <button class="btn" data-toggle="modal" data-target="#myModal">Buy It</button>
-        </div>
-      </div>
-      <div class="col-sm-5">
-        <div class="thumbnail">
-          <img src="/img/dresser.jpg" alt="San Francisco" width="400" height="500">
-          <p><strong>Dresser</strong></p>
-          <button class="btn" data-toggle="modal" data-target="#myModal">Buy It</button>
-        </div>
-      </div>
-         <div class="col-sm-5">
-         <div class="thumbnail">
-          <img src="/img/desk.jpg" alt="Paris" width="400" height="500">
-          <p><strong>Desk</strong></p>
-         <button class="btn" data-toggle="modal" data-target="#myModal">Buy It</button>
-        </div>
-      </div>
-    
     </div>
   </div>
-</div>
+</div>    <!-- 타임리프 th:onclick="movedetail([[${bed.itemno}]]);" -->
 
 <!-- Container (Contact Section) -->

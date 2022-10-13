@@ -1,5 +1,5 @@
 <!-- ------------------------item kitchen center------------------------ -->
-
+<meta charset="utf-8">
 <style>
 .container {
     padding: 80px 80px;
@@ -23,6 +23,17 @@
     transition: .2s;
   }
 </style>
+<script>
+
+functionÂ movedetail(){
+	Â Â Â Â Â location.hrefÂ ="/item/detail";
+
+
+};
+
+
+</script>
+
 
 
 
@@ -120,36 +131,20 @@
   </div>
 </div>
 
-<!-- Container (TOUR Section) ¼¾ÅÍ »Ñ·ÁÁö´Â ºÎºÐ-------------------------------------------------------------------------- -->
+<!-- Container (TOUR Section) ì„¼í„° ë¿Œë ¤ì§€ëŠ” ë¶€ë¶„-------------------------------------------------------------------------- -->
 <div id="tour" class="bg-1">
   <div class="container">
     
-    <div class="row text-center">
-      <div class="col-sm-5">
-        <div class="thumbnail">
-          <img src="/img/table.jpg" alt="Paris" width="400" height="500">
-          <p><strong>Table</strong></p>
-         <button class="btn" data-toggle="modal" data-target="#myModal">Buy It</button>
+    <div class="row text-center" >
+      <div class="col-sm-5" th:each="kit:${list3}">
+        <div class="thumbnail" >
+          <img th:src="'/img/'+${kit.itemimg}" alt="Paris" width="400" height="500">
+          <span th:text="${kit.itemname}">Bed</span>
+           <button onclick="movedetail();" class="btn" th:href="@{/item/detail(id=${kit.itemno})}" data-toggle="modal" data-target="#myModal">Buy It</button> 
         </div>
       </div>
-      <div class="col-sm-5">
-        <div class="thumbnail">
-          <img src="/img/chair.jpg" alt="New York" width="400" height="500">
-          <p><strong>Chair</strong></p>
-          <button class="btn" data-toggle="modal" data-target="#myModal">Buy It</button>
-        </div>
-      </div>
-      <div class="col-sm-5">
-        <div class="thumbnail">
-          <img src="/img/storage-closet.jpg" alt="San Francisco" width="400" height="500">
-          <p><strong>Storage closet</strong></p>
-          <button class="btn" data-toggle="modal" data-target="#myModal">Buy It</button>
-        </div>
-      </div>
-    
     </div>
   </div>
-    </div>
-
+</div>
 
 <!-- Container (Contact Section) -->

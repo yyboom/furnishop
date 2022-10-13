@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
+<meta charset="utf-8">
 
-</body>
-</html>
+<h3>Furnishop Item</h3>
+
+
+<!-- <img id="itemimg" th:src=" '/img/'+${itemdetail.imgimg}" > 
+<img id="itemimg1" th:src=" '/img/'+${itemdetail.imgimg1}" > -->
+
+<div class="container">
+<table>
+<tbody>
+<tr>
+
+<td th:text=" 'Cateno : '+${detail.cateno}"></td>
+<td th:text=" 'Itemno : '+${detail.itemno}"></td>
+<td th:text=" 'Item Name : '+${detail.itemname}"></td>
+<td th:text=" 'Item Price : '+${detail.itemprice}"></td>
+<td th:text=" 'Item Color : '+${detail.itemcolor}"></td>
+<td th:text=" 'Item Size : '+${detail.itemsize}"></td>
+<td th:text=" 'Item Stock : '+${detail.itemstock}"></td>
+<td th:text=" 'Item Sell : '+${detail.itemsell}"></td>
+</tr>
+</tbody>
+
+
+</table>
+</div>
