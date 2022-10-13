@@ -1,0 +1,80 @@
+<meta charset="utf-8">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<style>
+table > tbody > tr > td > img {
+	width: 100px; 
+
+}
+
+table > tbody > tr > td > img:hover {
+	width: 99px; 
+	border: 1px solid red;
+}
+</style>
+
+<script>
+
+function del(cartno){
+		var custid ='[[${session.logincust.custid}]]';
+		var c = confirm('삭제 하시겠습니까?');
+		if(c == ture){
+			location.href='/cart/delete?cartno=' + cartno + '&custid=' + custid;	
+		}
+
+		
+}
+
+
+
+</script>
+
+
+
+<div class="container">
+	<h2>Cart List</h2>
+	<p>The .table class adds basic styling (light padding and only
+		horizontal dividers) to a table:</p>
+	<table class="table">
+ 		<thead>
+			<tr>
+				<th>No</th>
+				<th>ID</th>
+			    <th>Image</th>
+				<th>Item No</th>
+				<th>Item Name</th>
+				<th>Item Color</th>
+				<th>Item Size</th>
+				<th>Price</th>
+				<th>Count</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- 반복문 -->
+			<tr th:each="c : ${list}">
+			<!--  id ="cid"  -->
+				<td th:text="${c.cartno}">No</td>
+				<td th:text="${c.custid}">ID</td>
+				<td><img th:src="'/img/'+${c.item_img}"></td>
+				<td th:text="${c.itemno}">Item No</td>
+				<td th:text="${c.item_name}">Item Name</td>
+				<td th:text="${c.item_color}">Item Color</td>
+				<td th:text="${c.item_size}">Item Size</td>
+				<td th:text="${c.item_price}">Price</td>
+				<td th:text="${c.cartcnt}">Count</td>
+				<td>
+					<button th:onclick="del([[${c.cartno}]]);" type="button" class="btn btn-default btn-sm">
+						<span class="glyphicon glyphicon-trash"></span> Delete
+					</button>
+				</td> 
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<!-- Page level plugins -->
+<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/js/demo/datatables-demo.js"></script>
+
