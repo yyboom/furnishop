@@ -29,7 +29,6 @@ public class MWController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(list);
 		return "main";
 	}
 	
@@ -40,7 +39,7 @@ public class MWController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:cart?id="+ custid;
+		return "redirect:get?id="+ custid;
 	}
 }
 

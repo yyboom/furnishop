@@ -17,7 +17,7 @@ table > tbody > tr > td > img:hover {
 function del(cartno){
 		var custid ='[[${session.logincust.custid}]]';
 		var c = confirm('삭제 하시겠습니까?');
-		if(c == ture){
+		if(c == true){
 			location.href='/cart/delete?cartno=' + cartno + '&custid=' + custid;	
 		}
 
@@ -27,6 +27,12 @@ function del(cartno){
 
 
 </script>
+<!-- Page level plugins -->
+<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/js/demo/datatables-demo.js"></script>
 
 
 
@@ -62,7 +68,7 @@ function del(cartno){
 				<td th:text="${c.item_price}">Price</td>
 				<td th:text="${c.cartcnt}">Count</td>
 				<td>
-					<button th:onclick="del([[${c.cartno}]]);" type="button" class="btn btn-default btn-sm">
+					<button th:onclick="del([[${c.cartno}]])" type="button" class="btn btn-default btn-sm">
 						<span class="glyphicon glyphicon-trash"></span> Delete
 					</button>
 				</td> 
@@ -71,10 +77,4 @@ function del(cartno){
 	</table>
 </div>
 
-<!-- Page level plugins -->
-<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="/js/demo/datatables-demo.js"></script>
 

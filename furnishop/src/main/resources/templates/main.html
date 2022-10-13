@@ -229,7 +229,7 @@ $(document).ready(function(){
           </ul>
         </li>
         <!-- id는 변수명임 -->
-        <li><a th:href="@{/cart(id=${session.logincust.custid})}">CART</a></li>
+        <li><a th:href="@{/cart/get(id=${session.logincust.custid})}">CART</a></li>
         <li><a href="/logout">LOGOUT</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
       </ul>
