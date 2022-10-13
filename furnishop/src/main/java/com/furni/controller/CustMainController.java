@@ -27,6 +27,16 @@ public class CustMainController {
 		model.addAttribute("center", "login");
 		return "main";
 	}
+	
+	//loginimpl->logout
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		//session을 거절하고 다시 main으로 보냄!
+		if(session != null) {
+			session.invalidate();
+		}
+		return "redirect:/";
+	}
 
 	// register
 	@RequestMapping("/register")
