@@ -2,7 +2,8 @@
 
 <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {height: 1500px}
+    .row.content {height: 2500px}
+ 
     
     /* Set gray background color and 100% height */
     .sidenav {
@@ -11,6 +12,13 @@
       padding:70px;
       
     }
+    
+     #itemimg{
+ 	height: 100%;
+	width: 100%;
+ 	object-fit: contain;
+  
+  	}   
     
     /* Set black background color, white text and some padding */
     footer {
@@ -30,7 +38,7 @@
       
       } 
     
-    
+    }
     .nav-tabs li a {
     color: #777;
     }
@@ -59,21 +67,16 @@
   .container {
     padding: 80px 120px;
   }
- .container-fluid>.row content>#topright1>img>#itemimg{
-  width:2px;
-  height:2px;
-  
-  }
   
   </style>
-</head>
+
 <body>
 
 <div class="container-fluid">
   <div class="row content">
     <div id="topright1" class="col-sm-6 sidenav">
       
-      <img id="itemimg" th:src=" '/img/'+${detail.itemimg}" > 
+   <img id="itemimg" th:src=" '/img/'+${detail.itemimg}" >
  <!--<img id="itemimg1" th:src=" '/img/'+${itemdetail.imgimg1}" > -->
       
       
@@ -142,4 +145,3 @@
 
 </div>
 </body>
-</html>
