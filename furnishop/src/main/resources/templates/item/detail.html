@@ -98,7 +98,7 @@ margin: 0px 0px 50px 0px;
       <h3 th:text=" 'Cateno : '+${detail.cateno}">cateno</h3>
       <h3 th:text=" 'Itemno : '+${detail.itemno}">itemno</h3>
       <h3 th:text=" 'Item Name : '+${detail.itemname}">itemname</h3>
-       <div  th:if="${session.logincust != null}" class="form-group">
+       <div class="form-group">
   		  <label for="sel1">Item Color:</label>
   			<select class="form-control" id="sm">
     			<option value="1" >베이지</option>
@@ -127,9 +127,9 @@ margin: 0px 0px 50px 0px;
       <h3 th:text=" 'Item Price : '+${detail.itemprice}">price</h3>
       
       
-      <button id="order" class="btn btn-default">order</button>
-      <button id="withlist" class="btn btn-default">wishlist</button>
-      <button id="cart" class="btn btn-default">cart</button>
+      <button th:if="${session.logincust != null}" id="order" class="btn btn-default">order</button>
+      <button th:if="${session.logincust != null}" id="withlist" class="btn btn-default">wishlist</button>
+      <button th:if="${session.logincust != null}" id="cart" class="btn btn-default">cart</button>
     </div>
 
     <div class="col-sm-9">
