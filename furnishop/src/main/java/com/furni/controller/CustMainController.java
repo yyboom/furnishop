@@ -145,4 +145,5 @@ public class CustMainController {
 		return "redirect:custdetail?id="+updatecust.getCustid();
 	}
 
+	
 }
