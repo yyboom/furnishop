@@ -1,15 +1,6 @@
 <meta charset="utf-8">
 
-<h3>Furnishop Item</h3>
-
-
-
-<!-- <img id="itemimg" th:src=" '/img/'+${itemdetail.imgimg}" > 
-<img id="itemimg1" th:src=" '/img/'+${itemdetail.imgimg1}" > -->
-
-
-
-  <style>
+<style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
     .row.content {height: 1500px}
     
@@ -17,6 +8,7 @@
     .sidenav {
       background-color: #f1f1f1;
       height: 30%;
+      padding:70px;
     }
     
     /* Set black background color, white text and some padding */
@@ -32,8 +24,11 @@
         height: auto;
         padding: 15px;
       }
-      .row.content {height: auto;} 
-    }
+      .row.content {
+      height: auto;
+      
+      } 
+    
     
     .nav-tabs li a {
     color: #777;
@@ -63,6 +58,10 @@
   .container {
     padding: 80px 120px;
   }
+ .container-fluid>.row content>#topright1>img>#itemimg{
+  width:2px;
+  height:2px;
+  }
   </style>
 </head>
 <body>
@@ -70,7 +69,10 @@
 <div class="container-fluid">
   <div class="row content">
     <div id="topright1" class="col-sm-6 sidenav">
-      <h4>사진</h4>
+      
+      <img id="itemimg" th:src=" '/img/'+${detail.itemimg}" > 
+ <!--<img id="itemimg1" th:src=" '/img/'+${itemdetail.imgimg1}" > -->
+      
       
     </div>    
     <div id="topright2" class="col-sm-6 sidenav">
