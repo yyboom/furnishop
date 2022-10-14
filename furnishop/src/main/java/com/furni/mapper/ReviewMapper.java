@@ -13,4 +13,6 @@ import com.furni.frame.MyMapper;
 public interface ReviewMapper extends MyMapper<String,ReviewDTO>{
 	public List<ReviewDTO> reviewall(String custid) throws Exception;
 	public List<ReviewDTO> selectall(String custid) throws Exception;
+	public ReviewDTO insert1(ReviewDTO obj) throws Exception;
+	public List<ReviewDTO> reviewitem(Integer itemno) throws Exception;
 }

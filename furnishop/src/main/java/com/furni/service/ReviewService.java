@@ -47,6 +47,10 @@ public class ReviewService implements MyService<String, ReviewDTO>{
 	public List<ReviewDTO> reviewall(String custid) throws Exception {
 		return mapper.reviewall(custid);
 	}
+	
+	public List<ReviewDTO> reviewitem(Integer itemno) throws Exception{
+		return mapper.reviewitem(itemno);
+	}
 }
 
 

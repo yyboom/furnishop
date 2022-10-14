@@ -1,0 +1,63 @@
+<meta charset="utf-8">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<script>
+$(document).ready(function(){
+	$('#register_btn').click(function(){
+		$('#review_form').attr({
+			'enctype':'multipart/form-data',
+			'method':'post',
+			'action':'/review/registerimpl'
+		});
+		$('#review_form').submit();
+	});
+});
+
+</script>
+
+
+<div class="container">
+ <div class="col-sm-5">
+  <h2>Review</h2>
+  <form id="review_form" th:each="re : ${list}">
+  	<div class="card-body">
+      <div class="form-group">
+     	 <label for="review_write ">리뷰 작성:</label>
+      </div>
+      <div class="form-group">
+ 		 <input type="hidden" name="custid" th:value="${re.custid}" readonly="readonly"> 
+ 	  </div>
+ 	  <div class="form-group">
+ 		 <input type="hidden" name="itemno" th:value="${re.itemno}" readonly="readonly"> 
+ 	  </div>	  
+      <div class="form-group">
+ 		 <label>상품이름:</label><td th:text="${re.item_name}" name="item_name"></td> 
+ 		 
+ 	  </div>
+ 	  <div class="form-group">
+     	 <input type="text" class="form-control"  id="reviewcon" placeholder="리뷰를 작성하세요" name="reviewcon">
+   	  </div>
+   	  <div class="form-group">
+		<label for="name">Image:</label> <input type="file" class="form-control" id="img" name="img">
+	  </div>
+      <div class="radio">
+	      <label><input class = "radio-inline" type="radio" name="rating" value="1"> 1점</label>
+	      <label><input class = "radio-inline" type="radio" name="rating" value="2"> 2점</label>
+	      <label><input class = "radio-inline" type="radio" name="rating" value="3"> 3점</label>
+	      <label><input class = "radio-inline" type="radio" name="rating" value="4"> 4점</label>
+	      <label><input class = "radio-inline" type="radio" name="rating" value="5"> 5점</label>
+      </div>
+      <div class="form-group">
+ 		 <input type="hidden" name="reviewdate" th:value="${re.reviewdate}" readonly="readonly"> 
+ 	  </div>
+	  <div class="form-group">
+	 	  <label>색상:</label><input type="text"  name="item_color" th:value="${re.item_color}"  readonly="readonly">
+	  </div> 
+      <div class="form-group">
+     	  <label>규격:</label><input type="text" name="item_size" th:value="${re.item_size}"  readonly="readonly">
+      </div>
+    <button id="register_btn" class="btn btn-default">등록</button>
+   </div>
+  </form>
+ </div>
+</div>

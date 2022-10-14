@@ -2,6 +2,8 @@ package com.furni.dto;
 
 
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,5 +27,7 @@ public class ReviewDTO {
 	private String item_name;
 	private String item_color;
 	private String item_size;
+	
+	private MultipartFile img;
 	
 }

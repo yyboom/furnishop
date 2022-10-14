@@ -5,18 +5,32 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.furni.mapper.ReviewMapper">
 	
 	<select id="reviewall" parameterType="String" resultType="ReviewDTO">
-	SELECT re.reviewno, it.itemname as item_name, re.reviewcon, 
+	SELECT re.reviewno, re.custid, re.itemno, it.itemname as item_name, re.rating, re.reviewcon, 
 	re.reviewimg as reviewimg, re.reviewdate, it.itemcolor as item_color, it.itemsize as item_size
 	FROM review re
 	INNER JOIN item it ON re.itemno= it.itemno
 	WHERE re.custid = #{custid}	
 	</select>
+	
+	<select id="reviewitem" parameterType="Integer" resultType="ReviewDTO">
+	SELECT re.reviewno, re.custid, re.itemno, it.itemname as item_name, re.rating, re.reviewcon, 
+	re.reviewimg as reviewimg, re.reviewdate, it.itemcolor as item_color, it.itemsize as item_size
+	FROM review re
+	INNER JOIN item it ON re.itemno= it.itemno
+	WHERE re.itemno = #{itemno}	
+	</select>
+	
+	
  	<select id="select" parameterType="String" resultType="ReviewDTO">
 		SELECT * FROM review WHERE custid = #{custid}	
 	</select>	
 		<select id="selectall" parameterType="String" resultType="ReviewDTO">
 		SELECT * FROM review WHERE custid = #{custid}	
 	</select>
+	
+	<insert id="insert1" parameterType="ReviewDTO"  >
+		INSERT INTO review VALUES (#{cartno}, #{custid}, NULL, #{rating}, #{reviewcon}, NULL, NULL,NULL)
+	</insert>
 	
 	
 	<insert id="insert" parameterType="ReviewDTO">
