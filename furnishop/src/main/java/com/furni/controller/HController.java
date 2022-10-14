@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.furni.dto.ItemDTO;
+import com.furni.dto.ReviewDTO;
 import com.furni.service.CateService;
 import com.furni.service.ItemService;
+import com.furni.service.ReviewService;
 
 @Controller
 @RequestMapping("/item")
@@ -22,6 +24,9 @@ public class HController {
 	
 	@Autowired
 	CateService service1;
+	
+	@Autowired
+	ReviewService re_service;
 	
 	@RequestMapping("/bedroom")
 	public String bedroom(Model model) {
@@ -68,16 +73,21 @@ public class HController {
 	@RequestMapping("/detail")
 	public String detail(Model model, Integer id) {
 		ItemDTO item=null;
+		List<ReviewDTO> review = null;
 		try {
 			item=service.get(id);
+			review = re_service.reviewitem(id);
 			model.addAttribute("detail", item);
+			model.addAttribute("review", review);
 			model.addAttribute("center", dir+"detail");
 		} catch (Exception e) {
 			System.out.println("시스템 장애입니다.");
 			e.printStackTrace();  // 시스템 장애 등, 현업에서는 시스템 장애 화면 뿌려지게 함
 		}
+		System.out.println(review);
 		return "main";
 	}
+	
 	
 	
 }
