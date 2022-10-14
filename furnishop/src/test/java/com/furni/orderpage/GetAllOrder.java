@@ -20,13 +20,13 @@ class GetAllOrder {
 	void contextLoads() {
 		List<OrderpageDTO> list = null;
 		try {
-			list = service.orderall("id02");
+			list = service.orderall(303);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(OrderpageDTO o:list) {
-		System.out.println(o);
-		}
+
+		System.out.println(list);
+
 	}
 }

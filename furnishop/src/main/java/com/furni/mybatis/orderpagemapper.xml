@@ -39,13 +39,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	</delete>
 
-	<select id="orderall" parameterType="String" resultType="OrderpageDTO">
+	<select id="orderall" parameterType="Integer" resultType="OrderpageDTO">
 		SELECT o.orderno,
-		o.custid,o.orderdate,o.orderpay,o.itemcnt,o.elevator,o.shipname,o.shipaddr,o.reciever,o.recievertel,i.itemname
+		i.itemcolor as item_color, i.itemimg as item_img, i.itemsize as item_size,o.custid,o.orderdate,o.orderpay,o.itemcnt,o.elevator,o.shipname,o.shipaddr,o.reciever,o.recievertel,i.itemname
 		AS item_name, i.itemprice*o.itemcnt AS total_price FROM detailorder d
 		INNER JOIN item i ON i.itemno=d.itemno
 		INNER JOIN orderpage o ON o.orderno=d.orderno
 		INNER JOIN cust c ON c.custid=o.custid
-		WHERE c.custid = #{custid}
+		WHERE o.orderno = #{orderno}
 	</select>
 </mapper>
