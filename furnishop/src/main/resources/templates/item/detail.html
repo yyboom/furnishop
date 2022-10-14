@@ -2,7 +2,7 @@
 
 <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {height: 2500px}
+    .row.content {height: 2000px}
  
     
     /* Set gray background color and 100% height */
@@ -83,12 +83,29 @@
     </div>    
     <div id="topright2" class="col-sm-6 sidenav">
       
-      
+      <h3 th:text=" 'Cateno : '+${detail.cateno}">cateno</h3>
+      <h3 th:text=" 'Itemno : '+${detail.itemno}">itemno</h3>
+      <h3 th:text=" 'Item Name : '+${detail.itemname}">itemname</h3>
+       <div class="form-group">
+  		  <label for="sel1">Item Color:</label>
+  			<select class="form-control" id="sm">
+    			<option value="1" >베이지</option>
+    			<option value="2" >그레이</option>
+    			<option value="3" >브라운</option>
+            </select>
+          <label for="sel1">Item Size:</label>
+  			<select class="form-control" id="em">
+    			<option value="1" >Q</option>
+    			<option value="1" >1500*750*737</option>
+    		</select>	
+       </div>
+      <h3 th:text=" 'Item Price : '+${detail.itemprice}">price</h3>
+      <h3 th:text=" 'Item Stock : '+${detail.itemstock}">itemstock</h3>
+      <h3 th:text=" 'Item Sell : '+${detail.itemsell}">itemsell</h3>
       
       <button id="order" class="btn btn-default">order</button>
       <button id="withlist" class="btn btn-default">wishlist</button>
       <button id="cart" class="btn btn-default">cart</button>
-      
     </div>
 
     <div class="col-sm-9">
