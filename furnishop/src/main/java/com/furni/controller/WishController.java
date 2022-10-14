@@ -43,5 +43,7 @@ public class WishController {
 		}
 		return "redirect:wishlistdetail?id="+custid;
 	}
+	
+	
 
 }
