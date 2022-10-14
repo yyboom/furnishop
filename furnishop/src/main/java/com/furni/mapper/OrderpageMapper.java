@@ -14,5 +14,5 @@ import com.furni.frame.MyMapper;
 @Mapper
 public interface OrderpageMapper extends MyMapper<Integer, OrderpageDTO>{
 	public int register1(OrderpageDTO order) throws Exception;
-	public List<OrderpageDTO>orderall(Integer orderno) throws Exception;
+	public List<OrderpageDTO>orderall(String custid) throws Exception;
 }
