@@ -2,20 +2,25 @@
 
 <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {height: 2000px}
- 
+    .row content {
+    height: 2000px;
+    }
+    .row content {
+    height: auto
+    }
+  
     
     /* Set gray background color and 100% height */
     .sidenav {
-      background-color: #f1f1f1;
+      
       height: 30%;
       padding:70px;
       
     }
     
      #itemimg{
- 	height: 100%;
-	width: 100%;
+ 	height: 470px;
+	width: 800px;
  	object-fit: contain;
   
   	}   
@@ -33,10 +38,7 @@
         height: auto;
         padding: 15px;
       }
-      .row.content {
-      height: auto;
-      
-      } 
+    
     
     }
     .nav-tabs li a {
@@ -64,10 +66,8 @@
   .navbar-default .navbar-toggle {
     border-color: transparent;
   }
-  .container {
-    padding: 80px 120px;
-    margin: 100px 200px;
-  }
+  
+ 
   #info_img{
 width: 480px;
 height: 400px; 
@@ -153,11 +153,9 @@ margin: 0px 0px 50px 0px;
       <button th:if="${session.logincust != null}" id="wishlist" class="btn btn-default">wishlist</button>
       <button th:if="${session.logincust != null}" id="cart" class="btn btn-default">cart</button>
       
-	</div>
-    
-    
+        
     <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+       <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -184,10 +182,10 @@ margin: 0px 0px 50px 0px;
       </div>
     </div>
   </div>
-</div>
+</div> 
+	</div>
     
-    
-    <div class="col-sm-9">
+
     
   <!-- Container (Contact Section) -->
 <div id="contact" class="container">
@@ -241,9 +239,8 @@ margin: 0px 0px 50px 0px;
     
     
 
-  </div>
+  
 </div>
 
 
-</div>
 </body>
