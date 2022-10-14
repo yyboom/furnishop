@@ -66,9 +66,21 @@
   }
   .container {
     padding: 80px 120px;
+    margin: 100px 200px;
+  }
+  #info_img{
+width: 480px;
+height: 400px; 
+margin: 0px 0px 50px 0px;  
+
   }
   
   </style>
+  
+  <script>
+  
+
+  </script>
 
 <body>
 
@@ -86,7 +98,7 @@
       <h3 th:text=" 'Cateno : '+${detail.cateno}">cateno</h3>
       <h3 th:text=" 'Itemno : '+${detail.itemno}">itemno</h3>
       <h3 th:text=" 'Item Name : '+${detail.itemname}">itemname</h3>
-       <div class="form-group">
+       <div  th:if="${session.logincust != null}" class="form-group">
   		  <label for="sel1">Item Color:</label>
   			<select class="form-control" id="sm">
     			<option value="1" >베이지</option>
@@ -98,10 +110,22 @@
     			<option value="1" >Q</option>
     			<option value="1" >1500*750*737</option>
     		</select>	
+    	  <label for="sel1">Item Cnt:</label>
+  			<select class="form-control" id="sm">
+    			<option value="1" >1</option>
+    			<option value="2" >2</option>
+    			<option value="3" >3</option>
+    			<option value="4" >4</option>
+    			<option value="5" >5</option>
+    			<option value="6" >6</option>
+    			<option value="7" >7</option>
+    			<option value="8" >8</option>
+    			<option value="9" >9</option>
+    			<option value="10" >10</option>
+            </select>	
        </div>
       <h3 th:text=" 'Item Price : '+${detail.itemprice}">price</h3>
-      <h3 th:text=" 'Item Stock : '+${detail.itemstock}">itemstock</h3>
-      <h3 th:text=" 'Item Sell : '+${detail.itemsell}">itemsell</h3>
+      
       
       <button id="order" class="btn btn-default">order</button>
       <button id="withlist" class="btn btn-default">wishlist</button>
@@ -127,20 +151,26 @@
     <div id="home" class="tab-pane fade in active">
       <h2>It's our item</h2>
       <p>Lookaround our amazing stuff :)</p>
-        <table>
-      <tbody>
-<tr>
-
-
-<td th:text=" 'Item Name : '+${detail.itemname}"></td>
-<td th:text=" 'Item Price : '+${detail.itemprice}"></td>
-<td th:text=" 'Item Color : '+${detail.itemcolor}"></td>
-<td th:text=" 'Item Size : '+${detail.itemsize}"></td>
-<td th:text=" 'Item Stock : '+${detail.itemstock}"></td>
-<td th:text=" 'Item Sell : '+${detail.itemsell}"></td>
-</tr>
-</tbody>
-  </table>
+        <br>
+		<h3 th:text=" 'Cateno : '+${detail.cateno}">cateno</h3>
+    	<h3 th:text=" 'Itemno : '+${detail.itemno}">itemno</h3>
+    	<h3 th:text=" 'Item Name : '+${detail.itemname}">itemname</h3>
+	  <div>
+		<div class="col-sm-6">
+			<img id="info_img" th:src=" '/img/'+${detail.itemimg}">
+			
+		</div>
+		<div class="col-sm-6">
+			<img id="info_img" th:src=" '/img/'+${detail.itemimg1}">
+			
+		</div>
+	  </div>
+	  
+		<h3 th:text=" 'Item Color : '+${detail.itemcolor}"></h3>
+		<h3 th:text=" 'Item Size : '+${detail.itemsize}"></h3>
+		<h3 th:text=" 'Item Price : '+${detail.itemprice}"></h3>
+		<h3 th:text=" 'Item Stock : '+${detail.itemstock}"></h3>
+		<h3 th:text=" 'Item Sell : '+${detail.itemsell}"></h3>
     </div>
     <div id="menu1" class="tab-pane fade">
       <h2>Reviews about our item</h2>
