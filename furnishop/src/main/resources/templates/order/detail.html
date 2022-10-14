@@ -3,6 +3,11 @@
 #r_img{
 	width:150px;
 }
+h3{
+	margin-top:	50px;
+	margin-bottom: 30px;
+	
+}
 </style>
 <script>
 function rev(cust_id){ 
@@ -16,11 +21,10 @@ function rev(cust_id){
 
 <!-- Container (The Band Section) -->
 <div id="band" class="container text-center">
-	<br> <br> <br>
-	<h3>주문/배송조회</h3>
-	<table id="otb" class="table table-bordered">
+	<h3>Order/Ship Detail</h3>
+	<table id="otb" class="table">
 		<thead>
-			<tr>
+			<tr  class="active">
 				
 				<th>회원아이디</th>
 				<th>상품명</th>
@@ -58,7 +62,5 @@ function rev(cust_id){
 </div>
 
 	
-</script>
 
-</body>
-</html>
+
