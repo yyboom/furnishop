@@ -23,6 +23,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="selectallcate" parameterType="Integer" resultType="itemDTO">
 		SELECT i.itemname,i.itemimg, i.itemno FROM item AS i
+		INNER JOIN cate AS c ON c.cateno=i.cateno
+		WHERE i.cateno=#{cateno}
 	</select>
 	
 	<insert id="insert" parameterType="itemDTO">

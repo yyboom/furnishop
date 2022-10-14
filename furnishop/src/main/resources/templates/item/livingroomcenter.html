@@ -26,12 +26,10 @@
 
 <script>
 
-function movedetail(){
-	     location.href ="/item/detail";
-
+function movedetail(itemno){
+	     location.href='/item/detail?id='+itemno;
 
 };
-
 
 </script>
 
@@ -140,7 +138,7 @@ function movedetail(){
         <div class="thumbnail" >
           <img th:src="'/img/'+${living.itemimg}" alt="Paris" width="400" height="500">
           <span th:text="${living.itemname}">Bed</span>
-           <button onclick="movedetail();" class="btn" data-toggle="modal" data-target="#myModal" >Buy It</button> 
+           <button th:onclick="movedetail([[${living.itemno}]])" class="btn" data-toggle="modal" data-target="#myModal" >Buy It</button> 
         </div>
       </div>
   </div> 
