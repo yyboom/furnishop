@@ -60,10 +60,18 @@
  	  <div class="form-group">
  		 <label>상품명 : </label><input type="text" name="item_name" th:value="${o.item_name}" readonly="readonly"> 
  	  </div>
- 	   <div class="form-group">
- 		 <label>상품가격 : </label><input type="text" name="total_price" th:value="${o.total_price}" readonly="readonly"> 
+ 	  <div class="form-group">
+ 		<img th:src="'/img/'+${o.item_img}"> 
  	  </div>
- 	 
+ 	  <div class="form-group">
+ 		 <label>상품색상 : </label><input type="text" name="item_color" th:value="${o.item_color}" readonly="readonly"> 
+ 	  </div>
+ 	   <div class="form-group">
+ 		 <label>상품가격 : </label><input type="text" name="total_price" th:value="${o.total_price}" readonly="readonly" > 
+ 	  </div>
+ 	  <div class="form-group">
+ 		 <label>상품규격 : </label><input type="text" name="item_size" th:value="${o.item_size}" readonly="readonly"> 
+ 	  </div>
  	  <div class="form-group">
      	  <label>배송지명 : </label><input type="text" class="form-control"  id="shipname" placeholder="배송지명을 입력하세요" name="shipname">
    	  </div>

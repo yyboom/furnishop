@@ -43,6 +43,7 @@ public class JController {
 		List<OrderpageDTO> list = null;
 		try {
 			list = service.orderall(id);
+
 			model.addAttribute("list",list);
 			model.addAttribute("center",dir+"insert");
 		} catch (Exception e) {
@@ -54,10 +55,11 @@ public class JController {
 	@RequestMapping("/insertimpl")
 	public String insert(Model model, OrderpageDTO order) throws Exception {
 		try {
-			service.register1(order);
+			service.insert1(order);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(order);
 		return "redirect:detail";	//insert후 주문상세로 가라?
 	}
 	@RequestMapping("/detail")

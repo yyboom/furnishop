@@ -47,4 +47,8 @@ public class OrderpageService implements MyService<Integer,OrderpageDTO>{
 	public List<OrderpageDTO>orderall(String custid) throws Exception{
 		return mapper.orderall(custid);
 	}
+	
+	public void insert1(OrderpageDTO order) throws Exception{
+		mapper.insert1(order);
+	}
 }
