@@ -78,7 +78,10 @@ margin: 0px 0px 50px 0px;
   </style>
   
   <script>
-  
+  function moveorder(itemno){
+		     location.href='/order/insert?id='+itemno;
+
+	} 
 
   </script>
 
@@ -127,8 +130,8 @@ margin: 0px 0px 50px 0px;
       <h3 th:text=" 'Item Price : '+${detail.itemprice}">price</h3>
       
       
-      <button th:if="${session.logincust != null}" id="order" class="btn btn-default">order</button>
-      <button th:if="${session.logincust != null}" id="withlist" class="btn btn-default">wishlist</button>
+      <button th:if="${session.logincust != null}" th:onclick="moveorder([[${detail.itemno}]])" id="order" class="btn btn-default">order</button>
+      <button th:if="${session.logincust != null}" id="wishlist" class="btn btn-default">wishlist</button>
       <button th:if="${session.logincust != null}" id="cart" class="btn btn-default">cart</button>
     </div>
 
