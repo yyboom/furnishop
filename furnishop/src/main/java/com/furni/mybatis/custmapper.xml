@@ -12,10 +12,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO cust VALUES (#{custid},#{custpwd},#{custname},#{custaddr},#{custtel},#{custemail},SYSDATE(),"x",#{custbirth})
 	</insert>
 	<update id="update" parameterType="CustDTO">
-		UPDATE cust SET custpwd=#{custpwd},custname=#{custname},custaddr=#{custaddr},custtel=#{custtel},custemail=#{custemail},withdraw=#{withdraw},custbirth=#{custbirth} WHERE custid=#{custid}
+		UPDATE cust SET custpwd=#{custpwd},custname=#{custname},custaddr=#{custaddr},custtel=#{custtel},custemail=#{custemail},custdate=#{custdate},withdraw=#{withdraw},custbirth=#{custbirth} WHERE custid=#{custid}
 	</update>
-	<delete id="delete" parameterType="String">
-		DELETE FROM cust WHERE custid=#{custid}
-	</delete>
+	<update id="delete1" parameterType="CustDTO">
+		UPDATE cust SET custpwd=#{custpwd},custname=#{custname},custaddr=#{custaddr},custtel=#{custtel},custemail=#{custemail},custdate=#{custdate},"o"=#{withdraw},custbirth=#{custbirth} WHERE custid=#{custid}
+	</update>
 	
 </mapper>

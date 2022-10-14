@@ -32,6 +32,11 @@ public class CustService implements MyService<String, CustDTO>{
 		mapper.update(v);
 		
 	}
+	
+	public void delete1(CustDTO cust) throws Exception {
+		mapper.delete1(cust);
+		
+	}
 
 	@Override
 	public CustDTO get(String k) throws Exception {

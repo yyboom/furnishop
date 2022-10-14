@@ -12,6 +12,8 @@ import com.furni.service.CustService;
 
 @Controller
 public class CustMainController {
+	
+	String dir="cust/";
 
 	@Autowired
 	CustService cust_service;
@@ -24,7 +26,7 @@ public class CustMainController {
 	// login
 	@RequestMapping("/login")
 	public String login(Model model) {
-		model.addAttribute("center", "login");
+		model.addAttribute("center", dir+"login");
 		return "main";
 	}
 	
@@ -41,7 +43,7 @@ public class CustMainController {
 	// register
 	@RequestMapping("/register")
 	public String register(Model model) {
-		model.addAttribute("center", "register");
+		model.addAttribute("center", dir+"register");
 		return "main";
 	}
 
@@ -52,14 +54,14 @@ public class CustMainController {
 		try {
 			cust = cust_service.get(custid);
 			if (cust == null) {
-				model.addAttribute("center", "loginfail");
+				model.addAttribute("center", dir+"loginfail");
 			} else {
 				if (custpwd.equals(cust.getCustpwd())) {
 					session.setAttribute("logincust", cust);
 					model.addAttribute("center", "main");
 					// id,pwd가 다 아닐 때
 				} else {
-					model.addAttribute("center", "loginfail");
+					model.addAttribute("center", dir+"loginfail");
 				}
 			}
 		} catch (Exception e) {
@@ -80,12 +82,12 @@ public class CustMainController {
 			// 회원가입을 했을 때 자동으로 로그인이 된 것!
 			session.setAttribute("logincust", cust);
 			// 정상일때는
-			model.addAttribute("center", "registerok");
+			model.addAttribute("center", dir+"registerok");
 			// 객체를 넣을 수도 있음!
 			model.addAttribute("rid", cust);
 		} catch (Exception e) {
 			// 중복된 id를 넣을 때는 !!registerfail로 가게 한다.
-			model.addAttribute("center", "registerfail");
+			model.addAttribute("center", dir+"registerfail");
 			// registerfail page에 특정 값을 내보낼 때 model사용함! 이것이 tymleaf가 하는 일!
 			model.addAttribute("fid", cust.getCustid());
 		}
@@ -101,7 +103,7 @@ public class CustMainController {
 			cust=cust_service.get(id);
 			model.addAttribute("custdetail", cust);
 			//centerpage는 이친구임(cust)의 정보를 가지고 있는!!
-			model.addAttribute("center", "custdetail");
+			model.addAttribute("center", dir+"custdetail");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -120,7 +122,7 @@ public class CustMainController {
 			model.addAttribute("custupdate", cust);
 			//centerpage는 이친구임(cust)의 정보를 가지고 있는!!
 			//수정하는 화면으로 이동한다.
-			model.addAttribute("center", "custupdate");
+			model.addAttribute("center", dir+"custupdate");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

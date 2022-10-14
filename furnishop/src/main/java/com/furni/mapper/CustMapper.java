@@ -9,5 +9,6 @@ import com.furni.frame.MyMapper;
 @Repository
 @Mapper
 public interface CustMapper extends MyMapper<String, CustDTO>{
+	public void delete1(CustDTO cust) throws Exception;
 
 }
