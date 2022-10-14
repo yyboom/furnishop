@@ -41,7 +41,7 @@ public class HController {
 	public String livingroom(Model model) {
 		List<ItemDTO> list2 = null;
 		try {
-			list2 = service.selectall1(2);
+			list2 = service.selectallcate(2);
 			model.addAttribute("list2", list2);
 			model.addAttribute("center", dir+"livingroomcenter");
 		} catch (Exception e) {
@@ -55,7 +55,7 @@ public class HController {
 	public String kitchen(Model model) {
 		List<ItemDTO> list3 = null;
 		try {
-			list3 = service.selectall1(3);
+			list3 = service.selectallcate(3);
 			model.addAttribute("list3", list3);
 			model.addAttribute("center", dir+"kitchencenter");
 		} catch (Exception e) {

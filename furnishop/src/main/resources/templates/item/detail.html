@@ -6,8 +6,102 @@
 <!-- <img id="itemimg" th:src=" '/img/'+${itemdetail.imgimg}" > 
 <img id="itemimg1" th:src=" '/img/'+${itemdetail.imgimg1}" > -->
 
-<div class="container">
-<table>
+
+
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 30%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+    
+    .nav-tabs li a {
+    color: #777;
+    }
+     .navbar {
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 0;
+    background-color: #2d2d30;
+    border: 0;
+    font-size: 11px !important;
+    letter-spacing: 4px;
+    opacity: 0.9;
+  }
+  .navbar li a, .navbar .navbar-brand { 
+    color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+    color: #fff !important;
+  }
+  .navbar-nav li.active a {
+    color: #fff !important;
+    background-color: #29292c !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+  }
+  .container {
+    padding: 80px 120px;
+  }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-6 sidenav">
+      <h4>사진</h4>
+      
+      
+    </div>
+
+    <div class="col-sm-9">
+    
+    
+  <!-- Container (Contact Section) -->
+<div id="contact" class="container">
+  <div class="row"> 
+  </div>
+  <br>
+  <h3 class="text-center">THE FURNISHOP</h3>  
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Information</a></li>
+    <li><a data-toggle="tab" href="#menu1">Review</a></li>
+  
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h2>It's our item</h2>
+      <p>Lookaround our amazing stuff :)</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h2>Reviews about our item</h2>
+      <p>Write your review :)</p>
+    </div>
+    
+  </div>
+  
+  <table>
 <tbody>
 <tr>
 
@@ -21,7 +115,18 @@
 <td th:text=" 'Item Sell : '+${detail.itemsell}"></td>
 </tr>
 </tbody>
-
-
-</table>
+  </table>
 </div>
+  
+    
+    
+    
+    
+
+  </div>
+</div>
+
+
+
+</body>
+</html>
