@@ -139,11 +139,11 @@ function movedetail(itemno){
 <div id="tour" class="bg-1">
   <div class="container">
     
-    <div class="row text-center" >
+    <div class="container row text-center" style="float: none; margin:100 auto;">
       <div class="col-sm-5" th:each="bed:${list}">
         <div class="thumbnail">
           <img th:src="'/img/'+${bed.itemimg}" alt="Paris" width="400" height="500">
-          <span th:text="${bed.itemname}">Bed</span>
+          <span th:text="${bed.itemname}">Bed</span><br>
            <button th:onclick="movedetail([[${bed.itemno}]])" class="btn">Buy It</button> 
         </div>
       </div>
