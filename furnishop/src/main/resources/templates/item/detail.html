@@ -68,18 +68,23 @@
 
 <div class="container-fluid">
   <div class="row content">
-    <div class="col-sm-6 sidenav">
+    <div id="topright1" class="col-sm-6 sidenav">
       <h4>사진</h4>
       
+    </div>    
+    <div id="topright2" class="col-sm-6 sidenav">
+      <button id="order" class="btn btn-default">order</button>
+      <button id="withlist" class="btn btn-default">withlist</button>
+      <button id="cart" class="btn btn-default">cart</button>
       
     </div>
 
     <div class="col-sm-9">
     
-    
   <!-- Container (Contact Section) -->
 <div id="contact" class="container">
   <div class="row"> 
+  
   </div>
   <br>
   <h3 class="text-center">THE FURNISHOP</h3>  
@@ -93,16 +98,8 @@
     <div id="home" class="tab-pane fade in active">
       <h2>It's our item</h2>
       <p>Lookaround our amazing stuff :)</p>
-    </div>
-    <div id="menu1" class="tab-pane fade">
-      <h2>Reviews about our item</h2>
-      <p>Write your review :)</p>
-    </div>
-    
-  </div>
-  
-  <table>
-<tbody>
+        <table>
+      <tbody>
 <tr>
 
 <td th:text=" 'Cateno : '+${detail.cateno}"></td>
@@ -116,6 +113,14 @@
 </tr>
 </tbody>
   </table>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h2>Reviews about our item</h2>
+      <p>Write your review :)</p>
+    </div>
+    
+  </div>
+  
 </div>
   
     
