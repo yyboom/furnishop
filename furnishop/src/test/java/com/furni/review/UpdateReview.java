@@ -16,7 +16,7 @@ class UpdateReview {
 	
 	@Test
 	void contextLoads() {
-		ReviewDTO review = new ReviewDTO(708, "id02", 108, 3, "배송빠름 마감은 쏘쏘", "2022-10-16","reviewchair6.jpg", null, null, null);
+		ReviewDTO review = new ReviewDTO(708, "id02", 108, 3, "배송빠름 마감은 쏘쏘", "2022-10-16","reviewchair6.jpg", null, null, null,null);
 		try {
 			service.modify(review);
 		} catch (Exception e) {

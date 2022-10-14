@@ -27,9 +27,8 @@ class RevieItem {
 			e.printStackTrace();
 		}
 		
-		for(ReviewDTO c:list) {
-			System.out.println(c);
-		}
+
+			System.out.println(list);
 		
 	}
 
