@@ -1,5 +1,11 @@
 <meta charset="utf-8">
+<link href="/css/star.css" rel="stylesheet"/>
+<meta http-equiv="X-UA-Compatible" content="IE=chrome">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/re_style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,300,0,0" />
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 
 <script>
 $(document).ready(function(){
@@ -17,13 +23,11 @@ $(document).ready(function(){
 
 
 <div class="container">
- <div class="col-sm-5">
-  <h2>Review</h2>
-  <form id="review_form" th:each="re : ${list}">
+ <div class="login-card">
+  <h1>Review</h1>
+  <form id="review_form" th:each="re : ${list}" class="login-card-form">
   	<div class="card-body">
-      <div class="form-group">
-     	 <label for="review_write ">리뷰 작성:</label>
-      </div>
+
       <div class="form-group">
  		 <input type="hidden" name="custid" th:value="${re.custid}" readonly="readonly"> 
  	  </div>
@@ -31,7 +35,7 @@ $(document).ready(function(){
  		 <input type="hidden" name="itemno" th:value="${re.itemno}" readonly="readonly"> 
  	  </div>	  
       <div class="form-group">
- 		 <label>상품이름:</label><td th:text="${re.item_name}" name="item_name"></td> 
+ 		 <label>Item name :</label><td th:text="${re.item_name}" name="item_name"></td> 
  		 
  	  </div>
  	  <div class="form-group">
@@ -40,24 +44,28 @@ $(document).ready(function(){
    	  <div class="form-group">
 		<label for="name">Image:</label> <input type="file" class="form-control" id="img" name="img">
 	  </div>
-      <div class="radio">
-	      <label><input class = "radio-inline" type="radio" name="rating" value="1"> 1점</label>
-	      <label><input class = "radio-inline" type="radio" name="rating" value="2"> 2점</label>
-	      <label><input class = "radio-inline" type="radio" name="rating" value="3"> 3점</label>
-	      <label><input class = "radio-inline" type="radio" name="rating" value="4"> 4점</label>
-	      <label><input class = "radio-inline" type="radio" name="rating" value="5"> 5점</label>
-      </div>
+      <form class="mb-3" name="myform" id="myform" method="post">
+		<fieldset>	      
+	    <label for="rate1">⭐1</label><input type="radio" name="rating" value="1" id="rate1">
+        <label for="rate2">⭐2</label><input type="radio" name="rating" value="2" id="rate2">
+        <label for="rate3">⭐3</label><input type="radio" name="rating" value="3" id="rate3">
+        <label for="rate4">⭐4</label><input type="radio" name="rating" value="4" id="rate4">
+        <label for="rate5">⭐5</label><input type="radio" name="rating" value="5" id="rate5">
+        
+      </fieldset>
+      </form>
       <div class="form-group">
  		 <input type="hidden" name="reviewdate" th:value="${re.reviewdate}" readonly="readonly"> 
  	  </div>
 	  <div class="form-group">
-	 	  <label>색상:</label><input type="text"  name="item_color" th:value="${re.item_color}"  readonly="readonly">
+	 	  <label>Item color:</label><input type="text"  name="item_color" th:value="${re.item_color}"  readonly="readonly">
 	  </div> 
       <div class="form-group">
-     	  <label>규격:</label><input type="text" name="item_size" th:value="${re.item_size}"  readonly="readonly">
+     	  <label>Item size:</label><input type="text" name="item_size" th:value="${re.item_size}"  readonly="readonly">
       </div>
-    <button id="register_btn" class="btn btn-default">등록</button>
+    <button id="register_btn" class="btn btn-default" >Register</button>
    </div>
   </form>
  </div>
-</div>
+
+</html>

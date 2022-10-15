@@ -1,4 +1,9 @@
-<meta charset="UTF-8">
+<html lang="ko">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=chrome">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/re_style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,300,0,0" />
 <script>
 $(document).ready(function(){
 	$('#register_form > button').click(function(){
@@ -41,17 +46,19 @@ $(document).ready(function(){
 });
 </script>
 <div class="container">
- <div class="col-sm-5">
+<div class="login-card">
+ <div class="login-card-header">
   <h2>Register</h2>
-  <form id="register_form">
+
+  <form id="register_form" class="login-card-form">
     <div class="form-group">
       <label for="id">ID:</label>
-      <input type="text" class="form-control" id="id" placeholder="Enter ID" name="custid">
+      <input type="text" class="form-control" id="id" placeholder="Enter ID" name="custid" required autofocus>
       <span id="ispan"></span>
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="custpwd">
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="custpwd" required >
     </div>
     <div class="form-group">
       <label for="pwd2">Password2:</label>
@@ -85,3 +92,4 @@ $(document).ready(function(){
   </form>
 </div>
 </div>
+</html>
