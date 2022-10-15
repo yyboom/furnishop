@@ -13,4 +13,5 @@ import com.furni.frame.MyMapper;
 @Mapper
 public interface DetailorderMapper extends MyMapper<Integer, DetailorderDTO>{
 	public List<DetailorderDTO> detailall(String custid) throws Exception;
+	public DetailorderDTO select1(Integer orderno) throws Exception;
 }

@@ -31,6 +31,7 @@ public class OrderpageDTO {
 	private String item_img;
 	private String item_color;
 	private String item_size;
+	private int item_no;
 
 
 }

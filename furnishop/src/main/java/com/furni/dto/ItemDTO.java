@@ -23,6 +23,6 @@ public class ItemDTO {
 	private int itemstock;
 	private int itemsell;
 	
-	
+	private int item_cnt;
 
 }

@@ -10,12 +10,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		 INNER JOIN orderpage o ON o.orderno = d.orderno
 		 WHERE d.detailno=#{detailno}
 	</select>
+	<select id="select1" parameterType="Integer" resultType="DetailorderDTO">
+		SELECT * FROM detailorder d
+		 WHERE d.detailno=#{detailno}
+	</select>
 	<select id="selectall" resultType="DetailorderDTO">
 		
 	</select>
 	<!-- id,pwd를 끄집어낼 때는 get,set으로 입력받고 나오게 될것 -->
 	<insert id="insert" parameterType="DetailorderDTO">
-		INSERT INTO detailorder VALUES (NULL,#{orderno},#{itemno})
+		INSERT INTO detailorder(orderno,itemno) VALUES (#{orderno},#{itemno})
 	</insert>
 	<update id="update" parameterType="DetailorderDTO">
 		

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.furni.dto.DetailorderDTO;
-import com.furni.dto.OrderpageDTO;
 import com.furni.frame.MyService;
 import com.furni.mapper.DetailorderMapper;
 
@@ -46,5 +45,9 @@ public class DetailorderService implements MyService<Integer,DetailorderDTO>{
 	public List<DetailorderDTO> detailall(String custid) throws Exception{
 		return mapper.detailall(custid);
 	
+	}
+	
+	public DetailorderDTO select1(Integer orderno) throws Exception {
+		return mapper.select1(orderno);
 	}
 }

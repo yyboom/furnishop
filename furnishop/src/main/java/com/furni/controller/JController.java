@@ -39,23 +39,30 @@ public class JController {
 	ReviewService service3;
 	
 	@RequestMapping("/insert")
-	public String insert(Model model, String id) {
-		List<OrderpageDTO> list = null;
+	public String insert(Model model, OrderpageDTO order) {
+		 OrderpageDTO list = null;
+		 DetailorderDTO list1= null;
 		try {
-			list = service.orderall(id);
+			service.register(order);
+			int i = order.getOrderno();
+			
+			list1= new DetailorderDTO(0, i, order.getItem_no(), order.getItem_name(), order.getItem_color(), order.getItemcnt(), order.getItem_img(), order.getCustid(), 0);
+			service1.register(list1);
+			
+			list=service.get(i);
 
 			model.addAttribute("list",list);
 			model.addAttribute("center",dir+"insert");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(list);
+
 		return "main";
 	}
 	@RequestMapping("/insertimpl")
-	public String insert(Model model, OrderpageDTO order) throws Exception {
+	public String insertimpl(Model model, OrderpageDTO order) throws Exception {
 		try {
-			service.insert1(order);
+			//service.insert1(order);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
