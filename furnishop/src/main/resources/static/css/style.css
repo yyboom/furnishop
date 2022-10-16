@@ -5,22 +5,25 @@
 body{
 	font-family: 'Poppins', sans-serif;
 	min-height: 100vh;
-	background:linear-gradient(to right,#333399,#ff00cc);
+	/* background:linear-gradient(to right,#fefae0,#faedcd); */
+	background: url("/img/background.jpg");
+	background-size: cover;
 	display:flex;
 	align-items: center;
 	justify-content: center;
 }
 .login-card{
 	width: 100%;
-	background: rgba(255,255,255,.5);
+	background: rgba(255,255,255,.7);
 	padding: 4rem;
 	border-radius: 10px;
 	position: relative;
+	margin-top:100px;
 }
 .login-card-logo{	
 	width:100%;
-	background: rgba(255,255,255,.5);
-	padding: 4rem;
+	/* background: rgba(255,255,255,.5); */
+	padding: 2rem;
 	border-radius: 10px;
 	position: relative;
 }
@@ -55,7 +58,7 @@ body{
 
 .login-card-header h1 + div {
 	font-size: calc(1rem*.8);
-	opacity: .8;
+	opacity: .5;
 }
 
 .login-card-form{
