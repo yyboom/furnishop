@@ -23,4 +23,9 @@ public class CartDTO {
 	private String item_color;
 	private String item_img;
 	private String item_size;
+	private int total_price;
+	private int total_sum;
+	
+	
+	
 }

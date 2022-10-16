@@ -32,14 +32,15 @@ $(document).ready(function(){
 		var result =  Number(num) + 1;
 		$('#num').val(result);
 		
-		var custid ='[[${session.logincust.custid}]]';
+/* 		var custid ='[[${session.logincust.custid}]]';
  		var cartno = $('#cartno').text();
 		var cartcnt = $('#cartcnt').val() + 1;
 		var itemno = $('#itemno').text();
 		alert(cartno);
-		location.href='/cart/get?custid='+ custid + '&cartno='+ cartno +'&itemno=' + itemno + '&item_cnt=' + cartcnt ;
+		location.href='/cart/get?custid='+ custid + '&cartno='+ cartno +'&itemno=' + itemno + '&item_cnt=' + cartcnt ; */
+		
 	}); 	
-});
+	
 	$('#down_btn').click(function(){
 		var num = $('#num').val();
 		if(num == '0'){
@@ -108,7 +109,7 @@ function movecart(){
 				<td th:text="${c.item_color}">Item Color</td>
 				<td th:text="${c.item_size}">Item Size</td>
 				<td th:text="${c.item_price}" id = "price">Price</td>
-				<td>
+				<td >
 					
 						<input type = "number" th:value = "${c.cartcnt}" class = "form-control" id = "num" readonly = "readonly">						
 						<button type = "button" class = "btn btn-defalt btn-up" id = "up_btn">
