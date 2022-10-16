@@ -18,6 +18,7 @@ table > tbody > tr > td > img:hover {
 
 <script>
 
+
 function del(cartno){
 	var custid ='[[${session.logincust.custid}]]';
 	var c = confirm('삭제 하시겠습니까?');
@@ -26,45 +27,40 @@ function del(cartno){
 	}	
 }
 
+function moveorder(){
+	var custid = '[[${session.logincust.custid}]]';
+    var itemno = $('#itemno').text();
+    var itemname = $('#item_name').text();
+    var itemcolor= $('#item_color').text();
+    var itemsize= $('#item_size').text();
+    var itemcnt=$('#num').val();
+    var itemimghide=$('#img').text();
+    var itemprice=$('#item_price').text();
+    location.href='/order/insert?custid='+custid+ '&item_no=' +itemno+ '&item_name='+itemname+ '&item_color='+itemcolor+ '&item_size='+itemsize+'&itemcnt='+itemcnt+'&item_img='+itemimghide+'&item_price='+itemprice;
+
+};
+
 $(document).ready(function(){
 	$('#up_btn').click(function(){
 		var num = $('#num').val();
 		var result =  Number(num) + 1;
 		$('#num').val(result);
-		
-/* 		var custid ='[[${session.logincust.custid}]]';
- 		var cartno = $('#cartno').text();
-		var cartcnt = $('#cartcnt').val() + 1;
-		var itemno = $('#itemno').text();
-		alert(cartno);
-		location.href='/cart/get?custid='+ custid + '&cartno='+ cartno +'&itemno=' + itemno + '&item_cnt=' + cartcnt ; */
-		
+
 	}); 	
 	
 	$('#down_btn').click(function(){
-		var num = $('#num').val();
-		if(num == '0'){
-			return;
-		}
+	
+				var num = $('#num').val();
+				if(num == '0'){
+				return;
+		}	
 		var result =  Number(num) - 1;
 		$('#num').val(result);
 	});
 
-	$('#order_btn').click(function(){
-			movecart();
-	});
 
 });
 
-function movecart(){
-	var cartno = $('#cartno').text();
-	var custid ='[[${session.logincust.custid}]]';
-	var itemno = $('#itemno').text();
-	var cartcnt = $('#num').val();
-	//흰색이 설정해준 변수 분홍색은 자바 변수
-	location.href='/order/insert?custid='+ custid + '&cartno='+ cartno +'&itemno=' + itemno + '&item_cnt=' + cartcnt ;
-	
-}
 
 </script>
 <!-- Page level plugins -->
@@ -102,15 +98,14 @@ function movecart(){
 				<td th:text="${c.custid}" id = "custid">ID</td>
 				<td>
 					<a th:href="@{/item/detail(id=${c.itemno})}">
-					<img th:src="'/img/'+${c.item_img}">
+					<img th:src="'/img/'+${c.item_img}" id ="img">
 				</td>
 				<td th:text="${c.itemno}" id = "itemno">Item No</td>
-				<td th:text="${c.item_name}">Item Name</td>
-				<td th:text="${c.item_color}">Item Color</td>
-				<td th:text="${c.item_size}">Item Size</td>
-				<td th:text="${c.item_price}" id = "price">Price</td>
-				<td >
-					
+				<td th:text="${c.item_name}" id = "item_name">Item Name</td>
+				<td th:text="${c.item_color}" id = "item_color">Item Color</td>
+				<td th:text="${c.item_size}" id = "item_size">Item Size</td>
+				<td th:text="${c.item_price}" id = "item_price">Price</td>
+				<td >				
 						<input type = "number" th:value = "${c.cartcnt}" class = "form-control" id = "num" readonly = "readonly">						
 						<button type = "button" class = "btn btn-defalt btn-up" id = "up_btn">
 							<span class = "glyphicon glyphicon-arrow-up"></span>UP
@@ -118,12 +113,11 @@ function movecart(){
 						
 						<button type = "button" class = "btn btn-defalt btn-down" id = "down_btn">
 							<span class = "glyphicon glyphicon-arrow-down"></span>DOWN
-						</button>
-						
+						</button>						
 				</td>
 				<td>
-		        	<button type="button" class="btn btn-sm" id = "order_btn">
-		          	<a th:href="@{/order/insert(id=${session.logincust.custid})}"><span class="material-icons-outlined color">구매하기</span></a>
+		        	<button th:onclick="moveorder([[${c.cartno}]])" type="button" class="btn btn-sm"  id = "order_btn">
+		          	<span class="material-icons-outlined color">구매하기</span></a>
 		        	</button>				
 				
 					<button th:onclick="del([[${c.cartno}]])" type="button" class="btn btn-default btn-sm">

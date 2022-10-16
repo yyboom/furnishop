@@ -12,10 +12,20 @@ h3{
 <script>
 function rev(cust_id){ 
 	var c = confirm('리뷰를 작성 하시겠습니까?');
+	var itemno=$('#itemno').val();
+	var item_name=$('#item_name').val();
+	var item_name=$('#item_color').val();
+	var item_name=$('#item_size').val();
 	if(c == true){
-		location.href='/order/review?id='+cust_id; 
+		location.href='/review/reinsert?id='+ cust_id +'&itemno='+itemno; 
 	}
 }
+
+	
+$(document).ready(function(){
+
+});	
+	
 
 </script>
 
@@ -41,14 +51,17 @@ function rev(cust_id){
 		</thead>
 		<tbody>
 			<tr th:each="c:${list}">
-				<td href= "@{/order/review(id=${c.cust_id})}" th:text="${c.cust_id}"></td>
-				<td th:text="${c.item_name}"></td>
+				<td th:text="${c.cust_id}"></td>				 
+				<td th:text="${c.item_name}" id = "item_name"></td>
 				<td><img id="r_img" th:src="'/img/'+${c.item_img}"></td>
 				<td th:text="${c.item_cnt}"></td>
 				<td th:text="${c.total_cnt}"></td>
 				<td th:text="${c.shipstatus}"></td>
-				<td><button th:onclick="rev([[${c.cust_id}]]);" class="btn btn-default btn-sm"> <!-- button을 누를때마다 rev()함수 호출 -->
-          		<span class="glyphicon glyphicon-pencil"></span> review       			  
+				<!-- <td href= "@{/order/review(id=${c.cust_id})}" th:text="${c.cust_id}"></td>
+				<input type=hidden th:value="${c.order_no}" readonly = "readonly" id ="order_no" > -->
+				<input type=hidden th:value="${c.itemno}" readonly = "readonly" id ="itemno" >
+				<td><button th:onclick="rev([[${c.cust_id}]]);" class="btn btn-default btn-sm"  id = "review_btn"> <!-- button을 누를때마다 rev()함수 호출 -->
+          		<span class="glyphicon glyphicon-pencil"></span> review     			  
           		</button></td>			
 
 				

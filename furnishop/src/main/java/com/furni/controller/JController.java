@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.furni.dto.DetailorderDTO;
 import com.furni.dto.OrderpageDTO;
+import com.furni.dto.ReviewDTO;
 import com.furni.dto.ShipDTO;
 import com.furni.service.DetailorderService;
 import com.furni.service.OrderpageService;
@@ -89,9 +90,16 @@ public class JController {
 	}
 	
 	@RequestMapping("/ordershipdetail")
-	public String ordershipdetail(Model model, String id) {
+	public String ordershipdetail(Model model, String id,ReviewDTO re) {
 		List<ShipDTO> list = null;
+		
 		try {
+			
+			service3.register(re);
+			int i = re.getReviewno();
+			model.addAttribute("list", i);
+			model.addAttribute("center",dir+"review/insert");
+			
 			list = service2.shipall(id);
 			model.addAttribute("list", list);
 			model.addAttribute("center",dir+"detail");

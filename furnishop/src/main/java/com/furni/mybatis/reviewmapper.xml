@@ -13,8 +13,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="reviewitem" parameterType="Integer" resultType="ReviewDTO">
-	SELECT re.reviewno, re.custid, re.itemno, it.itemname as item_name, 
-	it.itemcolor as item_color, it.itemsize as item_size
+	SELECT re.reviewno, re.custid, re.itemno, it.itemname as item_name, re.rating as rating,re.reviewcon as reviewcon,  re.reviewdate,
+	it.itemcolor as item_color, it.itemsize as item_size, re.reviewimg as reviewimg
 	FROM review re
 	INNER JOIN item it ON re.itemno= it.itemno
 	WHERE re.itemno = #{itemno}	
@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insert1" parameterType="ReviewDTO"  >
-		INSERT INTO review VALUES (#{cartno}, #{custid}, NULL, #{rating}, #{reviewcon}, SYSDATE(), NULL,NULL)
+		INSERT INTO review VALUES (NULL, #{custid},#{itemno} , #{rating}, #{reviewcon}, SYSDATE(), NULL,NULL)
 	</insert>
 	
 	

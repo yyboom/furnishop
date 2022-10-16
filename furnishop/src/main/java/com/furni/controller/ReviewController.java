@@ -27,16 +27,15 @@ public class ReviewController {
 
 	
 	@RequestMapping("/reinsert")
-	public String reinsert(Model model,String id,Integer itemno) {
+	public String reinsert(Model model,String id) {
+
 		List<ReviewDTO> list = null;
 		try {
-				if(itemno != null) {
-					list = service.reviewitem(itemno);
-				}else {
-					list = service.reviewall(id);
-				}
-			model.addAttribute("list",list);
-			model.addAttribute("center",dir+"reinsert");
+				
+				list = service.reviewall(id);
+					
+				model.addAttribute("list",list);
+				model.addAttribute("center",dir+"reinsert");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
