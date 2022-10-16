@@ -21,7 +21,7 @@ class RevieItem {
 	void contextLoads() {
 		List<ReviewDTO> list = null;
 		try {
-			list = service.reviewitem(104);
+			list = service.reviewitem(102);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

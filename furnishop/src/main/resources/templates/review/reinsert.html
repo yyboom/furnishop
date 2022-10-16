@@ -32,7 +32,7 @@ $(document).ready(function(){
  		 <input type="hidden" name="custid" th:value="${re.custid}" readonly="readonly"> 
  	  </div>
  	  <div class="form-group">
- 		 <input type="hidden" name="itemno" th:value="${re.itemno}" readonly="readonly"> 
+ 		 <label>Item no :</label><td th:text="${re.itemno}" readonly="readonly"></td> 
  	  </div>	  
       <div class="form-group">
  		 <label>Item name :</label><td th:text="${re.item_name}" name="item_name"></td> 

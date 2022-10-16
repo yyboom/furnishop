@@ -8,13 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import com.furni.dto.ReviewDTO;
 import com.furni.service.ReviewService;
 import com.furni.frame.Util;
 
 @Controller
 @RequestMapping("/review")
-public class MWRController {
+public class ReviewController {
 
 	String dir = "review/";
 	
@@ -23,15 +24,19 @@ public class MWRController {
 	
 	@Autowired
 	ReviewService service;
+
 	
-	
-	@RequestMapping("/get")
-	public String get(Model model,String id) {
+	@RequestMapping("/reinsert")
+	public String reinsert(Model model,String id,Integer itemno) {
 		List<ReviewDTO> list = null;
 		try {
-			list = service.reviewall(id);
+				if(itemno != null) {
+					list = service.reviewitem(itemno);
+				}else {
+					list = service.reviewall(id);
+				}
 			model.addAttribute("list",list);
-			model.addAttribute("center",dir+"get");
+			model.addAttribute("center",dir+"reinsert");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -54,4 +59,6 @@ public class MWRController {
 		}
 		return "redirect:get";
 	}
+	
+	
 }

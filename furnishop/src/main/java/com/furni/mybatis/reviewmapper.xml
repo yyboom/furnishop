@@ -5,16 +5,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.furni.mapper.ReviewMapper">
 	
 	<select id="reviewall" parameterType="String" resultType="ReviewDTO">
-	SELECT re.reviewno, re.custid, re.itemno, it.itemname as item_name, re.rating, re.reviewcon, 
-	re.reviewimg as reviewimg, re.reviewdate, it.itemcolor as item_color, it.itemsize as item_size
+	SELECT re.reviewno, re.custid, re.itemno, it.itemname as item_name, 
+	it.itemcolor as item_color, it.itemsize as item_size
 	FROM review re
 	INNER JOIN item it ON re.itemno= it.itemno
 	WHERE re.custid = #{custid}	
 	</select>
 	
 	<select id="reviewitem" parameterType="Integer" resultType="ReviewDTO">
-	SELECT re.reviewno, re.custid, re.itemno, it.itemname as item_name, re.rating, re.reviewcon, 
-	re.reviewimg as reviewimg, re.reviewdate, it.itemcolor as item_color, it.itemsize as item_size
+	SELECT re.reviewno, re.custid, re.itemno, it.itemname as item_name, 
+	it.itemcolor as item_color, it.itemsize as item_size
 	FROM review re
 	INNER JOIN item it ON re.itemno= it.itemno
 	WHERE re.itemno = #{itemno}	
@@ -29,15 +29,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insert1" parameterType="ReviewDTO"  >
-		INSERT INTO review VALUES (#{cartno}, #{custid}, NULL, #{rating}, #{reviewcon}, NULL, NULL,NULL)
+		INSERT INTO review VALUES (#{cartno}, #{custid}, NULL, #{rating}, #{reviewcon}, SYSDATE(), NULL,NULL)
 	</insert>
 	
 	
 	<insert id="insert" parameterType="ReviewDTO">
-		INSERT INTO review VALUES (NULL, #{custid}, #{itemno}, #{rating}, #{reviewcon}, #{reviewdate}, #{reviewimg})
+		INSERT INTO review VALUES (NULL, #{custid}, #{itemno}, #{rating}, #{reviewcon}, SYSDATE(), #{reviewimg})
 	</insert>
 	<update id="update" parameterType="ReviewDTO">
-		UPDATE review SET custid=#{custid}, itemno=#{itemno}, rating=#{rating}, reviewcon=#{reviewcon}, reviewdate=#{reviewdate}, reviewimg=#{reviewimg} WHERE reviewno = #{reviewno}
+		UPDATE review SET custid=#{custid}, itemno=#{itemno}, rating=#{rating}, reviewcon=#{reviewcon}, reviewdate=SYSDATE(), reviewimg=#{reviewimg} WHERE reviewno = #{reviewno}
 	</update>
 	<delete id="delete" parameterType="String">
 		DELETE FROM review WHERE custid = #{custid}
