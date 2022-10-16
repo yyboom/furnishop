@@ -5,21 +5,25 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.furni.mapper.CartMapper">
 	
 	<select id="cartall" parameterType="String" resultType="CartDTO">
-	SELECT ca.cartno, ca.itemno, ca.custid, it.itemname as item_name, it.itemprice as item_price, it.itemcolor as item_color, 
-	it.itemimg as item_img, ca.cartcnt, it.itemsize as item_size
+	SELECT ca.cartno, ca.custid, ca.itemno, it.itemname as item_name, ca.cartcnt, it.itemcolor as item_color, it.itemprice as item_price,
+	it.itemimg as item_img, it.itemsize as item_size, (ca.cartcnt*it.itemprice) as total_price 
 	FROM cart ca
 	INNER JOIN item it ON ca.itemno= it.itemno
 	INNER JOIN cust cu ON ca.custid = cu.custid
 	WHERE ca.custid = #{custid}	
-	
-	
-	
+			
 	</select>
 	
- 	<select id="select" parameterType="String" resultType="CartDTO">
+	<select id="total_sum" parameterType="String" resultType="Integer">
+		SELECT sum(ca.cartcnt*it.itemprice) as total_sum  FROM cart ca
+		INNER JOIN item it ON ca.itemno= it.itemno
+		WHERE ca.custid = #{custid}
+	</select>
+	
+ 	<select id="select" parameterType="Integer" resultType="CartDTO">
 		SELECT * FROM cart ca
 		INNER JOIN item it ON ca.itemno= it.itemno
-		WHERE custid = #{custid}
+		WHERE ca.cartno = #{cartno}
 	</select>	
 	
 	<select id="selectall" resultType="CartDTO">
@@ -30,10 +34,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO cart VALUES (NULL, #{custid}, #{itemno}, #{cartcnt})
 	</insert>
 	
-	<update id="update" parameterType="CartDTO">
-		UPDATE cart SET itemno =#{itemno},cartcnt=#{cartcnt} WHERE custid = #{custid}
+	<update id="update" parameterType="CartDTO" >
+		UPDATE cart SET custid=#{custid}, itemno =#{itemno},cartcnt=#{cartcnt} WHERE cartno = #{cartno}
 	</update>
-	<delete id="delete" parameterType="Integer">
+	<delete id="delete" parameterType="Integer" >
 		DELETE FROM cart WHERE cartno = #{cartno}
 	</delete>
 	

@@ -44,6 +44,11 @@ public class CartService implements MyService<Integer, CartDTO>{
 	public List<CartDTO> cartall(String custid) throws Exception {
 		return mapper.cartall(custid);
 	}
+	
+	public int total_sum(String custid) throws Exception{
+		return mapper.total_sum(custid);
+	}
+	
 }
 
 
