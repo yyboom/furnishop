@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.furni.dto.CartDTO;
 import com.furni.dto.CustDTO;
 import com.furni.dto.WishlistDTO;
+import com.furni.service.CartService;
 import com.furni.service.CustService;
 import com.furni.service.WishlistService;
 
@@ -18,6 +20,9 @@ public class CustMainAjaxController {
 	
 	@Autowired
 	WishlistService service;
+	
+	@Autowired
+	CartService cart_service;
 	
 	@RequestMapping("/checkid")
 	public Object checkid(String cid){
@@ -46,7 +51,32 @@ public class CustMainAjaxController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(wish);
 		return "";
 	}
+	
+	@RequestMapping("/totalprice")
+	public Object totalprice(Integer item_price, Integer itemcnt) {
+		int totalprice = 0;
+		try {
+			totalprice=(item_price*itemcnt);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(totalprice);
+		return totalprice;
+	}
+	
+	@RequestMapping("/addcart")
+	public Object addcart(CartDTO cart) {
+		System.out.println(cart);
+		try {
+			cart_service.register(cart);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+
 
 }

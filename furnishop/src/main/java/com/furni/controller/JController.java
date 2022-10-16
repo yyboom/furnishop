@@ -46,17 +46,19 @@ public class JController {
 			service.register(order);
 			int i = order.getOrderno();
 			
-			list1= new DetailorderDTO(0, i, order.getItem_no(), order.getItem_name(), order.getItem_color(), order.getItemcnt(), order.getItem_img(), order.getCustid(), 0);
+			list1= new DetailorderDTO(0, i, order.getItem_no(), order.getItem_name(), order.getItem_color(), order.getItemcnt(), order.getItem_img(), order.getCustid(),0);
 			service1.register(list1);
 			
 			list=service.get(i);
 
 			model.addAttribute("list",list);
+			model.addAttribute("list1", list1);
 			model.addAttribute("center",dir+"insert");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		System.out.println(list);
+		System.out.println(list1);
 		return "main";
 	}
 	@RequestMapping("/insertimpl")

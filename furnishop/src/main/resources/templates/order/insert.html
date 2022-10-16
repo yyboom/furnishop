@@ -43,7 +43,7 @@
 				'method' : 'post',
 				'action' : '/order/insertimpl'
 			});
-			$('#insert_form').submit({});
+			$('#insert_form').submit();
 		});
 	});
 	
@@ -94,6 +94,7 @@
 	      <label>결제수단 : </label>
 	      <label><input class = "radio-inline" type="radio" name="orderpay"  value="네이버페이" checked> 네이버페이</label>
 	      <label><input class = "radio-inline" type="radio" name="orderpay"  value="카카오페이"> 카카오페이</label>
+	      <label><input class = "radio-inline" type="radio" name="orderpay"  value="신용카드"> 신용카드</label>
       </div>
 	<br> <br>
 		<p id="check">주문 내용을 확인하였으며, 정보 제공 등에 동의합니다.</p>
