@@ -12,4 +12,5 @@ import com.furni.frame.MyMapper;
 @Mapper
 public interface CartMapper extends MyMapper<Integer, CartDTO>{
 	public List<CartDTO> cartall(String custid) throws Exception;
+	public int total_sum(String custid) throws Exception;
 }

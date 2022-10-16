@@ -19,16 +19,51 @@ table > tbody > tr > td > img:hover {
 <script>
 
 function del(cartno){
-		var custid ='[[${session.logincust.custid}]]';
-		var c = confirm('삭제 하시겠습니까?');
-		if(c == true){
-			location.href='/cart/delete?cartno=' + cartno + '&custid=' + custid;	
-		}
-
-		
+	var custid ='[[${session.logincust.custid}]]';
+	var c = confirm('삭제 하시겠습니까?');
+	if(c == true){
+		location.href='/cart/delete?cartno=' + cartno + '&custid=' + custid;	
+	}	
 }
 
+$(document).ready(function(){
+	$('#up_btn').click(function(){
+		var num = $('#num').val();
+		var result =  Number(num) + 1;
+		$('#num').val(result);
+		
+		var custid ='[[${session.logincust.custid}]]';
+ 		var cartno = $('#cartno').text();
+		var cartcnt = $('#cartcnt').val() + 1;
+		var itemno = $('#itemno').text();
+		alert(cartno);
+		location.href='/cart/get?custid='+ custid + '&cartno='+ cartno +'&itemno=' + itemno + '&item_cnt=' + cartcnt ;
+	}); 	
+});
+	$('#down_btn').click(function(){
+		var num = $('#num').val();
+		if(num == '0'){
+			return;
+		}
+		var result =  Number(num) - 1;
+		$('#num').val(result);
+	});
 
+	$('#order_btn').click(function(){
+			movecart();
+	});
+
+});
+
+function movecart(){
+	var cartno = $('#cartno').text();
+	var custid ='[[${session.logincust.custid}]]';
+	var itemno = $('#itemno').text();
+	var cartcnt = $('#num').val();
+	//흰색이 설정해준 변수 분홍색은 자바 변수
+	location.href='/order/insert?custid='+ custid + '&cartno='+ cartno +'&itemno=' + itemno + '&item_cnt=' + cartcnt ;
+	
+}
 
 </script>
 <!-- Page level plugins -->
@@ -62,23 +97,58 @@ function del(cartno){
 			<!-- 반복문 -->
 			<tr th:each="c : ${list}">
 			<!--  id ="cid"  -->
-				<td th:text="${c.cartno}">No</td>
-				<td th:text="${c.custid}">ID</td>
-				<td><img th:src="'/img/'+${c.item_img}"></td>
-				<td th:text="${c.itemno}">Item No</td>
+				<td th:text="${c.cartno}" id = "cartno">No</td>
+				<td th:text="${c.custid}" id = "custid">ID</td>
+				<td>
+					<a th:href="@{/item/detail(id=${c.itemno})}">
+					<img th:src="'/img/'+${c.item_img}">
+				</td>
+				<td th:text="${c.itemno}" id = "itemno">Item No</td>
 				<td th:text="${c.item_name}">Item Name</td>
 				<td th:text="${c.item_color}">Item Color</td>
 				<td th:text="${c.item_size}">Item Size</td>
-				<td th:text="${c.item_price}">Price</td>
-				<td th:text="${c.cartcnt}">Count</td>
+				<td th:text="${c.item_price}" id = "price">Price</td>
 				<td>
+					
+						<input type = "number" th:value = "${c.cartcnt}" class = "form-control" id = "num" readonly = "readonly">						
+						<button type = "button" class = "btn btn-defalt btn-up" id = "up_btn">
+							<span class = "glyphicon glyphicon-arrow-up"></span>UP
+						</button>
+						
+						<button type = "button" class = "btn btn-defalt btn-down" id = "down_btn">
+							<span class = "glyphicon glyphicon-arrow-down"></span>DOWN
+						</button>
+						
+				</td>
+				<td>
+		        	<button type="button" class="btn btn-sm" id = "order_btn">
+		          	<a th:href="@{/order/insert(id=${session.logincust.custid})}"><span class="material-icons-outlined color">구매하기</span></a>
+		        	</button>				
+				
 					<button th:onclick="del([[${c.cartno}]])" type="button" class="btn btn-default btn-sm">
 						<span class="glyphicon glyphicon-trash"></span> Delete
 					</button>
+					
 				</td> 
+				
 			</tr>
 		</tbody>
-	</table>
 
+			<div class="container-fluid">
+			<table id="tbl_data" class="table">
+				<thead>
+					<tr>
+					<td th:text=" 'Total price : '+ ${sum} + '원'" id ="sum"></td>
+
+					</tr>
+
+				</thead>
+			</table>
+
+
+
+</table>
+
+</html>
 
 
