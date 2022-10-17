@@ -1,6 +1,5 @@
 package com.furni.mapper;
 
-
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -11,7 +10,8 @@ import com.furni.frame.MyMapper;
 
 @Repository
 @Mapper
-public interface DetailorderMapper extends MyMapper<Integer, DetailorderDTO>{
+public interface DetailorderMapper extends MyMapper<Integer, DetailorderDTO> {
 	public List<DetailorderDTO> detailall(String custid) throws Exception;
+
 	public DetailorderDTO select1(Integer orderno) throws Exception;
 }

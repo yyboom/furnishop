@@ -11,11 +11,11 @@ import com.furni.frame.MyService;
 import com.furni.mapper.CateMapper;
 
 @Service
-public class CateService implements MyService<Integer, CateDTO>{
+public class CateService implements MyService<Integer, CateDTO> {
 
 	@Autowired
 	CateMapper mapper;
-	
+
 	@Override
 	public void register(CateDTO v) throws Exception {
 		mapper.insert(v);

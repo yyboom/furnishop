@@ -10,6 +10,6 @@ import com.furni.frame.MyMapper;
 
 @Repository
 @Mapper
-public interface WishlistMapper extends MyMapper<Integer, WishlistDTO>{
+public interface WishlistMapper extends MyMapper<Integer, WishlistDTO> {
 	public List<WishlistDTO> wishall(String custid) throws Exception;
 }

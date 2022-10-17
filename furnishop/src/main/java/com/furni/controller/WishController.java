@@ -13,26 +13,26 @@ import com.furni.service.WishlistService;
 @Controller
 @RequestMapping("/wishlist")
 public class WishController {
-	
+
 	@Autowired
 	WishlistService service;
-	
-	String dir="wishlist/";
-	
+
+	String dir = "wishlist/";
+
 	@RequestMapping("/wishlistdetail")
 	public String wishlistdetail(Model model, String id) {
-		List<WishlistDTO> wish=null;
+		List<WishlistDTO> wish = null;
 		try {
-			wish=service.wishall(id);
+			wish = service.wishall(id);
 			model.addAttribute("wishlistdetail", wish);
 		} catch (Exception e) {
 			System.out.println("시스템 장애입니다.");
-			e.printStackTrace();  // 시스템 장애 등, 현업에서는 시스템 장애 화면 뿌려지게 함
+			e.printStackTrace(); // 시스템 장애 등, 현업에서는 시스템 장애 화면 뿌려지게 함
 		}
-		model.addAttribute("center", dir+"wishlistdetail");
+		model.addAttribute("center", dir + "wishlistdetail");
 		return "main";
 	}
-	
+
 	@RequestMapping("/deletewish")
 	public String deletewish(Model model, int wishno, String custid) {
 		try {
@@ -40,9 +40,7 @@ public class WishController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:wishlistdetail?id="+custid;
+		return "redirect:wishlistdetail?id=" + custid;
 	}
-	
-	
 
 }

@@ -6,16 +6,23 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.furni.mapper.CustMapper">
 	<!-- select를 부르면 argument로 String형태로 들어올 것이고 sql의 결과를 custDTO로 보내겠다. -->
 	<select id="select" parameterType="String" resultType="CustDTO">
-		SELECT c.custid,c.custpwd,c.custname,c.custaddr,c.custtel,c.custemail,c.custdate,c.custbirth,c.withdraw FROM cust c WHERE c.custid=#{custid}
+		SELECT
+		c.custid,c.custpwd,c.custname,c.custaddr,c.custtel,c.custemail,c.custdate,c.custbirth,c.withdraw
+		FROM cust c WHERE c.custid=#{custid}
 	</select>
 	<insert id="insert" parameterType="CustDTO">
-		INSERT INTO cust VALUES (#{custid},#{custpwd},#{custname},#{custaddr},#{custtel},#{custemail},SYSDATE(),1,#{custbirth})
+		INSERT INTO cust VALUES
+		(#{custid},#{custpwd},#{custname},#{custaddr},#{custtel},#{custemail},SYSDATE(),1,#{custbirth})
 	</insert>
 	<update id="update" parameterType="CustDTO">
-		UPDATE cust SET custpwd=#{custpwd},custname=#{custname},custaddr=#{custaddr},custtel=#{custtel},custemail=#{custemail},custdate=#{custdate},withdraw=#{withdraw},custbirth=#{custbirth} WHERE custid=#{custid}
+		UPDATE cust SET
+		custpwd=#{custpwd},custname=#{custname},custaddr=#{custaddr},custtel=#{custtel},custemail=#{custemail},custdate=#{custdate},withdraw=#{withdraw},custbirth=#{custbirth}
+		WHERE custid=#{custid}
 	</update>
 	<update id="delete1" parameterType="CustDTO">
-		UPDATE cust SET custpwd=#{custpwd},custname=#{custname},custaddr=#{custaddr},custtel=#{custtel},custemail=#{custemail},custdate=#{custdate},withdraw=0,custbirth=#{custbirth} WHERE custid=#{custid}
+		UPDATE cust SET
+		custpwd=#{custpwd},custname=#{custname},custaddr=#{custaddr},custtel=#{custtel},custemail=#{custemail},custdate=#{custdate},withdraw=0,custbirth=#{custbirth}
+		WHERE custid=#{custid}
 	</update>
-	
+
 </mapper>

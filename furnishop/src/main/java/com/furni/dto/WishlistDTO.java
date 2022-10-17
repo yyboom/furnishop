@@ -15,13 +15,9 @@ public class WishlistDTO {
 	private int wishno;
 	private String custid;
 	private int itemno;
-	
+
 	private String item_name;
 	private String item_color;
 	private String item_size;
-	
-
-	
-	
 
 }

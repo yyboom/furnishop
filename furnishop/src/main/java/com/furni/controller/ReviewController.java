@@ -21,47 +21,45 @@ import com.furni.service.ReviewService;
 public class ReviewController {
 
 	String dir = "review/";
-	
+
 	@Value("${reviewdir}")
 	String reviewdir;
-	
+
 	@Autowired
 	ReviewService service;
 
 	@Autowired
 	OrderpageService or_service;
-	
+
 	@RequestMapping("/reinsert")
-	public String reinsert(Model model,String id) {
+	public String reinsert(Model model, String id) {
 		List<OrderpageDTO> order = null;
-	
+
 		try {
-				order = or_service.orderreview(id);
-							
-				model.addAttribute("list",order);
-				
-				
+			order = or_service.orderreview(id);
+
+			model.addAttribute("list", order);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("center",dir+"reinsert");
+		model.addAttribute("center", dir + "reinsert");
 		return "main";
 	}
-	
+
 	@RequestMapping("/registerimpl")
 	public String registerimpl(Model model, ReviewDTO obj) {
 		String imgname = obj.getImg().getOriginalFilename();
 		obj.setReviewimg(imgname);
 		try {
 			Util.saveFile(obj.getImg(), reviewdir);
-			//하나 이상의 파일을 올리려면 이곳에서 추가
+			// 하나 이상의 파일을 올리려면 이곳에서 추가
 			service.register(obj);
-			//레지스터도 추가 
+			// 레지스터도 추가
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "redirect:reinsert?id=" + obj.getCustid();
 	}
-	
-	
+
 }

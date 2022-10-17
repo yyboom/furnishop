@@ -15,48 +15,36 @@ import com.furni.service.CartService;
 public class CartController {
 
 	String dir = "cart/";
-	
+
 	@Autowired
 	CartService service;
-	
-	
+
 	@RequestMapping("/get")
-	public String get(Model model,String id) {
+	public String get(Model model, String id) {
 		List<CartDTO> list = null;
 		Integer i = 0;
 		try {
 
-				list = service.cartall(id);
-				i = service.total_sum(id);
-				model.addAttribute("list",list);
-				model.addAttribute("sum",i);
+			list = service.cartall(id);
+			i = service.total_sum(id);
+			model.addAttribute("list", list);
+			model.addAttribute("sum", i);
 
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		model.addAttribute("center",dir+"get");
-			return "main";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("center", dir + "get");
+		return "main";
 	}
-	
+
 	@RequestMapping("/delete")
-	public String delete(Model model, Integer cartno,String custid) {
+	public String delete(Model model, Integer cartno, String custid) {
 		try {
 			service.remove(cartno);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:get?id="+ custid;
+		return "redirect:get?id=" + custid;
 	}
-	
+
 }
-
-
-
-
-
-
-
-
-
-

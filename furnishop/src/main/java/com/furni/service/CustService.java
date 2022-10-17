@@ -10,32 +10,32 @@ import com.furni.frame.MyService;
 import com.furni.mapper.CustMapper;
 
 @Service
-public class CustService implements MyService<String, CustDTO>{
-	
+public class CustService implements MyService<String, CustDTO> {
+
 	@Autowired
 	CustMapper mapper;
 
 	@Override
 	public void register(CustDTO v) throws Exception {
 		mapper.insert(v);
-		
+
 	}
 
 	@Override
 	public void remove(String k) throws Exception {
 		mapper.delete(k);
-		
+
 	}
 
 	@Override
 	public void modify(CustDTO v) throws Exception {
 		mapper.update(v);
-		
+
 	}
-	
+
 	public void delete1(CustDTO cust) throws Exception {
 		mapper.delete1(cust);
-		
+
 	}
 
 	@Override
@@ -47,6 +47,5 @@ public class CustService implements MyService<String, CustDTO>{
 	public List<CustDTO> get() throws Exception {
 		return mapper.selectall();
 	}
-
 
 }

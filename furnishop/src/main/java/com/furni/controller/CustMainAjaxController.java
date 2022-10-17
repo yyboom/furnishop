@@ -1,6 +1,5 @@
 package com.furni.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,27 +13,27 @@ import com.furni.service.WishlistService;
 
 @RestController
 public class CustMainAjaxController {
-	
+
 	@Autowired
 	CustService cust_service;
-	
+
 	@Autowired
 	WishlistService service;
-	
+
 	@Autowired
 	CartService cart_service;
-	
+
 	@RequestMapping("/checkid")
-	public Object checkid(String cid){
+	public Object checkid(String cid) {
 		String result = "";
-		//id가 데이터베이스에서 null값으로 나왔다면 register에서 새로 등록이 가능한 아이디로 됨!
+		// id가 데이터베이스에서 null값으로 나왔다면 register에서 새로 등록이 가능한 아이디로 됨!
 		CustDTO cust = null;
-		//데이터베이스에 연동!
+		// 데이터베이스에 연동!
 		try {
 			cust = cust_service.get(cid);
-			if(cust != null) {
+			if (cust != null) {
 				result = "f";
-			}else {
+			} else {
 				result = "t";
 			}
 		} catch (Exception e) {
@@ -43,7 +42,7 @@ public class CustMainAjaxController {
 		}
 		return result;
 	}
-	
+
 	@RequestMapping("/addwish")
 	public Object addwish(WishlistDTO wish) {
 		try {
@@ -53,18 +52,18 @@ public class CustMainAjaxController {
 		}
 		return "";
 	}
-	
+
 	@RequestMapping("/totalprice")
 	public Object totalprice(Integer item_price, Integer itemcnt) {
 		int totalprice = 0;
 		try {
-			totalprice=(item_price*itemcnt);
+			totalprice = (item_price * itemcnt);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return totalprice;
 	}
-	
+
 	@RequestMapping("/addcart")
 	public Object addcart(CartDTO cart) {
 		try {
@@ -74,6 +73,5 @@ public class CustMainAjaxController {
 		}
 		return "";
 	}
-
 
 }

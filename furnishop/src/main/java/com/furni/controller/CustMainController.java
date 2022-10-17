@@ -1,4 +1,4 @@
-	package com.furni.controller;
+package com.furni.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,8 +12,8 @@ import com.furni.service.CustService;
 
 @Controller
 public class CustMainController {
-	
-	String dir="cust/";
+
+	String dir = "cust/";
 
 	@Autowired
 	CustService cust_service;
@@ -26,15 +26,15 @@ public class CustMainController {
 	// login
 	@RequestMapping("/login")
 	public String login(Model model) {
-		model.addAttribute("center", dir+"login");
+		model.addAttribute("center", dir + "login");
 		return "main";
 	}
-	
-	//loginimpl->logout
+
+	// loginimpl->logout
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
-		//session을 거절하고 다시 main으로 보냄!
-		if(session != null) {
+		// session을 거절하고 다시 main으로 보냄!
+		if (session != null) {
 			session.invalidate();
 		}
 		return "redirect:/";
@@ -43,7 +43,7 @@ public class CustMainController {
 	// register
 	@RequestMapping("/register")
 	public String register(Model model) {
-		model.addAttribute("center", dir+"register");
+		model.addAttribute("center", dir + "register");
 		return "main";
 	}
 
@@ -54,18 +54,18 @@ public class CustMainController {
 		try {
 			cust = cust_service.get(custid);
 			if (cust == null) {
-				model.addAttribute("center", dir+"loginfail");
+				model.addAttribute("center", dir + "loginfail");
 			} else {
 				if (cust.getWithdraw() == 1) {
-						if(custpwd.equals(cust.getCustpwd())) {
-							session.setAttribute("logincust", cust);
-							model.addAttribute("center", "main");
-					}else {
-						model.addAttribute("center", dir+"loginfail");
+					if (custpwd.equals(cust.getCustpwd())) {
+						session.setAttribute("logincust", cust);
+						model.addAttribute("center", "main");
+					} else {
+						model.addAttribute("center", dir + "loginfail");
 					}
 					// id,pwd가 다 아닐 때
 				} else {
-					model.addAttribute("center", dir+"loginfail");
+					model.addAttribute("center", dir + "loginfail");
 				}
 			}
 		} catch (Exception e) {
@@ -86,12 +86,12 @@ public class CustMainController {
 			// 회원가입을 했을 때 자동으로 로그인이 된 것!
 			session.setAttribute("logincust", cust);
 			// 정상일때는
-			model.addAttribute("center", dir+"registerok");
+			model.addAttribute("center", dir + "registerok");
 			// 객체를 넣을 수도 있음!
 			model.addAttribute("rid", cust);
 		} catch (Exception e) {
 			// 중복된 id를 넣을 때는 !!registerfail로 가게 한다.
-			model.addAttribute("center", dir+"registerfail");
+			model.addAttribute("center", dir + "registerfail");
 			// registerfail page에 특정 값을 내보낼 때 model사용함! 이것이 tymleaf가 하는 일!
 			model.addAttribute("fid", cust.getCustid());
 		}
@@ -99,67 +99,68 @@ public class CustMainController {
 		return "main";
 	}
 
-	//custdetail
+	// custdetail
 	@RequestMapping("/custdetail")
 	public String custdetail(Model model, String id) {
 		CustDTO cust = null;
 		try {
-			cust=cust_service.get(id);
+			cust = cust_service.get(id);
 			model.addAttribute("custdetail", cust);
-			//centerpage는 이친구임(cust)의 정보를 가지고 있는!!
-			model.addAttribute("center", dir+"custdetail");
+			// centerpage는 이친구임(cust)의 정보를 가지고 있는!!
+			model.addAttribute("center", dir + "custdetail");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "main";
 	}
-	
-	//custupdate
+
+	// custupdate
 	@RequestMapping("/custupdate")
-	//id를 입력으로 받아와랴 해당하는 회원의 detail정보를 불러올 수 있음
+	// id를 입력으로 받아와랴 해당하는 회원의 detail정보를 불러올 수 있음
 	public String custupdate(Model model, String id) {
 		CustDTO cust = null;
 		try {
-			cust=cust_service.get(id);
-			//select해온 값을 담아서
+			cust = cust_service.get(id);
+			// select해온 값을 담아서
 			model.addAttribute("custupdate", cust);
-			//centerpage는 이친구임(cust)의 정보를 가지고 있는!!
-			//수정하는 화면으로 이동한다.
-			model.addAttribute("center", dir+"custupdate");
+			// centerpage는 이친구임(cust)의 정보를 가지고 있는!!
+			// 수정하는 화면으로 이동한다.
+			model.addAttribute("center", dir + "custupdate");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "main";
 	}
-	
-	//custupdateimpl
+
+	// custupdateimpl
 	@RequestMapping("/custupdateimpl")
-	//id를 입력으로 받아와랴 해당하는 회원의 detail정보를 불러올 수 있음
+	// id를 입력으로 받아와랴 해당하는 회원의 detail정보를 불러올 수 있음
 	public String custupdateimpl(Model model, CustDTO updatecust) {
-		//수정 한 이우에 custdetail 페이지로 이동
-	    try {
-			cust_service.modify(updatecust);;
+		// 수정 한 이우에 custdetail 페이지로 이동
+		try {
+			cust_service.modify(updatecust);
+			;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//controller안에서 다른 controller호출할 때
-		return "redirect:custdetail?id="+updatecust.getCustid();
+		// controller안에서 다른 controller호출할 때
+		return "redirect:custdetail?id=" + updatecust.getCustid();
 	}
-	
+
 	@RequestMapping("/custwithdraw")
-	//id를 입력으로 받아와랴 해당하는 회원의 detail정보를 불러올 수 있음
+	// id를 입력으로 받아와랴 해당하는 회원의 detail정보를 불러올 수 있음
 	public String custwithdraw(Model model, String id) {
 		CustDTO cust = null;
 		try {
-			cust=cust_service.get(id);
-			//select해온 값을 담아서
+			cust = cust_service.get(id);
+			// select해온 값을 담아서
 			model.addAttribute("custwithdraw", cust);
-			//centerpage는 이친구임(cust)의 정보를 가지고 있는!!
-			//수정하는 화면으로 이동한다.
-			model.addAttribute("center", dir+"custwithdraw");
+			// centerpage는 이친구임(cust)의 정보를 가지고 있는!!
+			// 수정하는 화면으로 이동한다.
+			model.addAttribute("center", dir + "custwithdraw");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -167,21 +168,21 @@ public class CustMainController {
 		return "main";
 
 	}
-	
+
 	@RequestMapping("/custwithdrawimpl")
-	//id를 입력으로 받아와랴 해당하는 회원의 detail정보를 불러올 수 있음
+	// id를 입력으로 받아와랴 해당하는 회원의 detail정보를 불러올 수 있음
 	public String custwithdrawimpl(Model model, CustDTO withdrawcust, HttpSession session) {
-		
-	    try {
+
+		try {
 			cust_service.modify(withdrawcust);
-			if(session != null) {
+			if (session != null) {
 				session.invalidate();
 			}
-	    }catch (Exception e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//controller안에서 다른 controller호출할 때
+		// controller안에서 다른 controller호출할 때
 		return "main";
 	}
 }

@@ -23,5 +23,5 @@ public class CustDTO {
 	private Date custdate;
 	private int withdraw;
 	private int custbirth;
-	
+
 }

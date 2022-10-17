@@ -22,7 +22,7 @@ public class ItemDTO {
 	private String itemimg1;
 	private int itemstock;
 	private int itemsell;
-	
+
 	private int item_cnt;
 
 }

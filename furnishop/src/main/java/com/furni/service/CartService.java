@@ -10,14 +10,14 @@ import com.furni.frame.MyService;
 import com.furni.mapper.CartMapper;
 
 @Service
-public class CartService implements MyService<Integer, CartDTO>{
+public class CartService implements MyService<Integer, CartDTO> {
 
 	@Autowired
 	CartMapper mapper;
-	
+
 	@Override
 	public void register(CartDTO v) throws Exception {
-		mapper.insert(v);		
+		mapper.insert(v);
 	}
 
 	@Override
@@ -25,7 +25,6 @@ public class CartService implements MyService<Integer, CartDTO>{
 		mapper.delete(k);
 	}
 
-	
 	@Override
 	public void modify(CartDTO v) throws Exception {
 		mapper.update(v);
@@ -44,21 +43,12 @@ public class CartService implements MyService<Integer, CartDTO>{
 	public List<CartDTO> cartall(String custid) throws Exception {
 		return mapper.cartall(custid);
 	}
-	
-	public int total_sum(String custid) throws Exception{
+
+	public int total_sum(String custid) throws Exception {
 		return mapper.total_sum(custid);
 	}
-	
-	public CartDTO selectString(String custid) throws Exception{
+
+	public CartDTO selectString(String custid) throws Exception {
 		return mapper.selectString(custid);
 	}
 }
-
-
-
-
-
-
-
-
-

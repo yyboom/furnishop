@@ -13,11 +13,11 @@ import lombok.ToString;
 @ToString
 public class DetailorderDTO {
 	private int detailno;
-	//orderpage에서 받아올 orderno
+	// orderpage에서 받아올 orderno
 	private int orderno;
 	private int itemno;
 
-	//조인
+	// 조인
 	private String item_name;
 	private String item_color;
 	private int item_cnt;

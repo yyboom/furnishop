@@ -8,6 +8,6 @@ import com.furni.frame.MyMapper;
 
 @Repository
 @Mapper
-public interface CateMapper extends MyMapper<Integer, CateDTO>{
+public interface CateMapper extends MyMapper<Integer, CateDTO> {
 
 }

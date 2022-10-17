@@ -18,14 +18,14 @@ public class OrderpageDTO {
 	private String custid;
 	private Date orderdate;
 	private String orderpay;
-	private int itemcnt;		
+	private int itemcnt;
 	private String elevator;
 	private String shipname;
-	private String shipaddr;		
+	private String shipaddr;
 	private String reciever;
 	private String recievertel;
-	
-	//조인
+
+	// 조인
 	private String item_name;
 	private int item_price;
 	private int total_price;
@@ -33,6 +33,5 @@ public class OrderpageDTO {
 	private String item_color;
 	private String item_size;
 	private int item_no;
-
 
 }

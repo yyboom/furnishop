@@ -10,27 +10,27 @@ import com.furni.frame.MyService;
 import com.furni.mapper.ShipMapper;
 
 @Service
-public class ShipService implements MyService<Integer, ShipDTO>{
-	
+public class ShipService implements MyService<Integer, ShipDTO> {
+
 	@Autowired
 	ShipMapper mapper;
 
 	@Override
 	public void register(ShipDTO v) throws Exception {
 		mapper.insert(v);
-		
+
 	}
 
 	@Override
 	public void remove(Integer k) throws Exception {
 		mapper.delete(k);
-		
+
 	}
 
 	@Override
 	public void modify(ShipDTO v) throws Exception {
 		mapper.update(v);
-		
+
 	}
 
 	@Override
@@ -42,12 +42,12 @@ public class ShipService implements MyService<Integer, ShipDTO>{
 	public List<ShipDTO> get() throws Exception {
 		return mapper.selectall();
 	}
-	
-	public List<ShipDTO> shipall(String cust_id) throws Exception{
+
+	public List<ShipDTO> shipall(String cust_id) throws Exception {
 		return mapper.shipall(cust_id);
 	}
-	
-	public ShipDTO selectone(int detailno) throws Exception{
+
+	public ShipDTO selectone(int detailno) throws Exception {
 		return mapper.selectone(detailno);
 	}
 

@@ -10,8 +10,9 @@ import com.furni.frame.MyMapper;
 
 @Repository
 @Mapper
-public interface ShipMapper extends MyMapper<Integer, ShipDTO>{
+public interface ShipMapper extends MyMapper<Integer, ShipDTO> {
 	public List<ShipDTO> shipall(String cust_id) throws Exception;
+
 	public ShipDTO selectone(int detailno) throws Exception;
 
 }

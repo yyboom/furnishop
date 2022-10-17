@@ -10,8 +10,9 @@ import com.furni.frame.MyMapper;
 
 @Repository
 @Mapper
-public interface ItemMapper extends MyMapper<Integer, ItemDTO>{
+public interface ItemMapper extends MyMapper<Integer, ItemDTO> {
 	public List<ItemDTO> selectall1(Integer cateno) throws Exception;
+
 	public List<ItemDTO> selectallcate(Integer cateno) throws Exception;
-	
+
 }

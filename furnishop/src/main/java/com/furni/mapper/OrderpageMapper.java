@@ -1,7 +1,5 @@
 package com.furni.mapper;
 
-
-
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -13,9 +11,12 @@ import com.furni.frame.MyMapper;
 
 @Repository
 @Mapper
-public interface OrderpageMapper extends MyMapper<Integer, OrderpageDTO>{
+public interface OrderpageMapper extends MyMapper<Integer, OrderpageDTO> {
 	public int register1(OrderpageDTO order) throws Exception;
-	public List<OrderpageDTO>orderall(String custid) throws Exception;
+
+	public List<OrderpageDTO> orderall(String custid) throws Exception;
+
 	public void insert1(OrderpageDTO order, DetailorderDTO detail) throws Exception;
+
 	public List<OrderpageDTO> orderreview(String custid) throws Exception;
 }

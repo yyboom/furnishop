@@ -11,11 +11,11 @@ import com.furni.frame.MyService;
 import com.furni.mapper.WishlistMapper;
 
 @Service
-public class WishlistService implements MyService<Integer, WishlistDTO>{
+public class WishlistService implements MyService<Integer, WishlistDTO> {
 
 	@Autowired
 	WishlistMapper mapper;
-	
+
 	@Override
 	public void register(WishlistDTO v) throws Exception {
 		mapper.insert(v);
@@ -40,8 +40,8 @@ public class WishlistService implements MyService<Integer, WishlistDTO>{
 	public List<WishlistDTO> get() throws Exception {
 		return mapper.selectall();
 	}
-	
-	public List<WishlistDTO> wishall(String custid) throws Exception{
+
+	public List<WishlistDTO> wishall(String custid) throws Exception {
 		return mapper.wishall(custid);
 	}
 

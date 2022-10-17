@@ -17,7 +17,7 @@ public class ShipDTO {
 	private int shipno;
 	private int detailno;
 	private String shipstatus;
-	
+
 	private String cust_id;
 	private int order_no;
 	private Date order_date;

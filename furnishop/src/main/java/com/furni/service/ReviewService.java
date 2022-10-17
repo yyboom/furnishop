@@ -10,14 +10,14 @@ import com.furni.frame.MyService;
 import com.furni.mapper.ReviewMapper;
 
 @Service
-public class ReviewService implements MyService<String, ReviewDTO>{
+public class ReviewService implements MyService<String, ReviewDTO> {
 
 	@Autowired
 	ReviewMapper mapper;
-	
+
 	@Override
 	public void register(ReviewDTO v) throws Exception {
-		mapper.insert(v);		
+		mapper.insert(v);
 	}
 
 	@Override
@@ -43,33 +43,24 @@ public class ReviewService implements MyService<String, ReviewDTO>{
 	public List<ReviewDTO> selectall(String custid) throws Exception {
 		return mapper.selectall(custid);
 	}
-	
+
 	public List<ReviewDTO> reviewall(String custid) throws Exception {
 		return mapper.reviewall(custid);
 	}
-	
-	public List<ReviewDTO> reviewitem(Integer itemno) throws Exception{
+
+	public List<ReviewDTO> reviewitem(Integer itemno) throws Exception {
 		return mapper.reviewitem(itemno);
 	}
-	
-	public ReviewDTO insert1(ReviewDTO obj) throws Exception{
+
+	public ReviewDTO insert1(ReviewDTO obj) throws Exception {
 		return mapper.insert1(obj);
 	}
-	
-	public ReviewDTO insertitem(ReviewDTO obj) throws Exception{
+
+	public ReviewDTO insertitem(ReviewDTO obj) throws Exception {
 		return mapper.insertitem(obj);
 	}
-	
-	public ReviewDTO select1(Integer reviewno) throws Exception{
+
+	public ReviewDTO select1(Integer reviewno) throws Exception {
 		return mapper.select1(reviewno);
 	}
 }
-
-
-
-
-
-
-
-
-

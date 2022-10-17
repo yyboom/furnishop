@@ -10,11 +10,11 @@ import com.furni.frame.MyService;
 import com.furni.mapper.ItemMapper;
 
 @Service
-public class ItemService implements MyService<Integer, ItemDTO>{
+public class ItemService implements MyService<Integer, ItemDTO> {
 
 	@Autowired
 	ItemMapper mapper;
-	
+
 	@Override
 	public void register(ItemDTO v) throws Exception {
 		mapper.insert(v);
@@ -39,12 +39,13 @@ public class ItemService implements MyService<Integer, ItemDTO>{
 	public List<ItemDTO> get() throws Exception {
 		return mapper.selectall();
 	}
-	
+
 	public List<ItemDTO> selectall1(Integer k) throws Exception {
 		return mapper.selectall1(k);
 	}
+
 	public List<ItemDTO> selectallcate(Integer k) throws Exception {
 		return mapper.selectallcate(k);
-	}	
+	}
 
 }

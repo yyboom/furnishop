@@ -15,7 +15,4 @@ public class CateDTO {
 	private int cateno;
 	private String catename;
 
-	
-	
-
 }
