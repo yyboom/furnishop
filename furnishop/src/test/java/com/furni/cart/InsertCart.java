@@ -12,15 +12,14 @@ class InsertCart {
 
 	@Autowired
 	CartService service;
-	
+
 	@Test
 	void contextLoads() {
 		try {
-			service.register(new CartDTO(0, "id03", 104, 1, "소파", 0, null, null, null,0,0));
+			service.register(new CartDTO(0, "id03", 104, 1, "소파", 0, null, null, null, 0, 0));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 }
-

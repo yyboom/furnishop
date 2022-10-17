@@ -14,7 +14,7 @@ class GetOrderReview {
 
 	@Autowired
 	OrderpageService service;
-	
+
 	@Test
 	void contextLoads() {
 		List<OrderpageDTO> list = null;
@@ -23,7 +23,7 @@ class GetOrderReview {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			System.out.println(list);
+		System.out.println(list);
 	}
 
 }

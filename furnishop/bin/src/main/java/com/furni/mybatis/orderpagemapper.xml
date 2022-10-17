@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 어디를 통해서 들어오는지! -->
+<mapper namespace="com.furni.mapper.OrderpageMapper">
+	<select id="select" parameterType="Integer"
+		resultType="OrderpageDTO">
+		SELECT
+		o.orderno AS orderno,i.itemcolor as item_color, i.itemimg as item_img,
+		i.itemsize as item_size,o.custid,o.itemcnt,i.itemname AS item_name,
+		(i.itemprice*o.itemcnt) AS total_price FROM detailorder d
+		INNER JOIN
+		item i ON i.itemno=d.itemno
+		INNER JOIN orderpage o ON
+		o.orderno=d.orderno
+		INNER JOIN cust c ON c.custid=o.custid
+		WHERE
+		o.orderno = #{orderno}
+	</select>
+	<select id="selectall" resultType="OrderpageDTO">
+
+	</select>
+	<insert id="register1" parameterType="OrderpageDTO">
+		INSERT INTO orderpage VALUES
+		(NULL,#{custid},SYSDATE(),NULL,#{itemcnt},NULL,NULL,NULL,NULL,NULL)
+		<selectKey keyProperty="orderno" resultType="Integer"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	<!-- 처음 insert하는 부분!! -->
+	<insert id="insert" parameterType="OrderpageDTO">
+		INSERT INTO orderpage VALUES
+		(NULL,#{custid},SYSDATE(),NULL,#{itemcnt},NULL,NULL,NULL,NULL,NULL)
+		<selectKey keyProperty="orderno" resultType="Integer"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	<update id="update" parameterType="OrderpageDTO">
+		UPDATE orderpage SET
+		custid=#{custid},orderdate=SYSDATE(),orderpay=#{orderpay},itemcnt=#{itemcnt},elevator=#{elevator},shipname=#{shipname},shipaddr=#{shipaddr},reciever=#{reciever},recievertel=#{recievertel}
+		WHERE orderno=#{orderno}
+	</update>
+	<delete id="delete" parameterType="Integer">
+
+	</delete>
+
+	<select id="orderreview" parameterType="String"
+		resultType="OrderpageDTO">
+
+		SELECT o.orderno as orderno, o.custid as custid, d.itemno
+		as item_no, i.itemname as item_name, i.itemimg as item_img,
+		i.itemcolor as item_color, i.itemsize as item_size FROM detailorder d
+		INNER JOIN orderpage o ON o.orderno= d.orderno
+		INNER JOIN item i ON
+		i.itemno=d.itemno
+		WHERE o.custid = #{custid}
+	</select>
+
+
+	<select id="orderall" parameterType="String"
+		resultType="OrderpageDTO">
+		SELECT
+		i.itemcolor as item_color, i.itemimg as item_img, i.itemsize as
+		item_size,o.custid,o.orderdate,o.orderpay,o.itemcnt,o.elevator,o.shipname,o.shipaddr,o.reciever,o.recievertel,i.itemname
+		AS item_name, i.itemprice*o.itemcnt AS total_price FROM detailorder d
+		INNER JOIN item i ON i.itemno=d.itemno
+		INNER JOIN orderpage o ON
+		o.orderno=d.orderno
+		INNER JOIN cust c ON c.custid=o.custid
+		WHERE
+		o.custid = #{custid}
+	</select>
+	<insert id="insert1" parameterType="OrderpageDTO">
+		INSERT INTO orderpage VALUES
+		(NULL,#{custid},#{orderdate},#{orderpay},#{itemcnt},#{elevator},#{shipname},#{shipaddr},#{reciever},#{recievertel},null,null,null)
+		<selectKey keyProperty="orderno" resultType="Integer"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+</mapper>

@@ -9,15 +9,15 @@ import com.furni.service.WishlistService;
 
 @SpringBootTest
 class InsertWishlist {
-	
+
 	@Autowired
 	WishlistService service;
 
 	@Test
 	void contextLoads() {
-		
+
 		try {
-			service.register(new WishlistDTO(0,"id09",109,"수납장","브라운","1500*750*737"));
+			service.register(new WishlistDTO(0, "id09", 109, "수납장", "브라운", "1500*750*737"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

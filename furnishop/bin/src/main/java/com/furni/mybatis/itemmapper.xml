@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.furni.mapper.ItemMapper">
+
+	<select id="select" parameterType="Integer" resultType="itemDTO">
+		SELECT *
+		FROM item WHERE itemno=#{itemno}
+	</select>
+	<select id="selectall" resultType="itemDTO">
+		SELECT c.cateno, c.catename,
+		i.itemname, i.itemprice, i.itemcolor, i.itemsize, i.itemimg,
+		i.itemimg1,
+		i.itemstock, i.itemsell FROM item AS i
+		INNER JOIN cate AS c ON c.cateno = i.cateno
+	</select>
+
+	<select id="selectall1" parameterType="Integer"
+		resultType="itemDTO">
+		SELECT c.cateno, c.catename, i.itemname, i.itemprice,
+		i.itemcolor, i.itemsize, i.itemimg, i.itemimg1,
+		i.itemstock, i.itemsell FROM item AS i
+		INNER JOIN cate AS c ON c.cateno = i.cateno
+		WHERE c.cateno=#{cateno}
+	</select>
+
+	<select id="selectallcate" parameterType="Integer"
+		resultType="itemDTO">
+		SELECT i.itemname,i.itemimg, i.itemno FROM item AS i
+		INNER
+		JOIN cate AS c ON c.cateno=i.cateno
+		WHERE i.cateno=#{cateno}
+	</select>
+
+
+
+	<insert id="insert" parameterType="itemDTO">
+
+	</insert>
+
+	<update id="update" parameterType="itemDTO">
+
+	</update>
+
+	<delete id="delete" parameterType="Integer">
+
+	</delete>
+
+</mapper>

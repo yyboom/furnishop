@@ -1,0 +1,86 @@
+<meta charset="utf-8">
+<link href="/css/star.css" rel="stylesheet" />
+<meta http-equiv="X-UA-Compatible" content="IE=chrome">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/re_style.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,300,0,0" />
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+
+<script>
+	$(document).ready(function() {
+		$('#register_btn').click(function() {
+			$('#review_form').attr({
+				'enctype' : 'multipart/form-data',
+				'method' : 'post',
+				'action' : '/review/registerimpl'
+			});
+			$('#review_form').submit();
+		});
+	});
+</script>
+
+
+<div class="container text-center">
+	<div class="login-card">
+		<h3>Review</h3>
+		<form id="review_form" th:each="o : ${list}" class="login-card-form">
+			<div class="card-body">
+
+				<div class="form-group">
+					<label>order number :</label>
+					<td th:text="${o.orderno}" name="orderno">
+				</div>
+				<div class="form-group">
+					<input type="hidden" name="custid" th:value="${o.custid}"
+						readonly="readonly">
+				</div>
+				<div class="form-group">
+					<input type="hidden" th:value="${o.item_no}" name='itemno'
+						readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label>Item name :</label>
+					<td th:text="${o.item_name}" name="item_name"></td>
+				</div>
+				<div class="form-group">
+					<td><img th:src="'/img/'+${o.item_img}" name="item_img"></td>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="reviewcon"
+						placeholder="리뷰를 작성하세요" name="reviewcon">
+				</div>
+				<div class="form-group">
+					<label for="name">Image:</label> <input type="file"
+						class="form-control" id="img" name="img">
+				</div>
+				<form class="mb-3" name="myform" id="myform" method="post">
+					<fieldset>
+						<label for="rate1">⭐1</label><input type="radio" name="rating"
+							value="1" id="rate1"> <label for="rate2">⭐2</label><input
+							type="radio" name="rating" value="2" id="rate2"> <label
+							for="rate3">⭐3</label><input type="radio" name="rating" value="3"
+							id="rate3"> <label for="rate4">⭐4</label><input
+							type="radio" name="rating" value="4" id="rate4"> <label
+							for="rate5">⭐5</label><input type="radio" name="rating" value="5"
+							id="rate5">
+
+					</fieldset>
+				</form>
+
+				<div class="form-group">
+					<label>Item color:</label><input type="text" name="item_color"
+						th:value="${o.item_color}" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label>Item size:</label><input type="text" name="item_size"
+						th:value="${o.item_size}" readonly="readonly">
+				</div>
+				<button id="register_btn" class="btn btn-default">Register</button>
+			</div>
+			<label></label>
+
+		</form>
+	</div>
+</html>

@@ -12,7 +12,7 @@ class GetCart {
 
 	@Autowired
 	CartService service;
-	
+
 	@Test
 	void contextLoads() {
 		CartDTO cart = null;

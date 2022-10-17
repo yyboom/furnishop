@@ -12,7 +12,7 @@ class GetCust {
 
 	@Autowired
 	CustService service;
-	
+
 	@Test
 	void contextLoads() {
 		CustDTO cust = null;

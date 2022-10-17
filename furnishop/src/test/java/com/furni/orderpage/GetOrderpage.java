@@ -7,13 +7,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.furni.dto.OrderpageDTO;
 import com.furni.service.OrderpageService;
 
-
 @SpringBootTest
 class GetOrderpage {
 
 	@Autowired
 	OrderpageService service;
-	
+
 	@Test
 	void contextLoads() {
 		OrderpageDTO order = null;

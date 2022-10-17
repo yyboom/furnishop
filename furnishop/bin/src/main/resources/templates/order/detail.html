@@ -1,0 +1,80 @@
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/re_style.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,300,0,0" />
+<style>
+#r_img {
+	width: 150px;
+}
+
+h3 {
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+</style>
+<script>
+	function rev(cust_id) {
+		var c = confirm('리뷰를 작성 하시겠습니까?');
+		var itemno = $('#itemno').val();
+		var item_name = $('#item_name').val();
+		var item_name = $('#item_color').val();
+		var item_name = $('#item_size').val();
+		if (c == true) {
+			location.href = '/review/reinsert?id=' + cust_id + '&itemno='
+					+ itemno;
+		}
+	}
+
+	$(document).ready(function() {
+
+	});
+</script>
+
+<!-- Container (The Band Section) -->
+<div class="container text-center">
+	<div class="login-card">
+		<h3>Order/Ship Detail</h3>
+		<table id="otb" class="table">
+			<thead>
+				<tr class="active">
+
+					<th>회원아이디</th>
+					<th>상품명</th>
+					<th>상품이미지</th>
+					<th>상품수량</th>
+					<th>주문금액</th>
+					<th>배송상태</th>
+					<th>리뷰작성</th>
+
+
+
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="c:${list}">
+					<td th:text="${c.cust_id}"></td>
+					<td th:text="${c.item_name}" id="item_name"></td>
+					<td><img id="r_img" th:src="'/img/'+${c.item_img}"></td>
+					<td th:text="${c.item_cnt}"></td>
+					<td th:text="${c.total_cnt}"></td>
+					<td th:text="${c.shipstatus}"></td>
+					<!-- <td href= "@{/order/review(id=${c.cust_id})}" th:text="${c.cust_id}"></td>
+				<input type=hidden th:value="${c.order_no}" readonly = "readonly" id ="order_no" > -->
+					<input type=hidden th:value="${c.itemno}" readonly="readonly"
+						id="itemno">
+					<td><button th:onclick="rev([[${c.cust_id}]]);"
+							class="btn btn-default btn-sm" id="review_btn">
+							<!-- button을 누를때마다 rev()함수 호출 -->
+							<span class="glyphicon glyphicon-pencil"></span> review
+						</button></td>
+
+
+
+				</tr>
+
+			</tbody>
+		</table>
+		<br>
+
+	</div>

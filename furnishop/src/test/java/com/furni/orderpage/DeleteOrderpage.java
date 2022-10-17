@@ -6,13 +6,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.furni.service.OrderpageService;
 
-
 @SpringBootTest
 class DeleteOrderpage {
 
 	@Autowired
 	OrderpageService service;
-	
+
 	@Test
 	void contextLoads() {
 		try {

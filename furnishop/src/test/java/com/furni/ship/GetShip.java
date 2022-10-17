@@ -12,7 +12,7 @@ class GetShip {
 
 	@Autowired
 	ShipService service;
-	
+
 	@Test
 	void contextLoads() {
 		ShipDTO ship = null;

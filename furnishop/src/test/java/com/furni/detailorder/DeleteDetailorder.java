@@ -11,7 +11,7 @@ class DeleteDetailorder {
 
 	@Autowired
 	DetailorderService service;
-	
+
 	@Test
 	void contextLoads() {
 		try {

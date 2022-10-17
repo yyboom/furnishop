@@ -9,7 +9,7 @@ import com.furni.service.ItemService;
 
 @SpringBootTest
 class GetItem {
-	
+
 	@Autowired
 	ItemService service;
 
@@ -17,7 +17,7 @@ class GetItem {
 	void contextLoads() {
 		ItemDTO item = null;
 		try {
-			item=service.get(100);
+			item = service.get(100);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

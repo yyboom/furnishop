@@ -9,15 +9,15 @@ import com.furni.service.WishlistService;
 
 @SpringBootTest
 class GetWishlist {
-	
+
 	@Autowired
 	WishlistService service;
 
 	@Test
 	void contextLoads() {
-		WishlistDTO wish=null;
+		WishlistDTO wish = null;
 		try {
-			wish=service.get(600);
+			wish = service.get(600);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

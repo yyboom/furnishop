@@ -11,7 +11,7 @@ class DeleteReview {
 
 	@Autowired
 	ReviewService service;
-	
+
 	@Test
 	void contextLoads() {
 		try {

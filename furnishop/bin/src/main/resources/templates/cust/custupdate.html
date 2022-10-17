@@ -1,0 +1,58 @@
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/re_style.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,300,0,0" />
+<style>
+#update_form {
+	width: 80%;
+}
+
+#insertbt {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+</style>
+<script>
+	$(document).ready(function() {
+		//id를 바꾸고 update버튼을 클릭했을 때
+		$('#insert_btn').click(function() {
+			//수정할 것인지 먼저 confirm
+			var c = confirm('수정 하시겠습니까 ?');
+			if (c == true) {
+				//이때만 attribute setting을 하고
+				$('#update_form').attr({
+					//form사이에 있는 것이 post의 형태로 updateimpl부분의 서버로 보내짐
+					'method' : 'post',
+					'action' : '/custupdateimpl'
+				});
+				//보낸다.
+				$('#update_form').submit();
+			} else {
+				return;
+			}
+		});
+	});
+</script>
+<div class="container text-center">
+	<div class="login-card">
+		<h3>Cust Detail Page</h3>
+		<form id="update_form">
+			ID:<input type="text" name="custid" th:value="${custupdate.custid}"
+				readonly="readonly"><br> PWD:<input type="text"
+				name="custpwd" th:value="${custupdate.custpwd}"><br>
+			NAME:<input type="text" name="custname"
+				th:value="${custupdate.custname}"><br> ADDR:<input
+				type="text" name="custaddr" th:value="${custupdate.custaddr}"><br>
+			TEL:<input type="text" name="custtel"
+				th:value="${custupdate.custtel}"><br> EAMIL:<input
+				type="text" name="custemail" th:value="${custupdate.custemail}"><br>
+			BIRTH:<input type="number" name="custbirth"
+				th:value="${custupdate.custbirth}"><br>
+		</form>
+		<div id="insertbt">
+			<button id="insert_btn" type="button" class="btn btn-default">
+				<span class="glyphicon glyphicon-ok"></span> 수정하기
+			</button>
+		</div>
+	</div>

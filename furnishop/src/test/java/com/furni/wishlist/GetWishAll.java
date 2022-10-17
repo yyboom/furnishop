@@ -11,19 +11,19 @@ import com.furni.service.WishlistService;
 
 @SpringBootTest
 class GetWishAll {
-	
+
 	@Autowired
 	WishlistService service;
 
 	@Test
 	void contextLoads() {
-		List<WishlistDTO> list=null;
+		List<WishlistDTO> list = null;
 		try {
-			list=service.wishall("id01");
+			list = service.wishall("id01");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		for(WishlistDTO w:list) {
+		for (WishlistDTO w : list) {
 			System.out.println(w);
 		}
 	}

@@ -9,13 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.furni.dto.OrderpageDTO;
 import com.furni.service.OrderpageService;
 
-
 @SpringBootTest
 class GetAllOrder {
 
 	@Autowired
 	OrderpageService service;
-	
+
 	@Test
 	void contextLoads() {
 		List<OrderpageDTO> list = null;

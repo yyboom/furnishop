@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="/css/re_style.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,300,0,0" />
+<meta charset="utf-8">
+
+<script>
+	function del(wishno) {
+		var custid = '[[${session.logincust.custid}]]'; //특정 아이디를 삭제하고 특정아이디의 화면으로 가기위함
+
+		var c = confirm('삭제하시겠습니까?');
+		if (c == true) {
+			location.href = '/wishlist/deletewish?wishno=' + wishno
+					+ '&custid=' + custid;
+		}
+	}
+</script>
+
+
+<div class="container text-center">
+	<div class="login-card">
+		<h3>Wishlist</h3>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Wishno</th>
+					<th>Cust ID</th>
+					<th>Itemno</th>
+					<th>Item Name</th>
+					<th>Item Color</th>
+					<th>Item Size</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="w:${wishlistdetail}">
+					<td th:text="${w.wishno}">Wishno</td>
+					<td th:text="${w.custid}">Cust ID</td>
+					<td th:text="${w.itemno}">Itemno</td>
+					<td th:text="${w.item_name}">Item Name</td>
+					<td th:text="${w.item_color}">Item Color</td>
+					<td th:text="${w.item_size}">Item Size</td>
+					<td>
+						<button th:onclick="del([[${w.wishno}]]);" type="button"
+							class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>

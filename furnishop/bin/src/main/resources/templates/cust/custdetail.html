@@ -1,0 +1,66 @@
+<meta http-equiv="X-UA-Compatible" content="IE=chrome">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/re_style.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,300,0,0" />
+<style>
+.container {
+	width: 100%;
+}
+
+h3 {
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+/* h2{
+	margin-top:	50px;
+	margin-bottom: 30px;
+	
+} */
+</style>
+
+
+<meta charset="utf-8">
+<div class="container text-center">
+	<div class="login-card">
+		<!-- <h2>Cust Detail</h2>  -->
+		<!-- 원랜 h2로 되어있었는데 ordershipdetail이랑 맞추려고 바꿈(둘 차이가 꽤 커서) -->
+		<h3>Cust Detail</h3>
+		<table class="table ">
+			<thead>
+				<tr class="active">
+					<th>ID</th>
+					<th>Password</th>
+					<th>Name</th>
+					<th>Addr</th>
+					<th>Tel</th>
+					<th>Email</th>
+					<th>Date</th>
+					<th>Birth</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- 우리가 itemlist에다가 item들을 넣어주었음! 다시 걔를 it로 지정함! -->
+				<tr th:each="c:${custdetail}">
+					<td th:text="${c.custid}"></td>
+					<td th:text="${c.custpwd}"></td>
+					<td th:text="${c.custname}"></td>
+					<td th:text="${c.custaddr}"></td>
+					<td th:text="${c.custtel}"></td>
+					<td th:text="${c.custemail}"></td>
+					<td th:text="${#dates.format(c.custdate,'yyyy-MM-dd')}"></td>
+					<td th:text="${c.custbirth}"></td>
+					<td><a th:href="@{/custupdate(id=${c.custid})}"><button
+								type="button" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-refresh"></span>
+							</button></a></td>
+					<td><a th:href="@{/custwithdraw(id=${c.custid})}"><button
+								type="button" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-trash"></span>
+							</button></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>

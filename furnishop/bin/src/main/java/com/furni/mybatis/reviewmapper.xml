@@ -1,1 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.furni.mapper.ReviewMapper">
+
+	<select id="reviewall" parameterType="String"
+		resultType="ReviewDTO">
+		SELECT re.reviewno, re.custid, re.itemno, it.itemname as item_name,
+		it.itemcolor as item_color, it.itemsize as item_size
+		FROM review re
+		INNER JOIN item it ON re.itemno= it.itemno
+		WHERE re.custid = #{custid}
+	</select>
+
+	<select id="reviewitem" parameterType="Integer"
+		resultType="ReviewDTO">
+		SELECT re.reviewno, re.custid, re.itemno, it.itemname as item_name,
+		re.rating as rating,re.reviewcon as reviewcon, re.reviewdate,
+		it.itemcolor as item_color, it.itemsize as item_size, re.reviewimg as
+		reviewimg
+		FROM review re
+		INNER JOIN item it ON re.itemno= it.itemno
+		WHERE re.itemno = #{itemno}
+	</select>
+
+	<select id="select1" parameterType="Integer"
+		resultType="ReviewDTO">
+		SELECT * FROM review WHERE reviewno = #{reviewno}
+	</select>
+
+
+	<select id="select" parameterType="String"
+		resultType="ReviewDTO">
+		SELECT * FROM review WHERE custid = #{custid}
+	</select>
+	<select id="selectall" parameterType="String"
+		resultType="ReviewDTO">
+		SELECT * FROM review WHERE custid = #{custid}
+	</select>
+
+	<insert id="insert1" parameterType="ReviewDTO">
+		INSERT INTO
+		review VALUES (NULL, #{custid},#{itemno} , #{rating}, #{reviewcon},
+		SYSDATE(), NULL,NULL)
+	</insert>
+
+	<insert id="insertitem" parameterType="ReviewDTO">
+		INSERT INTO
+		review VALUES (NULL, #{custid},#{itemno} , #{rating}, #{reviewcon},
+		SYSDATE(), NULL, #{item_name}, #{item_color} #{item_size} ,NULL)
+	</insert>
+
+
+	<insert id="insert" parameterType="ReviewDTO">
+		INSERT INTO review VALUES
+		(NULL, #{custid}, #{itemno}, #{rating}, #{reviewcon}, SYSDATE(),
+		#{reviewimg})
+	</insert>
+	<update id="update" parameterType="ReviewDTO">
+		UPDATE review SET
+		custid=#{custid}, itemno=#{itemno}, rating=#{rating},
+		reviewcon=#{reviewcon}, reviewdate=SYSDATE(), reviewimg=#{reviewimg}
+		WHERE reviewno = #{reviewno}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM review WHERE
+		custid = #{custid}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+

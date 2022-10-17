@@ -9,15 +9,15 @@ import com.furni.service.CateService;
 
 @SpringBootTest
 class GetCate {
-	
+
 	@Autowired
 	CateService service;
 
 	@Test
 	void contextLoads() {
-		CateDTO cate=null;
+		CateDTO cate = null;
 		try {
-			cate=service.get(1);
+			cate = service.get(1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

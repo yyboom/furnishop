@@ -1,0 +1,147 @@
+<meta charset="utf-8">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="X-UA-Compatible" content="IE=chrome">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/re_style.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,300,0,0" />
+<style>
+table>tbody>tr>td>img {
+	width: 100px;
+}
+
+table>tbody>tr>td>img:hover {
+	width: 99px;
+	border: 1px solid red;
+}
+</style>
+
+<script>
+	function del(cartno) {
+		var custid = '[[${session.logincust.custid}]]';
+		var c = confirm('삭제 하시겠습니까?');
+		if (c == true) {
+			location.href = '/cart/delete?cartno=' + cartno + '&custid='
+					+ custid;
+		}
+	};
+
+	function order(cartno) {
+		var custid = '[[${session.logincust.custid}]]';
+		var itemno = $('#itemno').text();
+		var itemname = $('#item_name').text();
+		var itemcolor = $('#item_color').text();
+		var itemsize = $('#item_size').text();
+		var itemcnt = $('#num').val();
+		var itemimghide = $('#img').text();
+		var itemprice = $('#item_price').text();
+		location.href = '/order/insert?custid=' + custid + '&item_no=' + itemno
+				+ '&item_name=' + itemname + '&item_color=' + itemcolor
+				+ '&item_size=' + itemsize + '&itemcnt=' + itemcnt
+				+ '&item_img=' + itemimghide + '&item_price=' + itemprice;
+
+	};
+
+	//참고한 자료:https://chobopark.tistory.com/m/6
+	function valcntbtn(type, ths) {
+		var $input = $(ths).parents("td").find("input[name='cartcnt']");
+		var tCount = Number($input.val());
+		var tEqCount = Number($(ths).parents("tr").find("td.form-control")
+				.html());
+
+		if (type == 'u') {
+			if (tCount >= 0)
+				$input.val(Number(tCount) + 1);
+
+		} else {
+			if (tCount > 0)
+				$input.val(Number(tCount) - 1)
+			else {
+				$input.val(Number(0))
+			}
+			;
+		}
+	};
+</script>
+<!-- Page level plugins -->
+<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/js/demo/datatables-demo.js"></script>
+
+
+
+<div class="container text-center">
+	<div class="login-card">
+		<h3>Cart List</h3>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>ID</th>
+					<th>Image</th>
+					<th>Item No</th>
+					<th>Item Name</th>
+					<th>Item Color</th>
+					<th>Item Size</th>
+					<th>Price</th>
+					<th>Count</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- 반복문 -->
+				<tr th:each="c : ${list}">
+					<!--  id ="cid"  -->
+					<td th:text="${c.cartno}" id="cartno">No</td>
+					<td th:text="${c.custid}" id="custid">ID</td>
+					<td><a th:href="@{/item/detail(id=${c.itemno})}"> <img
+							th:src="'/img/'+${c.item_img}" id="img"></td>
+					<td th:text="${c.itemno}" id="itemno">Item No</td>
+					<td th:text="${c.item_name}" id="item_name">Item Name</td>
+					<td th:text="${c.item_color}" id="item_color">Item Color</td>
+					<td th:text="${c.item_size}" id="item_size">Item Size</td>
+					<td th:text="${c.item_price}" id="item_price">Price</td>
+					<td><input type="number" th:value="${c.cartcnt}"
+						class="form-control" id="num" readonly="readonly" name=cartcnt>
+						<button th:onclick="valcntbtn('u',this)" type="button"
+							class="btn btn-defalt btn-up" id="up_btn">
+							<span class="glyphicon glyphicon-arrow-up"></span>UP
+						</button>
+
+						<button th:onclick="valcntbtn('p',this)" type="button"
+							class="btn btn-defalt btn-down" id="down_btn">
+							<span class="glyphicon glyphicon-arrow-down"></span>DOWN
+						</button></td>
+					<td>
+						<button th:onclick="order([[${c.cartno}]])" type="button"
+							class="btn btn-sm" id="order_btn">
+							<span class="material-icons-outlined color"></span>구매하기
+						</button>
+
+						<button th:onclick="del([[${c.cartno}]])" type="button"
+							class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-trash"></span> Delete
+						</button>
+
+					</td>
+
+				</tr>
+			</tbody>
+
+			<div class="container-fluid">
+				<table id="tbl_data" class="table">
+					<thead>
+						<tr>
+							<td th:text=" 'Total price : '+ ${sum} + '원'" id="sum"></td>
+
+						</tr>
+
+					</thead>
+				</table>
+		</table>
+	</div>
+</html>
+
+

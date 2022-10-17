@@ -12,16 +12,16 @@ class InsertReview {
 
 	@Autowired
 	ReviewService service;
-	
+
 	@Test
 	void contextLoads() {
 		try {
-			service.register(new ReviewDTO(0,"id08", 103, 1, "배송빠름 마감은 쏘쏘", "2022-10-14", "reviewchair4.jpg", null, null, null,null));
+			service.register(new ReviewDTO(0, "id08", 103, 1, "배송빠름 마감은 쏘쏘", "2022-10-14", "reviewchair4.jpg", null,
+					null, null, null));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 }
-

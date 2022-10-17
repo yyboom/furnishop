@@ -9,13 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.furni.dto.DetailorderDTO;
 import com.furni.service.DetailorderService;
 
-
 @SpringBootTest
 class GetAllDetailorder {
 
 	@Autowired
 	DetailorderService service;
-	
+
 	@Test
 	void contextLoads() {
 		List<DetailorderDTO> list = null;
@@ -25,8 +24,8 @@ class GetAllDetailorder {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		for(DetailorderDTO d:list) {
+
+		for (DetailorderDTO d : list) {
 			System.out.println(d);
 		}
 	}

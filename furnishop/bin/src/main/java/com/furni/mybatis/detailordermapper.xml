@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 어디를 통해서 들어오는지! -->
+<mapper namespace="com.furni.mapper.DetailorderMapper">
+	<select id="select" parameterType="Integer"
+		resultType="DetailorderDTO">
+		SELECT d.detailno, d.orderno, d.itemno, i.itemname AS
+		item_name, i.itemcolor AS item_color, i.itemimg AS item_img,o.itemcnt
+		AS item_cnt FROM detailorder d
+		INNER JOIN item i ON i.itemno = d.itemno
+		INNER JOIN orderpage o ON o.orderno = d.orderno
+		WHERE d.detailno=#{detailno}
+	</select>
+	<select id="select1" parameterType="Integer"
+		resultType="DetailorderDTO">
+		SELECT * FROM detailorder d
+		WHERE d.detailno=#{detailno}
+	</select>
+	<select id="selectall" resultType="DetailorderDTO">
+
+	</select>
+	<!-- id,pwd를 끄집어낼 때는 get,set으로 입력받고 나오게 될것 -->
+	<insert id="insert" parameterType="DetailorderDTO">
+		INSERT INTO detailorder VALUES (NULL,#{orderno},#{itemno})
+		<selectKey keyProperty="detailno" resultType="Integer"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	<update id="update" parameterType="DetailorderDTO">
+
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM detailorder WHERE
+		detailno=#{detailno}
+	</delete>
+	<select id="detailall" parameterType="String"
+		resultType="DetailorderDTO">
+		SELECT c.custid AS cust_id, i.itemname AS item_name,i.itemcolor AS
+		item_color, o.itemcnt AS item_cnt FROM detailorder d
+		INNER JOIN item i
+		ON i.itemno=d.itemno
+		INNER JOIN orderpage o ON o.orderno=d.orderno
+		INNER JOIN cust c ON c.custid=o.custid
+		<!-- table.sqlcolumn명 = #{java변수명} -->
+		WHERE c.custid = #{cust_id}
+	</select>
+</mapper>

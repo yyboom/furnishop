@@ -12,7 +12,7 @@ class InsertCust {
 
 	@Autowired
 	CustService service;
-	
+
 	@Test
 	void contextLoads() {
 		CustDTO cust = new CustDTO(null, null, null, null, null, null, null, 0, 0);
@@ -25,4 +25,3 @@ class InsertCust {
 	}
 
 }
-

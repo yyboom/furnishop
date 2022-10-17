@@ -9,14 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.furni.dto.ReviewDTO;
 import com.furni.service.ReviewService;
 
-
-
 @SpringBootTest
 class Reviewall {
 
 	@Autowired
 	ReviewService service;
-	
+
 	@Test
 	void contextLoads() {
 		List<ReviewDTO> list = null;
@@ -26,15 +24,11 @@ class Reviewall {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		for(ReviewDTO c:list) {
+
+		for (ReviewDTO c : list) {
 			System.out.println(c);
 		}
-		
+
 	}
 
 }
-
-
-
-

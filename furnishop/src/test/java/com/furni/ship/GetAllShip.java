@@ -9,14 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.furni.dto.ShipDTO;
 import com.furni.service.ShipService;
 
-
-
 @SpringBootTest
 class GetAllShip {
 
 	@Autowired
 	ShipService service;
-	
+
 	@Test
 	void contextLoads() {
 		List<ShipDTO> list = null;
@@ -26,15 +24,11 @@ class GetAllShip {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		for(ShipDTO c:list) {
+
+		for (ShipDTO c : list) {
 			System.out.println(c);
 		}
-		
+
 	}
 
 }
-
-
-
-

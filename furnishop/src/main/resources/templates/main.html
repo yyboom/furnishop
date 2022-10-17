@@ -16,6 +16,15 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
+.dropdown-toggle {
+	color: brown;
+	position: fixed
+}
+
+.dropdown-menu {
+	position: relative;
+}
+
 body {
 	font: 400 15px/1.8 Lato, sans-serif;
 	color: #777;
@@ -281,7 +290,7 @@ textarea {
 				<!-- id는 변수명임 -->
 				<li><a th:href="@{/cart/get(id=${session.logincust.custid})}">CART</a></li>
 				<li><a href="/logout">LOGOUT</a></li>
-				
+
 			</ul>
 		</div>
 	</div>
@@ -294,8 +303,7 @@ textarea {
 <footer class="text-center">
 	<a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
 		<span class="glyphicon glyphicon-chevron-up"></span>
-	</a><br>
-	<br>
+	</a><br> <br>
 	<p>
 		<a data-toggle="tooltip" title="Visit w3schools">www.3Furnishop.com</a>
 	</p>

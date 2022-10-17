@@ -14,7 +14,7 @@ class GetReview {
 
 	@Autowired
 	ReviewService service;
-	
+
 	@Test
 	void contextLoads() {
 		List<ReviewDTO> list = null;
@@ -23,7 +23,7 @@ class GetReview {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		for(ReviewDTO re:list) {
+		for (ReviewDTO re : list) {
 			System.out.println(re);
 		}
 	}

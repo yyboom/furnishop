@@ -11,19 +11,19 @@ import com.furni.service.CateService;
 
 @SpringBootTest
 class GetAllCate {
-	
+
 	@Autowired
 	CateService service;
 
 	@Test
 	void contextLoads() {
-		List<CateDTO> list=null;
+		List<CateDTO> list = null;
 		try {
-			list=service.get();
+			list = service.get();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		for(CateDTO i:list) {
+		for (CateDTO i : list) {
 			System.out.println(i);
 		}
 	}

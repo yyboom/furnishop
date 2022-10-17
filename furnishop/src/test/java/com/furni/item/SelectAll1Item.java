@@ -6,25 +6,24 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.furni.dto.CateDTO;
 import com.furni.dto.ItemDTO;
 import com.furni.service.ItemService;
 
 @SpringBootTest
 class SelectAll1Item {
-	
+
 	@Autowired
 	ItemService service;
 
 	@Test
 	void contextLoads() {
-		List<ItemDTO> list=null;
+		List<ItemDTO> list = null;
 		try {
-			list=service.selectall1(1);
+			list = service.selectall1(1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		for(ItemDTO i:list) {
+		for (ItemDTO i : list) {
 			System.out.println(i);
 		}
 	}

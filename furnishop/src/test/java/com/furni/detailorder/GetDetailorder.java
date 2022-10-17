@@ -7,14 +7,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.furni.dto.DetailorderDTO;
 import com.furni.service.DetailorderService;
 
-
-
 @SpringBootTest
 class GetDetailorder {
 
 	@Autowired
 	DetailorderService service;
-	
+
 	@Test
 	void contextLoads() {
 		DetailorderDTO detail = null;

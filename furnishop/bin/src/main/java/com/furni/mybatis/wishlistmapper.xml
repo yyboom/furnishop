@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.furni.mapper.WishlistMapper">
+
+	<select id="select" parameterType="Integer"
+		resultType="wishlistDTO">
+		SELECT * FROM wishlist WHERE wishno=#{wishno}
+	</select>
+	<select id="wishall" parameterType="String"
+		resultType="wishlistDTO">
+		SELECT w.wishno, i.itemno, w.custid, i.itemname AS
+		item_name, i.itemcolor AS item_color, i.itemsize AS item_size FROM
+		wishlist AS w
+		INNER JOIN item AS i ON i.itemno = w.itemno
+		WHERE
+		w.custid=#{custid}
+	</select>
+
+	<insert id="insert" parameterType="wishlistDTO">
+		INSERT INTO wishlist
+		VALUES(NULL, #{custid}, #{itemno})
+	</insert>
+
+	<update id="update" parameterType="wishlistDTO">
+
+	</update>
+
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM wishlist WHERE
+		wishno = #{wishno}
+	</delete>
+
+</mapper>

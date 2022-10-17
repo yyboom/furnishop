@@ -1,0 +1,129 @@
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,300,0,0" />
+<style>
+.card-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 100px;
+}
+
+#insert_form {
+	width: 80%;
+}
+
+#check {
+	text-align: center;
+	font-size: 17px;
+	font-weight: 600;
+	margin-top: 20px;
+}
+
+#insertbt {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#order {
+	font-size: 25px;
+	font-weight: 400;
+	margin-bottom: 60px;
+}
+
+#del {
+	font-size: 25px;
+	font-weight: 400;
+	margin-bottom: 60px;
+}
+</style>
+<script>
+	$(document).ready(function() {
+		$('#insert_btn').click(function() {
+			$('#insert_form').attr({
+				'method' : 'post',
+				'action' : '/order/insertimpl'
+			});
+			$('#insert_form').submit();
+		});
+	});
+</script>
+<!-- 주문/결제 -->
+<div class="card-body">
+	<div class="login-card">
+		<h3>주문&배송 정보</h3>
+		<form id="insert_form" th:each="o:${list}">
+			<div class="form-group1">
+				<div class="form-group">
+					<label>주문번호 : </label><input type="text" name="orderno"
+						th:value="${o.orderno}" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label>고객아이디 : </label><input type="text" name="custid"
+						th:value="${o.custid}" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label>상품명 : </label><input type="text" name="item_name"
+						th:value="${o.item_name}" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<img th:src="'/img/'+${o.item_img}">
+				</div>
+				<div class="form-group">
+					<label>상품색상 : </label><input type="text" name="item_color"
+						th:value="${o.item_color}" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label>상품개수 : </label><input type="text" name="itemcnt"
+						th:value="${o.itemcnt}" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label>상품총가격 : </label><input type="text" name="total_price"
+						th:value="${o.total_price}" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label>상품규격 : </label><input type="text" name="item_size"
+						th:value="${o.item_size}" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label>배송지명 : </label><input type="text" class="form-control"
+						id="shipname" placeholder="배송지명을 입력하세요" name="shipname">
+				</div>
+				<div class="form-group">
+					<label>배송주소 : </label><input type="text" class="form-control"
+						id="shipaddr" placeholder="배송주소를 입력하세요" name="shipaddr">
+				</div>
+				<div class="form-group">
+					<label>수령인 : </label><input type="text" class="form-control"
+						id="reciever" placeholder="수령인을 입력하세요" name="reciever">
+				</div>
+				<div class="form-group">
+					<label>수령인tel : </label><input type="text" class="form-control"
+						id="recievertel" placeholder="전화번호를 입력하세요" name="recievertel">
+				</div>
+			</div>
+
+			<div class="form-group2">
+				<label>엘레베이터 유무 : </label> <label><input
+					class="radio-inline" type="radio" name="elevator" value="Y" checked>
+					Y</label> <label><input class="radio-inline" type="radio"
+					name="elevator" value="N"> N</label> <br> <label>결제수단
+					: </label> <label><input class="radio-inline" type="radio"
+					name="orderpay" value="네이버페이" checked> 네이버페이</label> <label><input
+					class="radio-inline" type="radio" name="orderpay" value="카카오페이">
+					카카오페이</label> <label><input class="radio-inline" type="radio"
+					name="orderpay" value="신용카드"> 신용카드</label>
+			</div>
+			<br> <br>
+			<p id="check">주문 내용을 확인하였으며, 정보 제공 등에 동의합니다.</p>
+			<br>
+			<div id="insertbt">
+				<button id="insert_btn" type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-ok"></span> 결제하기
+				</button>
+			</div>
+		</form>
+	</div>
