@@ -21,7 +21,7 @@ public class CustDTO {
 	private String custtel;
 	private String custemail;
 	private Date custdate;
-	private String withdraw;
+	private int withdraw;
 	private int custbirth;
 	
 }
