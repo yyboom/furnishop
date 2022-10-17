@@ -149,6 +149,37 @@ public class CustMainController {
 		//controller안에서 다른 controller호출할 때
 		return "redirect:custdetail?id="+updatecust.getCustid();
 	}
-
 	
+	@RequestMapping("/custwithdraw")
+	//id를 입력으로 받아와랴 해당하는 회원의 detail정보를 불러올 수 있음
+	public String custwithdraw(Model model, String id) {
+		CustDTO cust = null;
+		try {
+			cust=cust_service.get(id);
+			//select해온 값을 담아서
+			model.addAttribute("custwithdraw", cust);
+			//centerpage는 이친구임(cust)의 정보를 가지고 있는!!
+			//수정하는 화면으로 이동한다.
+			model.addAttribute("center", dir+"custwithdraw");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "main";
+
+	}
+	
+	@RequestMapping("/custwithdrawimpl")
+	//id를 입력으로 받아와랴 해당하는 회원의 detail정보를 불러올 수 있음
+	public String custwithdrawimpl(Model model, CustDTO withdrawcust) {
+		
+	    try {
+			cust_service.modify(withdrawcust);;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//controller안에서 다른 controller호출할 때
+		return "main";
+	}
 }

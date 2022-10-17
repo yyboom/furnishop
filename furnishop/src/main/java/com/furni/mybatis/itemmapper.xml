@@ -11,7 +11,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT c.cateno, c.catename, i.itemname, i.itemprice, i.itemcolor, i.itemsize, i.itemimg, i.itemimg1, 
 				i.itemstock, i.itemsell FROM item AS i
 		INNER JOIN cate AS c ON c.cateno = i.cateno
-		
 	</select>
 	
 	<select id="selectall1" parameterType="Integer" resultType="itemDTO">
@@ -26,6 +25,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN cate AS c ON c.cateno=i.cateno
 		WHERE i.cateno=#{cateno}
 	</select>
+	
+	
 	
 	<insert id="insert" parameterType="itemDTO">
 		
