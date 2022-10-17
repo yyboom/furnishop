@@ -171,11 +171,14 @@ public class CustMainController {
 	
 	@RequestMapping("/custwithdrawimpl")
 	//id를 입력으로 받아와랴 해당하는 회원의 detail정보를 불러올 수 있음
-	public String custwithdrawimpl(Model model, CustDTO withdrawcust) {
+	public String custwithdrawimpl(Model model, CustDTO withdrawcust, HttpSession session) {
 		
 	    try {
-			cust_service.modify(withdrawcust);;
-		} catch (Exception e) {
+			cust_service.modify(withdrawcust);
+			if(session != null) {
+				session.invalidate();
+			}
+	    }catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
