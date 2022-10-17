@@ -52,8 +52,10 @@
 <div class="card-body">
   <h3>주문&배송 정보</h3>
   <form id="insert_form" th:each="o:${list}">
+      <div class="form-group1">
       <div class="form-group">
-    
+ 		 <label>주문번호 : </label><input type="text" name="orderno" th:value="${o.orderno}" readonly="readonly"> 
+ 	  </div > 
       <div class="form-group">
  		 <label>고객아이디 : </label><input type="text" name="custid" th:value="${o.custid}" readonly="readonly"> 
  	  </div>
@@ -66,8 +68,11 @@
  	  <div class="form-group">
  		 <label>상품색상 : </label><input type="text" name="item_color" th:value="${o.item_color}" readonly="readonly"> 
  	  </div>
+ 	  <div class="form-group">
+ 		 <label>상품개수 : </label><input type="text" name="itemcnt" th:value="${o.itemcnt}" readonly="readonly" > 
+ 	  </div>
  	   <div class="form-group">
- 		 <label>상품가격 : </label><input type="text" name="total_price" th:value="${o.total_price}" readonly="readonly" > 
+ 		 <label>상품총가격 : </label><input type="text" name="total_price" th:value="${o.total_price}" readonly="readonly" > 
  	  </div>
  	  <div class="form-group">
  		 <label>상품규격 : </label><input type="text" name="item_size" th:value="${o.item_size}" readonly="readonly"> 

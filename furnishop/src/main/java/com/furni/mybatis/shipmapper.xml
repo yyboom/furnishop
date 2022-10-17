@@ -29,5 +29,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE c.custid=#{cust_id};
 	</select>
 
+	<insert id="insert" parameterType="ShipDTO">
+		INSERT INTO ship VALUES (NULL,#{detailno},#{shipstatus})
+	</insert>
+
 
 </mapper>

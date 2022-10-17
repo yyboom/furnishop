@@ -43,12 +43,16 @@ public class JController {
 	public String insert(Model model, OrderpageDTO order) {
 		 OrderpageDTO list = null;
 		 DetailorderDTO list1= null;
+		 ShipDTO list2 = null;
 		try {
 			service.register(order);
 			int i = order.getOrderno();
 			
 			list1= new DetailorderDTO(0, i, order.getItem_no(), order.getItem_name(), order.getItem_color(), order.getItemcnt(), order.getItem_img(), order.getCustid(),0);
 			service1.register(list1);
+			
+			list2= new ShipDTO(0, list1.getDetailno(), "출고예정", order.getCustid(), order.getOrderno(), order.getOrderdate(), order.getItem_name(), order.getItemcnt(), order.getTotal_price(), order.getItem_img(), order.getItem_no());
+			service2.register(list2);
 			
 			list=service.get(i);
 
@@ -60,23 +64,25 @@ public class JController {
 		}
 		System.out.println(list);
 		System.out.println(list1);
+		System.out.println(list2);
 		return "main";
 	}
 	@RequestMapping("/insertimpl")
 	public String insertimpl(Model model, OrderpageDTO order) throws Exception {
 		try {
-			//service.insert1(order);
+			service.modify(order);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(order.getOrderno());
 		System.out.println(order);
-		return "redirect:detail";	//insert후 주문상세로 가라?
+		return "redirect:detail?id="+order.getCustid();
 	}
 	@RequestMapping("/detail")
 	public String detail(Model model, String id) {
-		List<DetailorderDTO> list = null;
+		List<ShipDTO> list = null;
 		try {
-			list = service1.detailall(id);
+			list = service2.shipall(id);
 			model.addAttribute("list", list);
 			model.addAttribute("center",dir+"detail");
 			

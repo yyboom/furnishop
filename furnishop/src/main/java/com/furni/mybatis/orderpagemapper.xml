@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="select" parameterType="Integer"
 		resultType="OrderpageDTO">
 		SELECT 
-		i.itemcolor as item_color, i.itemimg as item_img, i.itemsize as item_size,o.custid,o.itemcnt,i.itemname AS item_name, (i.itemprice*o.itemcnt) AS total_price FROM detailorder d
+		o.orderno AS orderno,i.itemcolor as item_color, i.itemimg as item_img, i.itemsize as item_size,o.custid,o.itemcnt,i.itemname AS item_name, (i.itemprice*o.itemcnt) AS total_price FROM detailorder d
 		INNER JOIN item i ON i.itemno=d.itemno
 		INNER JOIN orderpage o ON o.orderno=d.orderno
 		INNER JOIN cust c ON c.custid=o.custid
@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		</selectKey>
 	</insert>
 	<update id="update" parameterType="OrderpageDTO">
-
+		UPDATE orderpage SET custid=#{custid},orderdate=SYSDATE(),orderpay=#{orderpay},itemcnt=#{itemcnt},elevator=#{elevator},shipname=#{shipname},shipaddr=#{shipaddr},reciever=#{reciever},recievertel=#{recievertel} WHERE orderno=#{orderno}
 	</update>
 	<delete id="delete" parameterType="Integer">
 
