@@ -5,13 +5,20 @@
 body{
 	font-family: 'Poppins', sans-serif;
 	min-height: 100vh;
-	background:linear-gradient(to right,#333399,#ff00cc);
+	background: url("/img/background.jpg");
 	display:flex;
 	align-items: center;
 	justify-content: center;
 }
 
-
+.login-card{
+	width: 100%;
+	background: rgba(255,255,255,.7);
+	padding: 4rem;
+	border-radius: 10px;
+	position: relative;
+	margin-top:100px;
+}
 .login-card:before{
 	content: '';
 	position: absolute;
@@ -22,10 +29,6 @@ body{
 }
 
 
-.login-card-header{
-	text-align: center;
-}
-
 .login-card a{
 	text-decoration: none;
 	color: #35339a;
@@ -34,14 +37,14 @@ body{
 	margin-bottom: 2rem;
 }
 .login-card-header h2{
-	font-size: 6rem;
+	font-size: 4rem;
 	font-weight: 600;
 	margin-bottom: .5rem;
 }
 
-.login-card-header h1 + div {
+.login-card-header h2 + div {
 	font-size: calc(1rem*.8);
-	opacity: .8;
+		opacity: .4;
 }
 
 .login-card-form{
@@ -92,11 +95,6 @@ body{
 	letter-spacing: 2px;
 	transition: background .5s;
 }
-.login-card-form button:hover{
-	background-color: rgba(0, 0, 0, .85);
-	cursor: pointer;
-}
-
 
 /* Responsive */
 

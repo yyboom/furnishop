@@ -7,7 +7,6 @@ body{
 	min-height: 100vh;
 	/* background:linear-gradient(to right,#fefae0,#faedcd); */
 	background: url("/img/background.jpg");
-	background-size: cover;
 	display:flex;
 	align-items: center;
 	justify-content: center;
