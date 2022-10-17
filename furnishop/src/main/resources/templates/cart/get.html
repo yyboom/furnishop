@@ -27,7 +27,7 @@ function del(cartno){
 	}	
 }
 
-function moveorder(){
+function moveorder(cartno){
 	var custid = '[[${session.logincust.custid}]]';
     var itemno = $('#itemno').text();
     var itemname = $('#item_name').text();
@@ -40,13 +40,14 @@ function moveorder(){
 
 };
 
-$(document).ready(function(){
-	$('#up_btn').click(function(){
-		var num = $('#num').val();
-		var result =  Number(num) + 1;
-		$('#num').val(result);
+function upbtn(){
+	var num = $('#num').val();
+	var result =  Number(num) + 1;
+	$('#num').val(result);
+}
 
-	}); 	
+$(document).ready(function(){
+
 	
 	$('#down_btn').click(function(){
 	
@@ -107,7 +108,7 @@ $(document).ready(function(){
 				<td th:text="${c.item_price}" id = "item_price">Price</td>
 				<td >				
 						<input type = "number" th:value = "${c.cartcnt}" class = "form-control" id = "num" readonly = "readonly">						
-						<button type = "button" class = "btn btn-defalt btn-up" id = "up_btn">
+						<button th:onclick="upbtn([[${c.cartno}]])" type = "button" class = "btn btn-defalt btn-up" id = "up_btn">
 							<span class = "glyphicon glyphicon-arrow-up"></span>UP
 						</button>
 						
