@@ -25,11 +25,11 @@ public class WishController {
 		try {
 			wish=service.wishall(id);
 			model.addAttribute("wishlistdetail", wish);
-			model.addAttribute("center", dir+"wishlistdetail");
 		} catch (Exception e) {
 			System.out.println("시스템 장애입니다.");
 			e.printStackTrace();  // 시스템 장애 등, 현업에서는 시스템 장애 화면 뿌려지게 함
 		}
+		model.addAttribute("center", dir+"wishlistdetail");
 		return "main";
 	}
 	

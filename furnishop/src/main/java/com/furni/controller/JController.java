@@ -104,13 +104,12 @@ public class JController {
 			
 			list = service2.shipall(id);
 			model.addAttribute("list", list);
-			model.addAttribute("center",dir+"detail");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		model.addAttribute("center",dir+"detail");
 		return "main";
 	
 	}

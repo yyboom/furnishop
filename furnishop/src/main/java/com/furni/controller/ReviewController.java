@@ -39,11 +39,12 @@ public class ReviewController {
 				order = or_service.orderreview(id);
 							
 				model.addAttribute("list",order);
-				model.addAttribute("center",dir+"reinsert");
+				
 				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		model.addAttribute("center",dir+"reinsert");
 		return "main";
 	}
 	
