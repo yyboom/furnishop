@@ -38,6 +38,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	</delete>
 
+	<select id="orderreview" parameterType="String" resultType="OrderpageDTO">
+
+		SELECT o.orderno as orderno, o.custid as custid, d.itemno as item_no, i.itemname as item_name, i.itemimg as item_img,
+		i.itemcolor as item_color, i.itemsize as item_size FROM detailorder d
+		INNER JOIN orderpage o ON o.orderno= d.orderno
+		INNER JOIN item i ON i.itemno=d.itemno
+		WHERE o.custid = #{custid}
+	</select>
+
+
 	<select id="orderall" parameterType="String" resultType="OrderpageDTO">
 		SELECT 
 		i.itemcolor as item_color, i.itemimg as item_img, i.itemsize as item_size,o.custid,o.orderdate,o.orderpay,o.itemcnt,o.elevator,o.shipname,o.shipaddr,o.reciever,o.recievertel,i.itemname

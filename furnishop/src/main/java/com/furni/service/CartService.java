@@ -49,6 +49,9 @@ public class CartService implements MyService<Integer, CartDTO>{
 		return mapper.total_sum(custid);
 	}
 	
+	public CartDTO selectString(String custid) throws Exception{
+		return mapper.selectString(custid);
+	}
 }
 
 

@@ -23,17 +23,19 @@ public class CartController {
 	@RequestMapping("/get")
 	public String get(Model model,String id) {
 		List<CartDTO> list = null;
+
 		try {
-		    
-			list = service.cartall(id);
-			int i = service.total_sum(id);
-			model.addAttribute("list",list);
-			model.addAttribute("sum",i);
-			model.addAttribute("center",dir+"get");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "main";
+
+				list = service.cartall(id);
+				int i = service.total_sum(id);
+				model.addAttribute("list",list);
+				model.addAttribute("sum",i);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		model.addAttribute("center",dir+"get");
+			return "main";
 	}
 	
 	@RequestMapping("/delete")

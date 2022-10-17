@@ -2,16 +2,19 @@ package com.furni.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+import com.furni.dto.OrderpageDTO;
 import com.furni.dto.ReviewDTO;
-import com.furni.service.ReviewService;
 import com.furni.frame.Util;
+import com.furni.service.OrderpageService;
+import com.furni.service.ReviewService;
 
 @Controller
 @RequestMapping("/review")
@@ -25,21 +28,22 @@ public class ReviewController {
 	@Autowired
 	ReviewService service;
 
+	@Autowired
+	OrderpageService or_service;
 	
 	@RequestMapping("/reinsert")
 	public String reinsert(Model model,String id) {
-
-		List<ReviewDTO> list = null;
+		List<OrderpageDTO> order = null;
+	
 		try {
+				order = or_service.orderreview(id);
+							
+				model.addAttribute("list",order);
 				
-				list = service.reviewall(id);
-					
-				model.addAttribute("list",list);
-				model.addAttribute("center",dir+"reinsert");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(list);
+		model.addAttribute("center",dir+"reinsert");
 		return "main";
 	}
 	
@@ -52,11 +56,12 @@ public class ReviewController {
 			//하나 이상의 파일을 올리려면 이곳에서 추가
 			System.out.println(obj);
 			service.register(obj);
+			System.out.println(obj.getItem_color());
 			//레지스터도 추가 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:get";
+		return "redirect:reinsert?id=" + obj.getCustid();
 	}
 	
 	

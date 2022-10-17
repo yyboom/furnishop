@@ -17,4 +17,5 @@ public interface OrderpageMapper extends MyMapper<Integer, OrderpageDTO>{
 	public int register1(OrderpageDTO order) throws Exception;
 	public List<OrderpageDTO>orderall(String custid) throws Exception;
 	public void insert1(OrderpageDTO order, DetailorderDTO detail) throws Exception;
+	public List<OrderpageDTO> orderreview(String custid) throws Exception;
 }

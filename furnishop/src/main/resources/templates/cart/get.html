@@ -40,14 +40,15 @@ function moveorder(cartno){
 
 };
 
-function upbtn(){
-	var num = $('#num').val();
-	var result =  Number(num) + 1;
-	$('#num').val(result);
-}
+
 
 $(document).ready(function(){
+	$('#up_btn').click(function(){
+		var num = $('#num').val();
+		var result =  Number(num) + 1;
+		$('#num').val(result);
 
+	}); 	
 	
 	$('#down_btn').click(function(){
 	
@@ -106,9 +107,11 @@ $(document).ready(function(){
 				<td th:text="${c.item_color}" id = "item_color">Item Color</td>
 				<td th:text="${c.item_size}" id = "item_size">Item Size</td>
 				<td th:text="${c.item_price}" id = "item_price">Price</td>
-				<td >				
-						<input type = "number" th:value = "${c.cartcnt}" class = "form-control" id = "num" readonly = "readonly">						
-						<button th:onclick="upbtn([[${c.cartno}]])" type = "button" class = "btn btn-defalt btn-up" id = "up_btn">
+				<td>				
+						<input type = "number" th:value = "${c.cartcnt}" class = "form-control" id = "num" readonly = "readonly">
+				</td>
+				<td>						
+						<button  type = "button" class = "btn btn-defalt btn-up" id = "up_btn">
 							<span class = "glyphicon glyphicon-arrow-up"></span>UP
 						</button>
 						
@@ -117,7 +120,7 @@ $(document).ready(function(){
 						</button>						
 				</td>
 				<td>
-		        	<button th:onclick="moveorder([[${c.cartno}]])" type="button" class="btn btn-sm"  id = "order_btn">
+		        	<button th:onclick="order([[${c.cartno}]])" type="button" class="btn btn-sm"  id = "order_btn">
 		          	<span class="material-icons-outlined color">구매하기</span></a>
 		        	</button>				
 				

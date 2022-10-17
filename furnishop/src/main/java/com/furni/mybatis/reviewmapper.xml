@@ -20,6 +20,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	WHERE re.itemno = #{itemno}	
 	</select>
 	
+	<select id="select1" parameterType="Integer" resultType="ReviewDTO">
+		SELECT * FROM review WHERE reviewno = #{reviewno}	
+	</select>	
+	
 	
  	<select id="select" parameterType="String" resultType="ReviewDTO">
 		SELECT * FROM review WHERE custid = #{custid}	
@@ -30,6 +34,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<insert id="insert1" parameterType="ReviewDTO"  >
 		INSERT INTO review VALUES (NULL, #{custid},#{itemno} , #{rating}, #{reviewcon}, SYSDATE(), NULL,NULL)
+	</insert>
+	
+	<insert id="insertitem" parameterType="ReviewDTO"  >
+		INSERT INTO review VALUES (NULL, #{custid},#{itemno} , #{rating}, #{reviewcon}, SYSDATE(), NULL, #{item_name}, #{item_color} #{item_size} ,NULL)
 	</insert>
 	
 	

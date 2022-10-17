@@ -55,6 +55,14 @@ public class ReviewService implements MyService<String, ReviewDTO>{
 	public ReviewDTO insert1(ReviewDTO obj) throws Exception{
 		return mapper.insert1(obj);
 	}
+	
+	public ReviewDTO insertitem(ReviewDTO obj) throws Exception{
+		return mapper.insertitem(obj);
+	}
+	
+	public ReviewDTO select1(Integer reviewno) throws Exception{
+		return mapper.select1(reviewno);
+	}
 }
 
 

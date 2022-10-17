@@ -9,7 +9,7 @@
 
 <script>
 $(document).ready(function(){
-	$('#register_btn').click(function(){
+	$('#register_btn').click(function(){	
 		$('#review_form').attr({
 			'enctype':'multipart/form-data',
 			'method':'post',
@@ -25,18 +25,23 @@ $(document).ready(function(){
 <div class="container">
  <div class="login-card">
   <h1>Review</h1>
-  <form id="review_form" th:each="re : ${list}" class="login-card-form">
+  <form id="review_form" th:each="o : ${list}" class="login-card-form">
   	<div class="card-body">
 
       <div class="form-group">
- 		 <input type="hidden" name="custid" th:value="${re.custid}" readonly="readonly"> 
+ 		 <label>order number :</label><td th:text="${o.orderno}" name="orderno"> 
  	  </div>
  	  <div class="form-group">
- 		 <label>Item no :</label><td th:text="${re.itemno}" readonly="readonly"></td> 
+ 		 <input type="hidden" name="custid" th:value="${o.custid}" readonly="readonly"> 
+ 	  </div>
+ 	  <div class="form-group">
+ 		<input type="hidden" th:value="${o.item_no}" name = 'itemno' readonly="readonly">
  	  </div>	  
       <div class="form-group">
- 		 <label>Item name :</label><td th:text="${re.item_name}" name="item_name"></td> 
- 		 
+ 		 <label>Item name :</label><td th:text="${o.item_name}" name="item_name"></td> 	 
+ 	  </div>
+ 	  <div class="form-group">
+ 		  <td><img th:src="'/img/'+${o.item_img}" name = "item_img"></td>
  	  </div>
  	  <div class="form-group">
      	 <input type="text" class="form-control"  id="reviewcon" placeholder="리뷰를 작성하세요" name="reviewcon">
@@ -54,17 +59,17 @@ $(document).ready(function(){
         
       </fieldset>
       </form>
-      <div class="form-group">
- 		 <input type="hidden" name="reviewdate" th:value="${re.reviewdate}" readonly="readonly"> 
- 	  </div>
+
 	  <div class="form-group">
-	 	  <label>Item color:</label><input type="text"  name="item_color" th:value="${re.item_color}"  readonly="readonly">
+	 	  <label>Item color:</label><input type="text"  name="item_color" th:value="${o.item_color}"  readonly="readonly">
 	  </div> 
       <div class="form-group">
-     	  <label>Item size:</label><input type="text" name="item_size" th:value="${re.item_size}"  readonly="readonly">
+     	  <label>Item size:</label><input type="text" name="item_size" th:value="${o.item_size}"  readonly="readonly">
       </div>
     <button id="register_btn" class="btn btn-default" >Register</button>
    </div>
+   <label></label>
+ 
   </form>
  </div>
 

@@ -52,7 +52,9 @@ public class OrderpageService implements MyService<Integer,OrderpageDTO>{
 	public List<OrderpageDTO>orderall(String custid) throws Exception{
 		return mapper.orderall(custid);
 	}
-	
+	public List<OrderpageDTO> orderreview(String custid) throws Exception{
+		return mapper.orderreview(custid);
+	}
 	//주문상세 인서트할때
 //	fun insertUserData (user: User, hobby: Hobby) {
 //	    insertUser(user)

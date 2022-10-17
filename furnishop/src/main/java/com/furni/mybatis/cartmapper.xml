@@ -20,7 +20,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE ca.custid = #{custid}
 	</select>
 	
- 	<select id="select" parameterType="Integer" resultType="CartDTO">
+ 	<select id="selectString" parameterType="String" resultType="CartDTO">
+		SELECT * FROM cart ca
+		INNER JOIN item it ON ca.itemno= it.itemno
+		WHERE ca.custid = #{custid}
+	</select>	
+	
+	<select id="select" parameterType="Integer" resultType="CartDTO">
 		SELECT * FROM cart ca
 		INNER JOIN item it ON ca.itemno= it.itemno
 		WHERE ca.cartno = #{cartno}
