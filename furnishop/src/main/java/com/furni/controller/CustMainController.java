@@ -57,8 +57,10 @@ public class CustMainController {
 				model.addAttribute("center", dir+"loginfail");
 			} else {
 				if (custpwd.equals(cust.getCustpwd())) {
-					session.setAttribute("logincust", cust);
-					model.addAttribute("center", "main");
+						if(cust.getWithdraw() == "x") {
+							session.setAttribute("logincust", cust);
+							model.addAttribute("center", "main");
+					}
 					// id,pwd가 다 아닐 때
 				} else {
 					model.addAttribute("center", dir+"loginfail");
