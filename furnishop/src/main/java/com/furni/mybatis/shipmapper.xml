@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="shipall" parameterType="String" resultType="ShipDTO">
-		SELECT c.custid AS cust_id, d.orderno AS order_no, o.orderdate AS
+		SELECT c.custid AS cust_id, i.itemno as itemno, d.orderno AS order_no, o.orderdate AS
 		order_date, i.itemname AS item_name, o.itemcnt AS item_cnt,
 		i.itemprice*o.itemcnt AS total_cnt, i.itemimg AS item_img,
 		sh.shipstatus FROM detailorder d

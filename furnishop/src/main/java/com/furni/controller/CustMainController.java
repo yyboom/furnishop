@@ -1,4 +1,4 @@
-package com.furni.controller;
+	package com.furni.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -68,6 +68,7 @@ public class CustMainController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(cust);
 		return "redirect:/";
 	}
 

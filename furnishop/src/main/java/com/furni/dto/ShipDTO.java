@@ -25,6 +25,6 @@ public class ShipDTO {
 	private int item_cnt;
 	private int total_cnt;
 	private String item_img;
-	
+	private int itemno;
 
 }
