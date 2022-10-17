@@ -16,7 +16,7 @@ class UpdateCust {
 	
 	@Test
 	void contextLoads() {
-		CustDTO cust = new CustDTO("id11", "pwd11", "조윤영", "경기도 용인시", "010-5555-5555", "whdbsdud37@naver.com", null, null, 19980307);
+		CustDTO cust = new CustDTO("id11", "pwd11", "조윤영", "경기도 용인시", "010-5555-5555", "whdbsdud37@naver.com", null, 0, 19980307);
 		try {
 			service.modify(cust);
 		} catch (Exception e) {

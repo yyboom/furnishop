@@ -15,7 +15,7 @@ class InsertCust {
 	
 	@Test
 	void contextLoads() {
-		CustDTO cust = new CustDTO(null, null, null, null, null, null, null, null, 0);
+		CustDTO cust = new CustDTO(null, null, null, null, null, null, null, 0, 0);
 		try {
 			service.register(cust);
 		} catch (Exception e) {
