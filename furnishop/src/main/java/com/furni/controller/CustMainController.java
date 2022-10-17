@@ -72,7 +72,6 @@ public class CustMainController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(cust);
 		return "redirect:/";
 	}
 

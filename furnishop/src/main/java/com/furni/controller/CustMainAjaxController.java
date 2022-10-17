@@ -51,7 +51,6 @@ public class CustMainAjaxController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(wish);
 		return "";
 	}
 	
@@ -63,13 +62,11 @@ public class CustMainAjaxController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(totalprice);
 		return totalprice;
 	}
 	
 	@RequestMapping("/addcart")
 	public Object addcart(CartDTO cart) {
-		System.out.println(cart);
 		try {
 			cart_service.register(cart);
 		} catch (Exception e) {

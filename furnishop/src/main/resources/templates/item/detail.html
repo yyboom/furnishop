@@ -1,4 +1,6 @@
 <meta charset="utf-8">
+<link rel="stylesheet" href="/css/re_style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,300,0,0" />
 <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
     .row.content {
@@ -166,7 +168,7 @@ $(document).ready(function(){
   </script>
 
 <body>
-
+ <div class="login-card">
 <div class="container-fluid">
   <div class="row content">
     <div id="topright1" class="col-sm-6 sidenav">
@@ -264,7 +266,7 @@ $(document).ready(function(){
         <div class="modal-body">
           <form role="form">
             <div class="form-group">
-  				<label for="psw"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;<a th:href="@{/wishlist/wishlistdetail(id=${session.logincust.custid})}">Do you want to move Wishlist..?</a></label>
+  				<label for="psw"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;<a th:href="@{/wishlist/wishlistdetail(id=${session.logincust.custid})}">Go to whishlist</a></label>
           </div>
           </form>
         </div>
@@ -277,11 +279,11 @@ $(document).ready(function(){
        <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">카트에 담았습니다.</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4><span class="glyphicon glyphicon-lock"></span>Cart</h4>
         </div>
         <div class="modal-body">
-          <p><a th:href ="@{/cart/get(id=${session.logincust.custid})}">카트로 이동하시겠습니까?</a></p>
+          <p><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;<a th:href ="@{/cart/get(id=${session.logincust.custid})}">Go to cart</a></p>
         </div>
       </div>
       </div>
@@ -296,7 +298,7 @@ $(document).ready(function(){
   
   </div>
   <br>
-  <h3 class="text-center">THE FURNISHOP</h3>  
+  <h3 class="text-center">3FURNISHOP</h3>  
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Information</a></li>
     <li><a data-toggle="tab" href="#menu1">Review</a></li>
@@ -365,6 +367,5 @@ $(document).ready(function(){
     
     
  
-
 
 </body>

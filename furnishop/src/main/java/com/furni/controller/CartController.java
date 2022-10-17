@@ -30,11 +30,11 @@ public class CartController {
 				int i = service.total_sum(id);
 				model.addAttribute("list",list);
 				model.addAttribute("sum",i);
+				model.addAttribute("center",dir+"get");
 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		model.addAttribute("center",dir+"get");
 			return "main";
 	}
 	

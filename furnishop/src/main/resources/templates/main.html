@@ -197,12 +197,12 @@ $(document).ready(function(){
       </button>
       <a class="navbar-brand" href="/">3FURNISHOP</a>
             <ul class="navbar-brand">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Category
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">CATEGORY
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/item/bedroom">Bedroom</a></li>
-            <li><a href="/item/livingroom">Living room</a></li>
-            <li><a href="/item/kitchen">Kitchen</a></li> 
+            <li><a href="/item/bedroom">BEDROOM</a></li>
+            <li><a href="/item/livingroom">LIVING ROOM</a></li>
+            <li><a href="/item/kitchen">KITCHEN</a></li> 
           </ul>
           </ul>
     </div>
@@ -216,9 +216,9 @@ $(document).ready(function(){
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="${session.logincust.custname}">
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a th:href="@{/custdetail(id=${session.logincust.custid})}">custdetail</a></li>
-            <li><a th:href="@{/order/ordershipdetail(id=${session.logincust.custid})}">ordershipdetail</a></li>
-            <li><a th:href="@{/wishlist/wishlistdetail(id=${session.logincust.custid})}">wishlistdetail</a></li>
+            <li><a th:href="@{/custdetail(id=${session.logincust.custid})}">CUSTDETAIL</a></li>
+            <li><a th:href="@{/order/ordershipdetail(id=${session.logincust.custid})}">ORDERSHIPDETAIL</a></li>
+            <li><a th:href="@{/wishlist/wishlistdetail(id=${session.logincust.custid})}">WISHLISTDETAIL</a></li>
         
             <!-- 페이지 확인 용도 -->
             <li><a th:href="@{/review/reinsert(id=${session.logincust.custid})}">REVIEW</a></li>

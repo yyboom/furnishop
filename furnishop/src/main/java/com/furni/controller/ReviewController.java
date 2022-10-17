@@ -39,11 +39,11 @@ public class ReviewController {
 				order = or_service.orderreview(id);
 							
 				model.addAttribute("list",order);
+				model.addAttribute("center",dir+"reinsert");
 				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("center",dir+"reinsert");
 		return "main";
 	}
 	
@@ -54,9 +54,7 @@ public class ReviewController {
 		try {
 			Util.saveFile(obj.getImg(), reviewdir);
 			//하나 이상의 파일을 올리려면 이곳에서 추가
-			System.out.println(obj);
 			service.register(obj);
-			System.out.println(obj.getItem_color());
 			//레지스터도 추가 
 		} catch (Exception e) {
 			e.printStackTrace();

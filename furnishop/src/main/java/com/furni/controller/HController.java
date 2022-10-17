@@ -84,7 +84,6 @@ public class HController {
 			System.out.println("시스템 장애입니다.");
 			e.printStackTrace();  // 시스템 장애 등, 현업에서는 시스템 장애 화면 뿌려지게 함
 		}
-		System.out.println(review);
 		return "main";
 	}
 	

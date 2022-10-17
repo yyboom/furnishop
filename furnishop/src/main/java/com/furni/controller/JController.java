@@ -62,9 +62,6 @@ public class JController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(list);
-		System.out.println(list1);
-		System.out.println(list2);
 		return "main";
 	}
 	@RequestMapping("/insertimpl")
@@ -74,10 +71,9 @@ public class JController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(order.getOrderno());
-		System.out.println(order);
 		return "redirect:detail?id="+order.getCustid();
 	}
+	
 	@RequestMapping("/detail")
 	public String detail(Model model, String id) {
 		List<ShipDTO> list = null;
