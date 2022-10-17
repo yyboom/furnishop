@@ -32,13 +32,12 @@
 - 구매 상품 리뷰 작성
 
 ## 5. 시스템 구성도
-<img width="691" alt="system" src="https://user-images.githubusercontent.com/111727476/196119246-1a1380e0-a906-4266-8b47-873a50c119ca.png">
+<img width="694" alt="system" src="https://user-images.githubusercontent.com/111727476/196131211-3ae6938e-29b8-4594-9287-da4a724f885a.png">
 
 ## 6. 프로젝트 수행 도구
 <img width="488" alt="수행도구" src="https://user-images.githubusercontent.com/111727476/196119330-20c1bd3a-8f46-4a03-a0e7-3c86249db4be.png">
 
-## 7. 데이터베이스 설계 및 ERD 다이어그램
+## 7. ERD 다이어그램
 - 총 9개의 테이블 => 고객, 상품, 카테고리, 주문, 주문상세, 배송, 장바구니, 관심물품, 리뷰
-<img width="596" alt="database" src="https://user-images.githubusercontent.com/111727476/196118986-23e8a18c-6950-4d2f-baf4-173489e45592.png">
 <img width="551" alt="erd" src="https://user-images.githubusercontent.com/111727476/196129056-b1501a53-dbd3-4a65-a5f4-ea949ccbf8c4.png">
 
