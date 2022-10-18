@@ -30,6 +30,7 @@
 		//id가 이미 있는 아이디인지 아닌지를 판별해줌
 		$('#id').keyup(function() {
 			var id = $(this).val();
+			
 			$.ajax({
 				url : '/checkid',
 				//JSON형식으로 보내줌(입력한 id를!)

@@ -59,6 +59,7 @@ body {
 	font-size: 4rem;
 	font-weight: 600;
 	margin-bottom: .5rem;
+	color: yellow;
 }
 
 .login-card-header h1+div {

@@ -24,6 +24,24 @@ body {
 	margin-top: 100px;
 }
 
+.login-card  tr, span{
+	color:white;	
+}
+
+.login-card  td{
+	color: white;	
+}
+
+.login-card label{
+	color:blue;
+}
+
+.login-card h2{
+	color:yellow;	
+}
+
+
+
 .login-card:before {
 	content: '';
 	position: absolute;
@@ -35,7 +53,8 @@ body {
 
 .login-card a {
 	text-decoration: none;
-	color: #35339a;
+	/* color: #35339a; */
+	color: red;
 }
 
 .login-card-header {
