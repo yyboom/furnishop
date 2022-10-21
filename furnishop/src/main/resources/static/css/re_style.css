@@ -9,7 +9,7 @@
 body {
 	font-family: 'Poppins', sans-serif;
 	min-height: 100vh;
-	background: url("/img/background.jpg");
+	background: url("../img/background.jpg");
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -25,11 +25,15 @@ body {
 }
 
 .login-card  tr, span{
+	color:black;	
+}
+
+.login-card span{
 	color:white;	
 }
 
 .login-card  td{
-	color: white;	
+	color: black;	
 }
 
 .login-card label{
