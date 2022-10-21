@@ -41,3 +41,6 @@
 - 총 9개의 테이블 => 고객, 상품, 카테고리, 주문, 주문상세, 배송, 장바구니, 관심물품, 리뷰
 <img width="551" alt="erd" src="https://user-images.githubusercontent.com/111727476/196129056-b1501a53-dbd3-4a65-a5f4-ea949ccbf8c4.png">
 
+## 8. 화면 시연 동영상
+- 화면시연: https://youtu.be/JR797GAQKFk 
+- 반응형 웹:
