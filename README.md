@@ -43,4 +43,4 @@
 
 ## 8. 화면 시연 동영상
 - 화면시연: https://youtu.be/JR797GAQKFk 
-- 반응형 웹:
+- 반응형 웹: https://youtu.be/LqKiVW29OE8
