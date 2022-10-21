@@ -10,7 +10,7 @@ body {
 	font-family: 'Poppins', sans-serif;
 	min-height: 100vh;
 	/* background:linear-gradient(to right,#fefae0,#faedcd); */
-	background: url("/img/background.jpg");
+	background: url("@{/img/background.jpg}");
 	display: flex;
 	align-items: center;
 	justify-content: center;
