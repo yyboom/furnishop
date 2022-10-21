@@ -38,7 +38,7 @@ table>tbody>tr>td>img:hover {
 		location.href = '[[@{/order/insert?custid=}]]' + custid + '&[[@{item_no=}]]' + itemno
 				+ '&[[@{item_name=}]]' + itemname + '&[[@{item_color=}]]' + itemcolor
 				+ '&[[@{item_size=}]]' + itemsize + '&[[@{itemcnt=}]]' + itemcnt
-				+ '&[[@{item_img=}]]' + itemimghide + '&[[@{item_price=}]]' + itemprice;
+				+ '&[[@{item_img=}]]' + itemimghide + '&[[@{item_price=}]]' + itemprice + '&[[@{totalcnt=}]]' + totalcnt + '&[[@{total_price=}]]' + total_price;
 
 	};
 
@@ -88,6 +88,8 @@ table>tbody>tr>td>img:hover {
 					<th>Item Size</th>
 					<th>Price</th>
 					<th>Count</th>
+					<th>Total Count</th>
+					<th>Total Price</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -102,9 +104,8 @@ table>tbody>tr>td>img:hover {
 					<td th:text="${c.item_name}" id="item_name">Item Name</td>
 					<td th:text="${c.item_color}" id="item_color">Item Color</td>
 					<td th:text="${c.item_size}" id="item_size">Item Size</td>
-					<td th:text="${c.item_price}" id="item_price">Price</td>
-					<td><input type="number" th:value="${c.cartcnt}"
-						class="form-control" id="num" readonly="readonly" name=cartcnt>
+					<td th:text="${c.item_price}" id="item_price">Price</td>						
+					<td><input type="number" th:value="${c.cartcnt}" class="form-control" id="num" readonly="readonly" name=cartcnt>	
 						<button th:onclick="valcntbtn('u',this)" type="button"
 							class="btn btn-defalt btn-up" id="up_btn">
 							<span class="glyphicon glyphicon-arrow-up"></span>UP
@@ -114,6 +115,8 @@ table>tbody>tr>td>img:hover {
 							class="btn btn-defalt btn-down" id="down_btn">
 							<span class="glyphicon glyphicon-arrow-down"></span>DOWN
 						</button></td>
+					<td th:text="${c.totalcnt}" id="totalcnt">Total Count</td>
+					<td th:text="${c.total_price}" id="c.total_price">Total Price</td>	
 					<td>
 						<button th:onclick="order([[${c.cartno}]])" type="button"
 							class="btn btn-sm" id="order_btn">

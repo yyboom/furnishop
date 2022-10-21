@@ -16,7 +16,8 @@ public class CartDTO {
 	private String custid;
 	private int itemno;
 	private int cartcnt;
-
+	private int totalcnt;
+	
 	private String item_name;
 	private int item_price;
 	private String item_color;
@@ -24,5 +25,6 @@ public class CartDTO {
 	private String item_size;
 	private int total_price;
 	private int total_sum;
+	
 
 }

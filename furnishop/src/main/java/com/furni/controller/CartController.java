@@ -21,11 +21,16 @@ public class CartController {
 
 	@RequestMapping("/get")
 	public String get(Model model, String id) {
+		//	int totalcnt=0, total_price=0;
 		List<CartDTO> list = null;
 		Integer i = 0;
 		try {
-
+		//	CartDTO cart = service.selectString(id);
+		//	totalcnt += cart.getTotalcnt();
+		//	total_price += cart.getTotal_price()*cart.getCartcnt();
 			list = service.cartall(id);
+
+			
 			i = service.total_sum(id);
 			model.addAttribute("list", list);
 			model.addAttribute("sum", i);
