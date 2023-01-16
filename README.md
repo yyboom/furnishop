@@ -1,6 +1,7 @@
 # 3Furnishop
 - Semi-Project 3조 
 - 조장: 조윤영/ 팀원: 조재원, 이현지, 전민우
+- 기간: 2022.10.07~2022.10.18
 
 ## 1. 프로젝트 주제
 - Spring Framework MVC(Model, View, Controller)를 활용한 가구 쇼핑몰 서비스 개발
